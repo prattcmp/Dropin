@@ -1,0 +1,803 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		420F5A179093F66F87C30810 /* Pods_Dropin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */; };
+		832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */; };
+		832AF9111F8FF57E0024BE26 /* SendDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF9101F8FF57E0024BE26 /* SendDropView.swift */; };
+		832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */; };
+		832AF9161F9292E30024BE26 /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF9151F9292E30024BE26 /* Drop.swift */; };
+		8337BAD01F40F53E002C1639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BACF1F40F53E002C1639 /* AppDelegate.swift */; };
+		8337BAD51F40F53E002C1639 /* UserAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8337BAD31F40F53E002C1639 /* UserAuth.storyboard */; };
+		8337BAD71F40F53E002C1639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8337BAD61F40F53E002C1639 /* Assets.xcassets */; };
+		8337BADA1F40F53E002C1639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8337BAD81F40F53E002C1639 /* LaunchScreen.storyboard */; };
+		8337BAE51F40F53E002C1639 /* DropinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BAE41F40F53E002C1639 /* DropinTests.swift */; };
+		8337BAF01F40F53E002C1639 /* DropinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BAEF1F40F53E002C1639 /* DropinUITests.swift */; };
+		8337BAFF1F40F57D002C1639 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8337BAFE1F40F57D002C1639 /* MapKit.framework */; };
+		8337BB041F4119BB002C1639 /* dropin-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8337BB031F4119BB002C1639 /* dropin-logo.png */; };
+		8337BB061F41647F002C1639 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BB051F41647F002C1639 /* SignUpViewController.swift */; };
+		8337BB081F439D99002C1639 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BB071F439D99002C1639 /* Extensions.swift */; };
+		8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BB091F44B662002C1639 /* APIUrls.swift */; };
+		834E8DF61F57344B007E3050 /* CreateName.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834E8DF51F57344B007E3050 /* CreateName.storyboard */; };
+		834E8DF81F5E52C9007E3050 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E8DF71F5E52C9007E3050 /* LoginViewController.swift */; };
+		834E8DFC1F5F38B1007E3050 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E8DFB1F5F38B1007E3050 /* NameViewController.swift */; };
+		834E8DFE1F5F84BB007E3050 /* AuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E8DFD1F5F84BB007E3050 /* AuthHandler.swift */; };
+		83546F6A1F66E32900492BB2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83546F691F66E32900492BB2 /* MapView.swift */; };
+		835D26671F75A061000BC98E /* DropinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D26661F75A061000BC98E /* DropinViewController.swift */; };
+		835D26691F799C41000BC98E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D26681F799C41000BC98E /* SettingsView.swift */; };
+		835D266B1F79A240000BC98E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D266A1F79A240000BC98E /* SettingsViewController.swift */; };
+		835D266D1F7DB0F1000BC98E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D266C1F7DB0F1000BC98E /* User.swift */; };
+		836777521FB12D8D006DB1A3 /* AnnotationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836777511FB12D8D006DB1A3 /* AnnotationType.swift */; };
+		839669A31F670A05000468DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669A21F670A05000468DA /* MapViewController.swift */; };
+		839669A91F733829000468DA /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669A81F733829000468DA /* FriendView.swift */; };
+		839669AB1F7338DB000468DA /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669AA1F7338DB000468DA /* FriendViewController.swift */; };
+		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
+		83F42F2B1FA2B0B700313510 /* MyDropsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */; };
+		83F42F2D1FA2B14E00313510 /* MyDropsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2C1FA2B14E00313510 /* MyDropsView.swift */; };
+		83F42F2F1FA4055000313510 /* TimeUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2E1FA4055000313510 /* TimeUntil.swift */; };
+		83F42F311FA55CA200313510 /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F301FA55CA200313510 /* DropView.swift */; };
+		83F42F331FA55CBD00313510 /* DropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F321FA55CBD00313510 /* DropViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8337BAE11F40F53E002C1639 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8337BAC41F40F53D002C1639 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8337BACB1F40F53D002C1639;
+			remoteInfo = Dropin;
+		};
+		8337BAEC1F40F53E002C1639 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8337BAC41F40F53D002C1639 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8337BACB1F40F53D002C1639;
+			remoteInfo = Dropin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dropin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		457819D515D7C57DAF1599AE /* Pods-Dropin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dropin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dropin/Pods-Dropin.release.xcconfig"; sourceTree = "<group>"; };
+		832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropViewController.swift; sourceTree = "<group>"; };
+		832AF9101F8FF57E0024BE26 /* SendDropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropView.swift; sourceTree = "<group>"; };
+		832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdobeGothicStd-Bold.otf"; sourceTree = "<group>"; };
+		832AF9151F9292E30024BE26 /* Drop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		8337BACC1F40F53E002C1639 /* Dropin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dropin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8337BACF1F40F53E002C1639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8337BAD41F40F53E002C1639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserAuth.storyboard; sourceTree = "<group>"; };
+		8337BAD61F40F53E002C1639 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8337BAD91F40F53E002C1639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8337BADB1F40F53E002C1639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8337BAE01F40F53E002C1639 /* DropinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8337BAE41F40F53E002C1639 /* DropinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropinTests.swift; sourceTree = "<group>"; };
+		8337BAE61F40F53E002C1639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8337BAEB1F40F53E002C1639 /* DropinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8337BAEF1F40F53E002C1639 /* DropinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropinUITests.swift; sourceTree = "<group>"; };
+		8337BAF11F40F53E002C1639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8337BAFE1F40F57D002C1639 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8337BB031F4119BB002C1639 /* dropin-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropin-logo.png"; sourceTree = "<group>"; };
+		8337BB051F41647F002C1639 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8337BB071F439D99002C1639 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8337BB091F44B662002C1639 /* APIUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUrls.swift; sourceTree = "<group>"; };
+		834E8DF51F57344B007E3050 /* CreateName.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateName.storyboard; sourceTree = "<group>"; };
+		834E8DF71F5E52C9007E3050 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		834E8DFB1F5F38B1007E3050 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		834E8DFD1F5F84BB007E3050 /* AuthHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthHandler.swift; sourceTree = "<group>"; };
+		83546F691F66E32900492BB2 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		835D26661F75A061000BC98E /* DropinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropinViewController.swift; sourceTree = "<group>"; };
+		835D26681F799C41000BC98E /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		835D266A1F79A240000BC98E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		835D266C1F7DB0F1000BC98E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		836777511FB12D8D006DB1A3 /* AnnotationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationType.swift; sourceTree = "<group>"; };
+		839669A21F670A05000468DA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		839669A81F733829000468DA /* FriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
+		839669AA1F7338DB000468DA /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
+		83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsViewController.swift; sourceTree = "<group>"; };
+		83F42F2C1FA2B14E00313510 /* MyDropsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsView.swift; sourceTree = "<group>"; };
+		83F42F2E1FA4055000313510 /* TimeUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUntil.swift; sourceTree = "<group>"; };
+		83F42F301FA55CA200313510 /* DropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
+		83F42F321FA55CBD00313510 /* DropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropViewController.swift; sourceTree = "<group>"; };
+		D178A47F728FE04E79DBA286 /* Pods-Dropin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dropin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dropin/Pods-Dropin.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8337BAC91F40F53D002C1639 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8337BAFF1F40F57D002C1639 /* MapKit.framework in Frameworks */,
+				420F5A179093F66F87C30810 /* Pods_Dropin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8337BADD1F40F53E002C1639 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8337BAE81F40F53E002C1639 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		832AF9121F9114EA0024BE26 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		8337BAC31F40F53D002C1639 = {
+			isa = PBXGroup;
+			children = (
+				8337BACE1F40F53E002C1639 /* Dropin */,
+				8337BAE31F40F53E002C1639 /* DropinTests */,
+				8337BAEE1F40F53E002C1639 /* DropinUITests */,
+				8337BACD1F40F53E002C1639 /* Products */,
+				8337BAFD1F40F57D002C1639 /* Frameworks */,
+				A9A338B3F427FF6BDB7EAF5B /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		8337BACD1F40F53E002C1639 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8337BACC1F40F53E002C1639 /* Dropin.app */,
+				8337BAE01F40F53E002C1639 /* DropinTests.xctest */,
+				8337BAEB1F40F53E002C1639 /* DropinUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8337BACE1F40F53E002C1639 /* Dropin */ = {
+			isa = PBXGroup;
+			children = (
+				83F42F271FA112EB00313510 /* Helpers */,
+				832AF9121F9114EA0024BE26 /* Fonts */,
+				8337BACF1F40F53E002C1639 /* AppDelegate.swift */,
+				8337BB091F44B662002C1639 /* APIUrls.swift */,
+				8337BAD81F40F53E002C1639 /* LaunchScreen.storyboard */,
+				834E8DFF1F664D37007E3050 /* Auth */,
+				834E8E001F664D89007E3050 /* Models */,
+				834E8E021F664D9C007E3050 /* Controllers */,
+				834E8E011F664D94007E3050 /* Views */,
+				8337BAD61F40F53E002C1639 /* Assets.xcassets */,
+				8337BADB1F40F53E002C1639 /* Info.plist */,
+				8337BB021F4117E4002C1639 /* Image Assets */,
+			);
+			path = Dropin;
+			sourceTree = "<group>";
+		};
+		8337BAE31F40F53E002C1639 /* DropinTests */ = {
+			isa = PBXGroup;
+			children = (
+				8337BAE41F40F53E002C1639 /* DropinTests.swift */,
+				8337BAE61F40F53E002C1639 /* Info.plist */,
+			);
+			path = DropinTests;
+			sourceTree = "<group>";
+		};
+		8337BAEE1F40F53E002C1639 /* DropinUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8337BAEF1F40F53E002C1639 /* DropinUITests.swift */,
+				8337BAF11F40F53E002C1639 /* Info.plist */,
+			);
+			path = DropinUITests;
+			sourceTree = "<group>";
+		};
+		8337BAFD1F40F57D002C1639 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8337BAFE1F40F57D002C1639 /* MapKit.framework */,
+				3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8337BB021F4117E4002C1639 /* Image Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8337BB031F4119BB002C1639 /* dropin-logo.png */,
+			);
+			name = "Image Assets";
+			sourceTree = "<group>";
+		};
+		834E8DFF1F664D37007E3050 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				834E8DFD1F5F84BB007E3050 /* AuthHandler.swift */,
+				8337BB071F439D99002C1639 /* Extensions.swift */,
+				8337BB051F41647F002C1639 /* SignUpViewController.swift */,
+				834E8DF71F5E52C9007E3050 /* LoginViewController.swift */,
+				834E8DFB1F5F38B1007E3050 /* NameViewController.swift */,
+				8337BAD31F40F53E002C1639 /* UserAuth.storyboard */,
+				834E8DF51F57344B007E3050 /* CreateName.storyboard */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		834E8E001F664D89007E3050 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				835D266C1F7DB0F1000BC98E /* User.swift */,
+				832AF9151F9292E30024BE26 /* Drop.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		834E8E011F664D94007E3050 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83546F691F66E32900492BB2 /* MapView.swift */,
+				839669A81F733829000468DA /* FriendView.swift */,
+				835D26681F799C41000BC98E /* SettingsView.swift */,
+				832AF9101F8FF57E0024BE26 /* SendDropView.swift */,
+				83F42F2C1FA2B14E00313510 /* MyDropsView.swift */,
+				83F42F301FA55CA200313510 /* DropView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		834E8E021F664D9C007E3050 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				839669A21F670A05000468DA /* MapViewController.swift */,
+				839669AA1F7338DB000468DA /* FriendViewController.swift */,
+				835D266A1F79A240000BC98E /* SettingsViewController.swift */,
+				835D26661F75A061000BC98E /* DropinViewController.swift */,
+				832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */,
+				83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */,
+				83F42F321FA55CBD00313510 /* DropViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		83F42F271FA112EB00313510 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				83F42F281FA112F900313510 /* UIImageAlpha.swift */,
+				83F42F2E1FA4055000313510 /* TimeUntil.swift */,
+				836777511FB12D8D006DB1A3 /* AnnotationType.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A9A338B3F427FF6BDB7EAF5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D178A47F728FE04E79DBA286 /* Pods-Dropin.debug.xcconfig */,
+				457819D515D7C57DAF1599AE /* Pods-Dropin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8337BACB1F40F53D002C1639 /* Dropin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8337BAF41F40F53E002C1639 /* Build configuration list for PBXNativeTarget "Dropin" */;
+			buildPhases = (
+				3F27B4D44D82B484A49BE10E /* [CP] Check Pods Manifest.lock */,
+				8337BAC81F40F53D002C1639 /* Sources */,
+				8337BAC91F40F53D002C1639 /* Frameworks */,
+				8337BACA1F40F53D002C1639 /* Resources */,
+				A7AD2A5B5A0DAA7BEDD1B662 /* [CP] Embed Pods Frameworks */,
+				25A369D2B1189D022E8B8426 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dropin;
+			productName = Dropin;
+			productReference = 8337BACC1F40F53E002C1639 /* Dropin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8337BADF1F40F53E002C1639 /* DropinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8337BAF71F40F53E002C1639 /* Build configuration list for PBXNativeTarget "DropinTests" */;
+			buildPhases = (
+				8337BADC1F40F53E002C1639 /* Sources */,
+				8337BADD1F40F53E002C1639 /* Frameworks */,
+				8337BADE1F40F53E002C1639 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8337BAE21F40F53E002C1639 /* PBXTargetDependency */,
+			);
+			name = DropinTests;
+			productName = DropinTests;
+			productReference = 8337BAE01F40F53E002C1639 /* DropinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8337BAEA1F40F53E002C1639 /* DropinUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8337BAFA1F40F53E002C1639 /* Build configuration list for PBXNativeTarget "DropinUITests" */;
+			buildPhases = (
+				8337BAE71F40F53E002C1639 /* Sources */,
+				8337BAE81F40F53E002C1639 /* Frameworks */,
+				8337BAE91F40F53E002C1639 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8337BAED1F40F53E002C1639 /* PBXTargetDependency */,
+			);
+			name = DropinUITests;
+			productName = DropinUITests;
+			productReference = 8337BAEB1F40F53E002C1639 /* DropinUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8337BAC41F40F53D002C1639 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Dropin;
+				TargetAttributes = {
+					8337BACB1F40F53D002C1639 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 748Q8DXLVV;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					8337BADF1F40F53E002C1639 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8337BACB1F40F53D002C1639;
+					};
+					8337BAEA1F40F53E002C1639 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8337BACB1F40F53D002C1639;
+					};
+				};
+			};
+			buildConfigurationList = 8337BAC71F40F53D002C1639 /* Build configuration list for PBXProject "Dropin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8337BAC31F40F53D002C1639;
+			productRefGroup = 8337BACD1F40F53E002C1639 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8337BACB1F40F53D002C1639 /* Dropin */,
+				8337BADF1F40F53E002C1639 /* DropinTests */,
+				8337BAEA1F40F53E002C1639 /* DropinUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8337BACA1F40F53D002C1639 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				834E8DF61F57344B007E3050 /* CreateName.storyboard in Resources */,
+				8337BB041F4119BB002C1639 /* dropin-logo.png in Resources */,
+				8337BADA1F40F53E002C1639 /* LaunchScreen.storyboard in Resources */,
+				8337BAD71F40F53E002C1639 /* Assets.xcassets in Resources */,
+				832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */,
+				8337BAD51F40F53E002C1639 /* UserAuth.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8337BADE1F40F53E002C1639 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8337BAE91F40F53E002C1639 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25A369D2B1189D022E8B8426 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dropin/Pods-Dropin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F27B4D44D82B484A49BE10E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dropin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7AD2A5B5A0DAA7BEDD1B662 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Dropin/Pods-Dropin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dropin/Pods-Dropin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8337BAC81F40F53D002C1639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836777521FB12D8D006DB1A3 /* AnnotationType.swift in Sources */,
+				834E8DF81F5E52C9007E3050 /* LoginViewController.swift in Sources */,
+				83546F6A1F66E32900492BB2 /* MapView.swift in Sources */,
+				832AF9111F8FF57E0024BE26 /* SendDropView.swift in Sources */,
+				834E8DFE1F5F84BB007E3050 /* AuthHandler.swift in Sources */,
+				83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */,
+				834E8DFC1F5F38B1007E3050 /* NameViewController.swift in Sources */,
+				839669A31F670A05000468DA /* MapViewController.swift in Sources */,
+				83F42F311FA55CA200313510 /* DropView.swift in Sources */,
+				832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */,
+				8337BB061F41647F002C1639 /* SignUpViewController.swift in Sources */,
+				8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */,
+				8337BB081F439D99002C1639 /* Extensions.swift in Sources */,
+				835D26671F75A061000BC98E /* DropinViewController.swift in Sources */,
+				835D266B1F79A240000BC98E /* SettingsViewController.swift in Sources */,
+				839669A91F733829000468DA /* FriendView.swift in Sources */,
+				83F42F2F1FA4055000313510 /* TimeUntil.swift in Sources */,
+				839669AB1F7338DB000468DA /* FriendViewController.swift in Sources */,
+				83F42F2B1FA2B0B700313510 /* MyDropsViewController.swift in Sources */,
+				832AF9161F9292E30024BE26 /* Drop.swift in Sources */,
+				83F42F2D1FA2B14E00313510 /* MyDropsView.swift in Sources */,
+				835D266D1F7DB0F1000BC98E /* User.swift in Sources */,
+				8337BAD01F40F53E002C1639 /* AppDelegate.swift in Sources */,
+				835D26691F799C41000BC98E /* SettingsView.swift in Sources */,
+				83F42F331FA55CBD00313510 /* DropViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8337BADC1F40F53E002C1639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8337BAE51F40F53E002C1639 /* DropinTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8337BAE71F40F53E002C1639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8337BAF01F40F53E002C1639 /* DropinUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8337BAE21F40F53E002C1639 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8337BACB1F40F53D002C1639 /* Dropin */;
+			targetProxy = 8337BAE11F40F53E002C1639 /* PBXContainerItemProxy */;
+		};
+		8337BAED1F40F53E002C1639 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8337BACB1F40F53D002C1639 /* Dropin */;
+			targetProxy = 8337BAEC1F40F53E002C1639 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8337BAD31F40F53E002C1639 /* UserAuth.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8337BAD41F40F53E002C1639 /* Base */,
+			);
+			name = UserAuth.storyboard;
+			sourceTree = "<group>";
+		};
+		8337BAD81F40F53E002C1639 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8337BAD91F40F53E002C1639 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8337BAF21F40F53E002C1639 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8337BAF31F40F53E002C1639 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8337BAF51F40F53E002C1639 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D178A47F728FE04E79DBA286 /* Pods-Dropin.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 748Q8DXLVV;
+				INFOPLIST_FILE = Dropin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pratt.Dropin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8337BAF61F40F53E002C1639 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 457819D515D7C57DAF1599AE /* Pods-Dropin.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 748Q8DXLVV;
+				INFOPLIST_FILE = Dropin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pratt.Dropin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8337BAF81F40F53E002C1639 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DropinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dropin.DropinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dropin.app/Dropin";
+			};
+			name = Debug;
+		};
+		8337BAF91F40F53E002C1639 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DropinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dropin.DropinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dropin.app/Dropin";
+			};
+			name = Release;
+		};
+		8337BAFB1F40F53E002C1639 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DropinUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dropin.DropinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Dropin;
+			};
+			name = Debug;
+		};
+		8337BAFC1F40F53E002C1639 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DropinUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dropin.DropinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Dropin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8337BAC71F40F53D002C1639 /* Build configuration list for PBXProject "Dropin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8337BAF21F40F53E002C1639 /* Debug */,
+				8337BAF31F40F53E002C1639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8337BAF41F40F53E002C1639 /* Build configuration list for PBXNativeTarget "Dropin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8337BAF51F40F53E002C1639 /* Debug */,
+				8337BAF61F40F53E002C1639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8337BAF71F40F53E002C1639 /* Build configuration list for PBXNativeTarget "DropinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8337BAF81F40F53E002C1639 /* Debug */,
+				8337BAF91F40F53E002C1639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8337BAFA1F40F53E002C1639 /* Build configuration list for PBXNativeTarget "DropinUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8337BAFB1F40F53E002C1639 /* Debug */,
+				8337BAFC1F40F53E002C1639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8337BAC41F40F53D002C1639 /* Project object */;
+}

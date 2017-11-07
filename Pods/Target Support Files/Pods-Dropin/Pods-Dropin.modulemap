@@ -1,0 +1,6 @@
+framework module Pods_Dropin {
+  umbrella header "Pods-Dropin-umbrella.h"
+
+  export *
+  module * { export * }
+}

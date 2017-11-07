@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Name-->
+        <scene sceneID="JdZ-bs-sus">
+            <objects>
+                <viewController storyboardIdentifier="Name" title="Name" id="gxb-VH-P0j" customClass="NameViewController" customModule="Dropin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1CW-RN-M7m"/>
+                        <viewControllerLayoutGuide type="bottom" id="Oey-ro-xQY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eos-Sy-4sf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16Z-uJ-Gpg">
+                                <rect key="frame" x="20" y="628" width="374" height="75"/>
+                                <color key="backgroundColor" red="0.13040047490000001" green="0.90466370559999998" blue="0.15672759950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="LLl-yV-yDR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Start dropping!"/>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="gxb-VH-P0j" eventType="touchUpInside" id="TMd-17-Q5H"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="What's your name?" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n0-vB-dTS">
+                                <rect key="frame" x="20" y="100" width="238" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="D6e-gZ-TvF"/>
+                                    <constraint firstAttribute="height" constant="51" id="pJO-mD-Ubm"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWO-kg-wjK">
+                                <rect key="frame" x="20" y="159" width="374" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name (e.g. John Smith)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rHQ-VK-BwP">
+                                        <rect key="frame" x="5" y="0.0" width="366" height="50"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="REZ-cH-Icx"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="namePhonePad" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="gxb-VH-P0j" eventType="editingChanged" id="WZl-lr-41F"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rHQ-VK-BwP" secondAttribute="trailing" constant="3" id="EdY-Fc-bP4"/>
+                                    <constraint firstItem="rHQ-VK-BwP" firstAttribute="top" secondItem="IWO-kg-wjK" secondAttribute="top" id="aJi-0a-ZHK"/>
+                                    <constraint firstAttribute="height" constant="50" id="bSm-uf-jMO"/>
+                                    <constraint firstItem="rHQ-VK-BwP" firstAttribute="leading" secondItem="IWO-kg-wjK" secondAttribute="leading" constant="5" id="tJV-YC-sLo"/>
+                                    <constraint firstAttribute="bottom" secondItem="rHQ-VK-BwP" secondAttribute="bottom" id="zds-S8-aiB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.002058630344" green="0.79325693850000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7n0-vB-dTS" firstAttribute="leading" secondItem="IWO-kg-wjK" secondAttribute="leading" id="7Qw-VT-i1a"/>
+                            <constraint firstItem="IWO-kg-wjK" firstAttribute="trailing" secondItem="eos-Sy-4sf" secondAttribute="trailingMargin" id="Jed-Wl-MPm"/>
+                            <constraint firstItem="IWO-kg-wjK" firstAttribute="top" secondItem="7n0-vB-dTS" secondAttribute="bottom" constant="8" symbolic="YES" id="Klt-9U-hss"/>
+                            <constraint firstItem="7n0-vB-dTS" firstAttribute="leading" secondItem="eos-Sy-4sf" secondAttribute="leadingMargin" id="Uv7-7u-XfL"/>
+                            <constraint firstItem="IWO-kg-wjK" firstAttribute="leading" secondItem="16Z-uJ-Gpg" secondAttribute="leading" id="hEo-Yu-46d"/>
+                            <constraint firstItem="IWO-kg-wjK" firstAttribute="trailing" secondItem="16Z-uJ-Gpg" secondAttribute="trailing" id="mLU-f6-lWa"/>
+                            <constraint firstItem="7n0-vB-dTS" firstAttribute="top" secondItem="eos-Sy-4sf" secondAttribute="topMargin" multiplier="16:9" constant="100" id="nPo-ny-fgz"/>
+                            <constraint firstItem="Oey-ro-xQY" firstAttribute="top" secondItem="16Z-uJ-Gpg" secondAttribute="bottom" constant="33" id="xM5-tW-UQL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="rHQ-VK-BwP" id="BuS-QL-EFh"/>
+                        <outlet property="startButton" destination="16Z-uJ-Gpg" id="dL1-jc-hFK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MrF-9m-Gnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="359" y="-682"/>
+        </scene>
+    </scenes>
+</document>
