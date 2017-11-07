@@ -8,7 +8,7 @@
 
 import UIKit
 import MGSwipeTableCell
-import RealmSwift
+import SnapKit
 
 class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
     var friendView: FriendView!
@@ -39,9 +39,9 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.automaticallyAdjustsScrollViewInsets = false
-        
+
         friendView = FriendView()
         friendView.friendTable.delegate = self
         friendView.friendTable.dataSource = self
@@ -60,14 +60,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 scrollView.contentOffset = CGPoint.zero
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return friendView.headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return friendView.headerHeight
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

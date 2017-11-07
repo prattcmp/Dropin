@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/AuthHandler.swift"
-            timestampString = "531722081.633345"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "launchDropin()"
             landmarkType = "9">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531708566.818127"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531708572.40919"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531708573.25816"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531708574.155605"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531708879.153616"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -262,12 +262,12 @@
                   moduleName = "Dropin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MyDropsViewController.swift"
-                  timestampString = "531723323.920715"
+                  timestampString = "531776202.635025"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
                   endingLineNumber = "29"
-                  offsetFromSymbolStart = "88">
+                  offsetFromSymbolStart = "98">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -277,12 +277,12 @@
                   moduleName = "Dropin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MyDropsViewController.swift"
-                  timestampString = "531723323.922646"
+                  timestampString = "531776202.638633"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -404,7 +404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/MapViewController.swift"
-            timestampString = "531723454.696846"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -420,7 +420,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/MapViewController.swift"
-            timestampString = "531723454.696846"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -436,45 +436,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/MapViewController.swift"
-            timestampString = "531723454.696846"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dropin.MapViewController.(viewWillAppear (Swift.Bool) -&gt; ()).(closure #1).(closure #1).(closure #2).(closure #1)"
-                  moduleName = "Dropin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MapViewController.swift"
-                  timestampString = "531723454.93008"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "460">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dropin.MapViewController.(viewWillAppear (Swift.Bool) -&gt; ()).(closure #1).(closure #1).(closure #2).(closure #1)"
-                  moduleName = "Dropin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MapViewController.swift"
-                  timestampString = "531723454.932426"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "1256">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -516,7 +484,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/MapViewController.swift"
-            timestampString = "531722617.049505"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -564,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531715551.695925"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -580,11 +548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/DropinViewController.swift"
-            timestampString = "531715554.133878"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -612,12 +580,12 @@
                   moduleName = "Dropin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/User.swift"
-                  timestampString = "531723323.941699"
+                  timestampString = "531776202.655603"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
                   endingLineNumber = "67"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -627,12 +595,12 @@
                   moduleName = "Dropin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/User.swift"
-                  timestampString = "531723323.943785"
+                  timestampString = "531776202.658362"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
                   endingLineNumber = "68"
-                  offsetFromSymbolStart = "48">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -644,7 +612,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dropin/MapViewController.swift"
-            timestampString = "531723454.696846"
+            timestampString = "531779011.969875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"

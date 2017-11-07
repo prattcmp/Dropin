@@ -19,7 +19,9 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = .white
+        navController.isNavigationBarHidden = true
         
         myDropsViewController = MyDropsViewController()
         mapViewController = MapViewController()

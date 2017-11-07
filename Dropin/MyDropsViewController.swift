@@ -61,15 +61,7 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return myDropsView.headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return myDropsView.headerHeight
-    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

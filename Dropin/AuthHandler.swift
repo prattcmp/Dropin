@@ -43,7 +43,6 @@ func launchNameScreen() {
 func launchDropin() {
     currentUser = User()
 
-    navController.isNavigationBarHidden = true
     navController.isToolbarHidden = true
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate

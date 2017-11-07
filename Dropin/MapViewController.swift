@@ -30,7 +30,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
                 Drop.getByToID(id: currentUser.id) { (isSuccess: Bool, username: String, drops: [Drop]) in
