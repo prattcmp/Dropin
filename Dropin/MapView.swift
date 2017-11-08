@@ -29,7 +29,7 @@ class MapView: UIView {
         
         map = MKMapView()
         map.frame = super.frame
-        map.mapType = MKMapType.satellite
+        map.mapType = MKMapType.hybrid
         map.isZoomEnabled = true
         map.isScrollEnabled = true
         map.center = self.center
