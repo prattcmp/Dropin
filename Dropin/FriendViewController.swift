@@ -31,7 +31,9 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             autoreleasepool {
                 currentUser.refreshFriends { (_ isSuccess: Bool) in
                     self.friends = currentUser.friends
-                    self.friendView.friendTable.reloadData()
+                    DispatchQueue.main.async {
+                        self.friendView.friendTable.reloadData()
+                    }
                 }
             }
         }
@@ -48,6 +50,17 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Show the table
         self.view.addSubview(friendView)
+        
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                currentUser.refreshFriends { (_ isSuccess: Bool) in
+                    self.friends = currentUser.friends
+                    DispatchQueue.main.async {
+                        self.friendView.friendTable.reloadData()
+                    }
+                }
+            }
+        }
         
         friendView.settingsButton?.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
     }

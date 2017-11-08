@@ -29,33 +29,46 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                
+        
+        var success = false
+        
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
-                Drop.getByToID(id: currentUser.id) { (isSuccess: Bool, username: String, drops: [Drop]) in
-                    if (isSuccess) {
-                        DispatchQueue.main.async {
-                            for drop in drops {
-                                let annotation = TypedPointAnnotation()
-                                annotation.type = "drop-blue"
-                                annotation.coordinate = drop.coordinates
-                                annotation.title = "@" + (drop.from?.username)!
-                                self.map.addAnnotation(annotation)
+                while (success == false) {
+                    success = true
+                    Drop.getByToID(id: currentUser.id) { (isSuccess: Bool, username: String, drops: [Drop]) in
+                        if (isSuccess) {
+                            DispatchQueue.main.async {
+                                for drop in drops {
+                                    let annotation = TypedPointAnnotation()
+                                    annotation.type = "drop-blue"
+                                    annotation.coordinate = drop.coordinates
+                                    annotation.title = "@" + (drop.from?.username)!
+                                    self.map.addAnnotation(annotation)
+                                }
                             }
+                        } else {
+                            success = false
                         }
                     }
-                }
-                
-                Drop.getByFromID(id: currentUser.id) { (isSuccess: Bool, username: String, drops: [Drop]) in
-                    if (isSuccess) {
-                        DispatchQueue.main.async {
-                            for drop in drops {
-                                let annotation = TypedPointAnnotation()
-                                annotation.type = "drop-green"
-                                annotation.coordinate = drop.coordinates
-                                annotation.title = "@" + (drop.from?.username)!
-                                self.map.addAnnotation(annotation)
+                    
+                    if success == false {
+                        continue
+                    }
+                    
+                    Drop.getByFromID(id: currentUser.id) { (isSuccess: Bool, username: String, drops: [Drop]) in
+                        if (isSuccess) {
+                            DispatchQueue.main.async {
+                                for drop in drops {
+                                    let annotation = TypedPointAnnotation()
+                                    annotation.type = "drop-green"
+                                    annotation.coordinate = drop.coordinates
+                                    annotation.title = "@" + (drop.from?.username)!
+                                    self.map.addAnnotation(annotation)
+                                }
                             }
+                        } else {
+                            success = false
                         }
                     }
                 }
@@ -94,7 +107,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if gestureRecognizer.state == .began {
             let point = gestureRecognizer.location(in: self.map)
             let coordinates = self.map.convert(point, toCoordinateFrom: self.map)
-
+            
             navController.pushViewController(SendDropViewController(currentUser: currentUser, coordinates: coordinates), animated: true)
         }
     }
