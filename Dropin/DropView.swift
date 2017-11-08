@@ -18,6 +18,9 @@ class DropView: UIView {
     
     var detailZone: UIView!
     
+    var backImage: UIImage!
+    var backButton: UIButton!
+    
     var nameLabel: UILabel!
     var timeLabel: UILabel!
     
@@ -26,7 +29,7 @@ class DropView: UIView {
         
         map = MKMapView()
         map.frame = super.frame
-        map.mapType = MKMapType.standard
+        map.mapType = MKMapType.satellite
         map.isZoomEnabled = true
         map.isScrollEnabled = true
         map.center = self.center
@@ -39,11 +42,22 @@ class DropView: UIView {
         
         nameLabel = UILabel()
         detailZone.addSubview(nameLabel)
+
+        backImage = UIImage(named: "back-arrow-white")
+        backButton = UIButton(type: .custom)
+        backButton.setImage(backImage, for: .normal)
+        backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
+        self.addSubview(backButton)
         
         timeLabel = UILabel()
         timeLabel.font = UIFont(name: timeLabel.font.fontName, size: 12)
         detailZone.addSubview(timeLabel)
         
+        backButton.snp.makeConstraints { (make) in
+            make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
+            make.top.equalTo(super.snp.top).offset(25)
+            make.left.equalTo(super.snp.left).offset(10)
+        }
         map.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)

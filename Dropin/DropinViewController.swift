@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class DropinViewController: UIViewController, UIPageViewControllerDataSource, UIScrollViewDelegate {
+class DropinViewController: UIViewController, UIPageViewControllerDataSource, UIScrollViewDelegate, CLLocationManagerDelegate {
     var pages = [UIViewController]()
     
     var pageViewController: UIPageViewController!
@@ -16,12 +17,20 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
     var myDropsViewController: MyDropsViewController!
     var mapViewController: MapViewController!
     var friendViewController: FriendViewController!
+    
+    var locManager: CLLocationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
         navController.isNavigationBarHidden = true
+        
+        self.locManager = CLLocationManager()
+        self.locManager.delegate = self
+        self.locManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locManager.requestWhenInUseAuthorization()
+        self.locManager.startUpdatingLocation()
         
         myDropsViewController = MyDropsViewController()
         mapViewController = MapViewController()

@@ -17,7 +17,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var mapView: MapView!
     var map: MKMapView!
-    var locManager: CLLocationManager!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -69,7 +68,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView = MapView()
         map = mapView.map
-        locManager = CLLocationManager()
         
         map.delegate = self
         map.showsUserLocation = true
@@ -78,19 +76,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         longPressRecognizer.delegate = self;
         self.mapView.addGestureRecognizer(longPressRecognizer)
         
-        locManager.delegate = self
-        locManager.desiredAccuracy = kCLLocationAccuracyBest
-        locManager.requestWhenInUseAuthorization()
-        
         // Show the map
         self.view.addSubview(mapView)
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
         
-        DispatchQueue.main.async {
-            self.locManager.startUpdatingLocation()
-            self.centerButtonPressed(nil)
-        }
     }
     
     func centerButtonPressed(_ sender: AnyObject?) {
@@ -108,20 +98,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             navController.pushViewController(SendDropViewController(currentUser: currentUser, coordinates: coordinates), animated: true)
         }
     }
-    /*
-     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-     locManager.stopUpdatingLocation()
-     
-     // Get user's current location
-     let userLocation:CLLocation = locations[0] as CLLocation
-     
-     let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-     let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-     
-     map.setRegion(region, animated: true)
-     locManager.startUpdatingLocation()
-     }
-     */
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         

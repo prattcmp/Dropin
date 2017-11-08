@@ -49,13 +49,13 @@ class SendDropView: UIView {
         headerLabel.font = UIFont(name: "Adobe Gothic Std", size: headerLabel.font.pointSize)
         headerLabel.text = "Send your drop to..."
         headerLabel.sizeToFit()
-        headerView.addSubview(headerLabel)
         
         backImage = UIImage(named: "back-arrow-white")
         backButton = UIButton(type: .custom)
         backButton.setImage(backImage, for: .normal)
-        //backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
+        backButton.addSubview(headerLabel)
+        
         headerView.addSubview(backButton)
         
         sendImage = UIImage(named: "send-button-background")

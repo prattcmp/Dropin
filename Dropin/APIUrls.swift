@@ -6,7 +6,7 @@
 //  Copyright © 2017 Dropin. All rights reserved.
 //
 
-let base_url = "http://165.227.248.5/"
+let base_url = "https://api.wedropin.com/"
 
 // Auth
 let signup_url = base_url + "auth/signup"
