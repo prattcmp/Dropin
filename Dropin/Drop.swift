@@ -36,7 +36,7 @@ class Drop: Equatable {
         self.expires_at = expires_at
         self.created_at = created_at
     }
-
+    
     static func ==(lhs: Drop, rhs: Drop) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
@@ -53,10 +53,10 @@ class Drop: Equatable {
             "coordinates": coordinates
         ]
         
-        Alamofire.request(send_drops, method: .post, parameters: params).responseJSON {
+        Alamofire.request(send_drops, method: .post, parameters: params).validate().responseJSON {
             response in
             if let data = response.data {
-                let json = JSON(data: data)
+                let json = try! JSON(data: data)
                 if let result = json["result"].int, let message = json["message"].string {
                     if result == 1 {
                         done(true, message)
@@ -77,10 +77,10 @@ class Drop: Equatable {
             "id": id
         ]
         
-        Alamofire.request(get_drop_by_id, method: .post, parameters: params).responseJSON {
+        Alamofire.request(get_drop_by_id, method: .post, parameters: params).validate().responseJSON {
             response in
             if let data = response.data {
-                let json = JSON(data: data)
+                let json = try! JSON(data: data)
                 if let result = json["result"].int, let message = json["message"].string {
                     if result == 1 {
                         if let id = json["to_id"].int,
@@ -115,7 +115,7 @@ class Drop: Equatable {
             "id": id
         ]
         
-        Alamofire.request(get_drops_from, method: .post, parameters: params).responseJSON {
+        Alamofire.request(get_drops_from, method: .post, parameters: params).validate().responseJSON {
             response in
             
             if (response.result.isFailure || (response.result.value) == nil) {
@@ -124,28 +124,28 @@ class Drop: Equatable {
             }
             
             if let data = response.data {
-                let json = JSON(data: data)
+                let json = try! JSON(data: data)
                 if let result = json["result"].int, let message = json["message"].string {
                     if result == 1 {
                         var my_drops = [Drop]()
                         if let drops = json["drops"].array {
-                                drops.forEach { drop in
-                                    if let id = drop["id"].int,
-                                        let user_id = drop["user_id"].int,
-                                        let coordinates = drop["coordinates"].string,
-                                        let expires_at = drop["expires_at"].string,
-                                        let created_at = drop["created_at"].string {
-                                        
-                                        let dateFormatter = DateFormatter()
-                                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                        let expires = dateFormatter.date(from: expires_at) as Date!
-                                        let created = dateFormatter.date(from: created_at) as Date!
-                                        
-                                        let coord_array = coordinates.components(separatedBy: ",")
-                                        let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
-                                        
-                                        my_drops.append(Drop(id: id, from: currentUser, to: User(id: user_id), coordinates: clCoordinates, expires_at: expires!, created_at: created!))
-                                    }
+                            drops.forEach { drop in
+                                if let id = drop["id"].int,
+                                    let user_id = drop["user_id"].int,
+                                    let coordinates = drop["coordinates"].string,
+                                    let expires_at = drop["expires_at"].string,
+                                    let created_at = drop["created_at"].string {
+                                    
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                    let expires = dateFormatter.date(from: expires_at) as Date!
+                                    let created = dateFormatter.date(from: created_at) as Date!
+                                    
+                                    let coord_array = coordinates.components(separatedBy: ",")
+                                    let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
+                                    
+                                    my_drops.append(Drop(id: id, from: currentUser, to: User(id: user_id), coordinates: clCoordinates, expires_at: expires!, created_at: created!))
+                                }
                             }
                             done(true, message, my_drops)
                         }
@@ -166,7 +166,7 @@ class Drop: Equatable {
             "id": id
         ]
         
-        Alamofire.request(get_drops_to, method: .post, parameters: params).responseJSON {
+        Alamofire.request(get_drops_to, method: .post, parameters: params).validate().responseJSON {
             response in
             
             if (response.result.isFailure || (response.result.value) == nil) {
@@ -175,7 +175,7 @@ class Drop: Equatable {
             }
             
             if let data = response.data {
-                let json = JSON(data: data)
+                let json = try! JSON(data: data)
                 if let result = json["result"].int, let message = json["message"].string {
                     if result == 1 {
                         var my_drops = [Drop]()
