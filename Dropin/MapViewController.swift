@@ -27,8 +27,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         var success = false
         

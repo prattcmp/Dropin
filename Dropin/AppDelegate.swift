@@ -43,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        launchByAuthStatus()
+
     }
         
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
+
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

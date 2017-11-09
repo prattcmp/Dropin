@@ -15,23 +15,28 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var settingsViewController: SettingsViewController!
 
     var friends = [User]()
+    var loading = true
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        self.friends = currentUser.friends
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_  animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func viewDidAppear(_  animated: Bool) {
+        super.viewDidAppear(animated)
+
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
                 currentUser.refreshFriends { (_ isSuccess: Bool) in
-                    self.friends = currentUser.friends
                     DispatchQueue.main.async {
+                        self.loading = false
+                        self.friends = currentUser.friends
+                        
                         self.friendView.friendTable.reloadData()
                     }
                 }
@@ -51,17 +56,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Show the table
         self.view.addSubview(friendView)
         
-        DispatchQueue.global(qos: .background).async {
-            autoreleasepool {
-                currentUser.refreshFriends { (_ isSuccess: Bool) in
-                    self.friends = currentUser.friends
-                    DispatchQueue.main.async {
-                        self.friendView.friendTable.reloadData()
-                    }
-                }
-            }
-        }
-        
         friendView.settingsButton?.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
     }
     
@@ -80,6 +74,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if loading {
+            return 2
+        }
+        
         // Adding 1 because of the "Add Friend" cell
         return friends.count + 1
         
@@ -89,8 +87,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.row == 0 {
             return friendView.addFriendCell
         }
+        if loading {
+            let cell: UITableViewCell = UITableViewCell(style: .default, reuseIdentifier: "loading-cell")
+            cell.textLabel!.text = "Loading..."
+            
+            return cell
+        }
         
-        let cell: MGSwipeTableCell = MGSwipeTableCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        let cell: MGSwipeTableCell = MGSwipeTableCell(style: .subtitle, reuseIdentifier: "cell")
         cell.delegate = self
         
         // Adding 1 because of the "Add Friend" cell
