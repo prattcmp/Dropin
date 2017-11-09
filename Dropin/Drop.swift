@@ -118,7 +118,7 @@ class Drop: Equatable {
         Alamofire.request(get_drops_from, method: .post, parameters: params).responseJSON {
             response in
             
-            if (response.result.isFailure) {
+            if (response.result.isFailure || (response.result.value) == nil) {
                 done(false, "", [])
                 return
             }
@@ -169,7 +169,7 @@ class Drop: Equatable {
         Alamofire.request(get_drops_to, method: .post, parameters: params).responseJSON {
             response in
             
-            if (response.result.isFailure) {
+            if (response.result.isFailure || (response.result.value) == nil) {
                 done(false, "", [])
                 return
             }

@@ -105,7 +105,6 @@ class User: Equatable {
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response, error == nil else {
-                print("error = \(String(describing: error))")
                 done(false, 0, "", "")
                 return
             }
@@ -185,7 +184,6 @@ class User: Equatable {
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response, error == nil else {
-                print("error = \(String(describing: error))")
                 done(false, "", "")
                 return
             }
@@ -263,7 +261,6 @@ class User: Equatable {
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response, error == nil else {
-                print("error = \(String(describing: error))")
                 done(false, "", [User]())
                 return
             }
@@ -347,7 +344,6 @@ class User: Equatable {
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response, error == nil else {
-                print("error = \(String(describing: error))")
                 done(false, "", User(empty: true))
                 return
             }
@@ -431,7 +427,6 @@ class User: Equatable {
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response, error == nil else {
-                print("error = \(String(describing: error))")
                 done(false, "")
                 return
             }
