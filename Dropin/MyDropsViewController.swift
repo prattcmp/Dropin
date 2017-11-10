@@ -96,14 +96,30 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MGSwipeTableCell = MGSwipeTableCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        cell.delegate = self
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        var identifier = "received-box"
+        var name = self.drops[indexPath.row].from?.name
         
-        cell.textLabel!.text = self.drops[indexPath.row].from?.name
+        if self.drops[indexPath.row].from?.username == currentUser.username {
+            identifier = "sent-arrow"
+            name = self.drops[indexPath.row].to?.name
+        }
+        
+        let cell: UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
+        
+        cell.textLabel!.text = name
         cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 14)
         cell.detailTextLabel!.text = self.drops[indexPath.row].expires_at.timeAgoSinceNow()
         cell.detailTextLabel!.alpha = 0.5
+        
+        cell.imageView?.image = UIImage(named: identifier)
+        let itemSize = CGSize(width: 17.0, height: 17.0)
+        UIGraphicsBeginImageContextWithOptions(itemSize, false, 0.0)
+        let imageRect = CGRect(x:0.0, y:0.0, width:itemSize.width, height:itemSize.height)
+        cell.imageView?.image!.draw(in:imageRect)
+        cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
         
         let distance = self.distances[indexPath.row] ?? ""
         

@@ -131,7 +131,9 @@ class Drop: Equatable {
                         if let drops = json["drops"].array {
                             drops.forEach { drop in
                                 if let id = drop["id"].int,
-                                    let user_id = drop["user_id"].int,
+                                    let to_id = drop["user_id"].int,
+                                    let to_username = drop["username"].string,
+                                    let to_name = drop["name"].string,
                                     let coordinates = drop["coordinates"].string,
                                     let expires_at = drop["expires_at"].string,
                                     let created_at = drop["created_at"].string {
@@ -144,7 +146,7 @@ class Drop: Equatable {
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
                                     
-                                    my_drops.append(Drop(id: id, from: currentUser, to: User(id: user_id), coordinates: clCoordinates, expires_at: expires!, created_at: created!))
+                                    my_drops.append(Drop(id: id, from: currentUser, to: User(id: to_id, username: to_username, name: to_name), coordinates: clCoordinates, expires_at: expires!, created_at: created!))
                                 }
                             }
                             done(true, message, my_drops)
