@@ -24,6 +24,8 @@ class DropView: UIView {
     var nameLabel: UILabel!
     var timeLabel: UILabel!
     
+    var toMapsButton: UIButton!
+    
     init() {
         super.init(frame: UIScreen.main.bounds)
         
@@ -41,6 +43,8 @@ class DropView: UIView {
         self.addSubview(detailZone)
         
         nameLabel = UILabel()
+        nameLabel.font = UIFont(name: nameLabel.font.fontName, size: 14)
+        nameLabel.sizeToFit()
         detailZone.addSubview(nameLabel)
 
         backImage = UIImage(named: "back-arrow-white")
@@ -51,7 +55,20 @@ class DropView: UIView {
         
         timeLabel = UILabel()
         timeLabel.font = UIFont(name: timeLabel.font.fontName, size: 12)
+        timeLabel.alpha = 0.5
+        nameLabel.sizeToFit()
         detailZone.addSubview(timeLabel)
+        
+        toMapsButton = UIButton(type: .system)
+        toMapsButton.setTitle("Open in Maps", for: .normal)
+        toMapsButton.setTitleColor(.black, for: .normal)
+        toMapsButton.titleLabel!.font =  UIFont(name: toMapsButton.titleLabel!.font.fontName, size: 14)
+        toMapsButton.titleLabel!.alpha = 0.5
+        toMapsButton.backgroundColor = .clear
+        toMapsButton.layer.cornerRadius = 5
+        toMapsButton.layer.borderWidth = 1
+        toMapsButton.layer.borderColor = UIColor.lightGray.cgColor
+        detailZone.addSubview(toMapsButton)
         
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
@@ -65,19 +82,26 @@ class DropView: UIView {
             make.bottom.equalTo(detailZone.snp.top)
         }
         detailZone.snp.makeConstraints { (make) in
-            make.height.equalTo(map.snp.height).multipliedBy(0.1)
+            make.height.equalTo(map.snp.height).multipliedBy(0.15)
             make.bottom.equalTo(super.snp.bottom)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
         }
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(detailZone.snp.top).offset(7)
-            make.left.equalTo(super.snp.left).offset(5)
+            make.top.equalTo(detailZone.snp.top).offset(5)
+            make.left.equalTo(super.snp.left).offset(7)
         }
         timeLabel.snp.makeConstraints { (make) in
             make.topMargin.equalTo(nameLabel.snp.topMargin)
-            make.right.equalTo(super.snp.right).offset(-5)
+            make.right.equalTo(super.snp.right).offset(-7)
         }
+        toMapsButton.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(15)
+            make.left.equalTo(super.snp.left).offset(7)
+            make.width.equalTo(super.snp.width).multipliedBy(0.33)
+            make.bottom.equalTo(super.snp.bottom).offset(-10)
+        }
+        
     }
     
     required init(coder aDecoder: NSCoder) {

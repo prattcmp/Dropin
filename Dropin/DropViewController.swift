@@ -59,6 +59,23 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         self.view.addSubview(dropView)
         
         dropView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        dropView.toMapsButton.addTarget(self, action: #selector(openMaps), for: .touchUpInside)
+    }
+    
+    func openMaps() {
+        let regionDistance: CLLocationDistance = 1000
+        let regionSpan = MKCoordinateRegionMakeWithDistance(drop.coordinates, regionDistance, regionDistance)
+        
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        
+        let placemark = MKPlacemark(coordinate: drop.coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        
+        mapItem.name = (drop.from?.name)! + "'s Drop"
+        mapItem.openInMaps(launchOptions: options)
     }
     
     func updateDirections() {
@@ -78,8 +95,6 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             for route in unwrappedResponse.routes {
                 self.map.add(route.polyline)
             }
-            
-            self.directionsUpdated = false
         }
     }
     
