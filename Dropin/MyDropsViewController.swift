@@ -9,11 +9,16 @@
 import UIKit
 import MGSwipeTableCell
 import RealmSwift
+import MapKit
 
-class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
+class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate, CLLocationManagerDelegate {
     var myDropsView: MyDropsView!
 
     var drops = [Drop]()
+    var distances = [Int: String]()
+    
+    var locManager: CLLocationManager!
+    var userLocation: CLLocation!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +35,7 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
             autoreleasepool {
                 currentUser.refreshDrops { (_ isSuccess: Bool) in
                     self.drops = currentUser.drops
+                    
                     DispatchQueue.main.async {
                         self.myDropsView.dropTable.reloadData()
                     }
@@ -43,6 +49,12 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.automaticallyAdjustsScrollViewInsets = false
         
+        self.locManager = CLLocationManager()
+        self.locManager.delegate = self
+        self.locManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locManager.requestWhenInUseAuthorization()
+        self.locManager.startUpdatingLocation()
+        
         myDropsView = MyDropsView()
         myDropsView.dropTable.delegate = self
         myDropsView.dropTable.dataSource = self
@@ -50,6 +62,19 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Show the table
         self.view.addSubview(myDropsView)
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.userLocation = manager.location!
+        var i = 0
+        
+        drops.forEach { drop in
+            let distance: CLLocationDistance = self.userLocation.distance(from: CLLocation(latitude: drop.coordinates.latitude, longitude: drop.coordinates.longitude))
+            self.distances[i] = distance.toPrettyDistance()
+            
+            self.myDropsView.dropTable.reloadRows(at: [IndexPath(item: i, section: 0)], with: .none)
+            i += 1
+        }
     }
     
     // Disables tableview bouncing at the top
@@ -76,8 +101,19 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.delegate = self
         
         cell.textLabel!.text = self.drops[indexPath.row].from?.name
+        cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 14)
         cell.detailTextLabel!.text = self.drops[indexPath.row].expires_at.timeAgoSinceNow()
         cell.detailTextLabel!.alpha = 0.5
+        
+        let distance = self.distances[indexPath.row] ?? ""
+        
+        let label = UILabel()
+        label.text = distance
+        label.font = cell.detailTextLabel!.font
+        label.alpha = 0.5
+        label.textAlignment = .right
+        label.sizeToFit()
+        cell.accessoryView = label
         
         return cell
     }

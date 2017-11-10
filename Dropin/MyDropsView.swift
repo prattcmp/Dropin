@@ -16,7 +16,7 @@ class MyDropsView: UIView {
     
     var headerView: UIView!
     var headerLabel: UILabel!
-    let rowHeight: CGFloat = 50.0
+    let rowHeight: CGFloat = 40.0
     
     var settingsImage: UIImage!
     var settingsButton: UIButton!

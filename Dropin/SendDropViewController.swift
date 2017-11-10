@@ -17,13 +17,10 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     var friends = [User]()
     var friendsSelected = [User]()
     
-    var currentUser: User!
-    
     var coordinates: CLLocationCoordinate2D!
     
     init(currentUser: User, coordinates: CLLocationCoordinate2D) {
         super.init(nibName: nil, bundle: nil)
-        self.currentUser = currentUser
         
         self.friends = currentUser.friends
         self.coordinates = coordinates
@@ -33,6 +30,11 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.friends = currentUser.friends
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

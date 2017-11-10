@@ -67,7 +67,12 @@ class User: Equatable {
         Drop.getByToID(id: self.id) { (_ isSuccess: Bool, _ message: String, _ drops: [Drop]) in
             self.drops = drops
             
-            done(true)
+            Drop.getByFromID(id: self.id) { (_ isSuccess: Bool, _ message: String, _ drops: [Drop]) in
+                self.drops += drops
+                self.drops.sort(by: { $0.expires_at.compare($1.expires_at) == .orderedDescending})
+                
+                done(true)
+            }
         }
     }
     

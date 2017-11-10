@@ -36,6 +36,7 @@
 		839669A31F670A05000468DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669A21F670A05000468DA /* MapViewController.swift */; };
 		839669A91F733829000468DA /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669A81F733829000468DA /* FriendView.swift */; };
 		839669AB1F7338DB000468DA /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669AA1F7338DB000468DA /* FriendViewController.swift */; };
+		83A2FE301FB4E64F0072A819 /* PrettyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
 		83F42F2B1FA2B0B700313510 /* MyDropsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */; };
 		83F42F2D1FA2B14E00313510 /* MyDropsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2C1FA2B14E00313510 /* MyDropsView.swift */; };
@@ -98,6 +99,7 @@
 		839669A21F670A05000468DA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		839669A81F733829000468DA /* FriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		839669AA1F7338DB000468DA /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyDistance.swift; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
 		83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsViewController.swift; sourceTree = "<group>"; };
 		83F42F2C1FA2B14E00313510 /* MyDropsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				83F42F281FA112F900313510 /* UIImageAlpha.swift */,
 				83F42F2E1FA4055000313510 /* TimeUntil.swift */,
 				836777511FB12D8D006DB1A3 /* AnnotationType.swift */,
+				83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				839669A91F733829000468DA /* FriendView.swift in Sources */,
 				83F42F2F1FA4055000313510 /* TimeUntil.swift in Sources */,
 				839669AB1F7338DB000468DA /* FriendViewController.swift in Sources */,
+				83A2FE301FB4E64F0072A819 /* PrettyDistance.swift in Sources */,
 				83F42F2B1FA2B0B700313510 /* MyDropsViewController.swift in Sources */,
 				832AF9161F9292E30024BE26 /* Drop.swift in Sources */,
 				83F42F2D1FA2B14E00313510 /* MyDropsView.swift in Sources */,
@@ -694,7 +698,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
@@ -716,7 +720,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
