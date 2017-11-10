@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import RealmSwift
 import MapKit
 import SnapKit
 

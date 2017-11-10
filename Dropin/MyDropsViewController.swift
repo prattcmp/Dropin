@@ -8,7 +8,6 @@
 
 import UIKit
 import MGSwipeTableCell
-import RealmSwift
 import MapKit
 
 class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate, CLLocationManagerDelegate {

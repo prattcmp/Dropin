@@ -9,6 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 import SnapKit
+import SwiftSpinner
 
 class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
     var friendView: FriendView!
@@ -29,6 +30,12 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_  animated: Bool) {
         super.viewDidAppear(animated)
+        if currentUser.friends.count > 0 {
+            self.loading = false
+            self.friends = currentUser.friends
+            
+            self.friendView.friendTable.reloadData()
+        }
 
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
@@ -153,6 +160,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func addFriend(username: String) {
+        SwiftSpinner.show("Adding friend...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "tap to hide")
+
         currentUser?.addFriend(username: username) { (_ isSuccess: Bool, _ message: String, _ friend: User) in
             if (!isSuccess) {
                 let alertController = UIAlertController(title: "Uh oh", message: message != "" ? message : "Something went wrong. Try again later.", preferredStyle: .alert)
@@ -160,6 +171,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 alertController.addAction(defaultAction)
                 
                 self.present(alertController, animated: true, completion: nil)
+                SwiftSpinner.hide()
                 return
             }
             
@@ -169,11 +181,17 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.friendView.friendTable.beginUpdates()
                 self.friendView.friendTable.insertRows(at: [IndexPath(row: self.friends.count, section: 0)], with: .automatic)
                 self.friendView.friendTable.endUpdates()
+                
+                SwiftSpinner.hide()
             }
         }
     }
     
     func removeFriend(indexPath: IndexPath) {
+        SwiftSpinner.show("Removing friend...").addTapHandler({
+            SwiftSpinner.hide()
+        }, subtitle: "tap to hide")
+        
         let id = self.friends[indexPath.row - 1].id as Int
         
         currentUser?.removeFriend(id: id) { (_ isSuccess: Bool, _ message: String) in
@@ -185,12 +203,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.present(alertController, animated: true, completion: nil)
                 
                 print(message)
+                SwiftSpinner.hide()
                 return
             }
             
             DispatchQueue.main.async {
                 self.friends.remove(at: (indexPath.row - 1))
                 self.friendView.friendTable.deleteRows(at: [indexPath], with: .automatic)
+                SwiftSpinner.hide()
             }
         }
     }

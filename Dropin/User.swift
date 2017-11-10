@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
-import Realm
 
 class User: Equatable {
     var id: Int!

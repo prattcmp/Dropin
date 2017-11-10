@@ -100,6 +100,7 @@
 		839669A81F733829000468DA /* FriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		839669AA1F7338DB000468DA /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyDistance.swift; sourceTree = "<group>"; };
+		83A2FE311FB66DD50072A819 /* Dropin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dropin.entitlements; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
 		83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsViewController.swift; sourceTree = "<group>"; };
 		83F42F2C1FA2B14E00313510 /* MyDropsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsView.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		8337BACE1F40F53E002C1639 /* Dropin */ = {
 			isa = PBXGroup;
 			children = (
+				83A2FE311FB66DD50072A819 /* Dropin.entitlements */,
 				83F42F271FA112EB00313510 /* Helpers */,
 				832AF9121F9114EA0024BE26 /* Fonts */,
 				8337BACF1F40F53E002C1639 /* AppDelegate.swift */,
@@ -367,6 +369,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -694,6 +699,7 @@
 			baseConfigurationReference = D178A47F728FE04E79DBA286 /* Pods-Dropin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Dropin/Dropin.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
@@ -716,6 +722,7 @@
 			baseConfigurationReference = 457819D515D7C57DAF1599AE /* Pods-Dropin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Dropin/Dropin.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;

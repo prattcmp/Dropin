@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import RealmSwift
 import MGSwipeTableCell
 
 class SendDropViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
