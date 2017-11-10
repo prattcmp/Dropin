@@ -7,7 +7,7 @@ target ‘Dropin’ do
     pod 'MGSwipeTableCell', '~> 1.6.1'
     pod 'Alamofire', '~> 4.5'
     pod 'SwiftyJSON'
-    pod 'RealmSwift'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'SwiftSpinner'
 end

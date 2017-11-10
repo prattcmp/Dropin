@@ -183,6 +183,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 alertController.addAction(defaultAction)
                 
                 self.present(alertController, animated: true, completion: nil)
+                
+                print(message)
                 return
             }
             

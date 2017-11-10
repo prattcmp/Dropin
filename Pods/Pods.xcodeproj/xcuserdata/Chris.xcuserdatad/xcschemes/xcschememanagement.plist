@@ -19,17 +19,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftSpinner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,22 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>00CE78FF1044FBC071E4734D3B09997B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1CD80321715FDB12A3A31B7BCB09EA28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BB08C60DC51FB7E507BAC0DE0FCAE5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7553F97CC8748DDA1DA5A293DCED70E2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>850B824D6118BA2697D930C7019FF206</key>
+		<key>4E3EE428A18E1E38AC39001F4D39A058</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C337A83680E3A62AE6773F440A5EB38C</key>
+		<key>B6B42BEDB445B0D9CCA72BB409C85988</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB20F2F9980364D046ED542B7693C86E</key>
+		<key>DC516231E0ADC0F84283D7495490023B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
