@@ -115,6 +115,7 @@ extension Date {
         calendar.timeZone = TimeZone(identifier: "UTC")!
         let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
         let now = Date()
+
         let components = calendar.dateComponents(unitFlags, from: self, to: now)
         
         let formatter = DateComponentUnitFormatter()

@@ -53,6 +53,14 @@ class FriendView: UIView {
         
         self.addSubview(headerView)
         
+        if let superview = self.superview {
+            self.snp.makeConstraints { (make) in
+                make.top.equalTo(superview.snp.top)
+                make.left.equalTo(superview.snp.left)
+                make.right.equalTo(superview.snp.right)
+                make.bottom.equalTo(superview.snp.bottom)
+            }
+        }
         headerView.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)

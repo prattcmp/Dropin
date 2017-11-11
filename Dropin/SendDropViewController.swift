@@ -33,7 +33,9 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
         
         self.friends = currentUser.friends
+        sendDropView.friendTable.reloadData()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

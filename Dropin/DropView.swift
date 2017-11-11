@@ -60,7 +60,7 @@ class DropView: UIView {
         detailZone.addSubview(timeLabel)
         
         toMapsButton = UIButton(type: .system)
-        toMapsButton.setTitle("Open in Maps", for: .normal)
+        toMapsButton.setTitle("Get Directions", for: .normal)
         toMapsButton.setTitleColor(.black, for: .normal)
         toMapsButton.titleLabel!.font =  UIFont(name: toMapsButton.titleLabel!.font.fontName, size: 14)
         toMapsButton.titleLabel!.alpha = 0.5
@@ -70,6 +70,14 @@ class DropView: UIView {
         toMapsButton.layer.borderColor = UIColor.lightGray.cgColor
         detailZone.addSubview(toMapsButton)
         
+        if let superview = self.superview {
+            self.snp.makeConstraints { (make) in
+                make.top.equalTo(superview.snp.top)
+                make.left.equalTo(superview.snp.left)
+                make.right.equalTo(superview.snp.right)
+                make.bottom.equalTo(superview.snp.bottom)
+            }
+        }
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
             make.top.equalTo(super.snp.top).offset(25)

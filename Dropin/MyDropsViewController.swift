@@ -98,11 +98,11 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         var identifier = "received-box"
-        var name = self.drops[indexPath.row].from?.name
+        var name = self.drops[indexPath.row].from!.name
         
         if self.drops[indexPath.row].from?.username == currentUser.username {
             identifier = "sent-arrow"
-            name = self.drops[indexPath.row].to?.name
+            name = self.drops[indexPath.row].to!.name
         }
         
         let cell: UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)

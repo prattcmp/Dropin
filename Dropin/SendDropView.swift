@@ -66,6 +66,14 @@ class SendDropView: UIView {
         sendButton.layer.borderWidth = 0.0
         self.addSubview(sendButton)
         
+        if let superview = self.superview {
+            self.snp.makeConstraints { (make) in
+                make.top.equalTo(superview.snp.top)
+                make.left.equalTo(superview.snp.left)
+                make.right.equalTo(superview.snp.right)
+                make.bottom.equalTo(superview.snp.bottom)
+            }
+        }
         friendTable.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)

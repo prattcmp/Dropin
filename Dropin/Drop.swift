@@ -140,6 +140,7 @@ class Drop: Equatable {
                                     
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                    dateFormatter.timeZone = TimeZone(identifier: "UTC")!
                                     let expires = dateFormatter.date(from: expires_at) as Date!
                                     let created = dateFormatter.date(from: created_at) as Date!
                                     

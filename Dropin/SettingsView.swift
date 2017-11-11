@@ -60,6 +60,14 @@ class SettingsView: UIView {
             make.leading.equalTo(backButton.snp.trailing).offset(7)
         }
         */
+        if let superview = self.superview {
+            self.snp.makeConstraints { (make) in
+                make.top.equalTo(superview.snp.top)
+                make.left.equalTo(superview.snp.left)
+                make.right.equalTo(superview.snp.right)
+                make.bottom.equalTo(superview.snp.bottom)
+            }
+        }
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
             make.centerY.equalTo(headerView.snp.centerY)
