@@ -11,7 +11,7 @@ import CoreData
 import MapKit
 import SnapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var pageIndex: Int!
     
     var mapView: MapView!
@@ -83,16 +83,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         map.delegate = self
         map.showsUserLocation = true
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.sendDropPressed(_:)))
-        longPressRecognizer.delegate = self;
-        self.mapView.addGestureRecognizer(longPressRecognizer)
-        
+
         // Show the map
         self.view.addSubview(mapView)
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
-        
+        mapView.sendDropButton?.addTarget(self, action: #selector(sendDropPressed), for: .touchUpInside)
     }
     
     func centerButtonPressed(_ sender: AnyObject?) {
@@ -102,13 +98,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func sendDropPressed(_ gestureRecognizer : UIGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            let point = gestureRecognizer.location(in: self.map)
-            let coordinates = self.map.convert(point, toCoordinateFrom: self.map)
-            
-            navController.pushViewController(SendDropViewController(currentUser: currentUser, coordinates: coordinates), animated: true)
-        }
+    func sendDropPressed(_ sender: AnyObject?) {
+        navController.pushViewController(SendDropViewController(currentUser: currentUser, coordinates: map.centerCoordinate), animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -138,10 +129,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let region = MKCoordinateRegion(center: pinToZoomOn!.coordinate, span: span)
         
         map.setRegion(region, animated: false)
-    }
-    
-    // Allows the send drop view to open, even when we long press on the blue dot
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
 }

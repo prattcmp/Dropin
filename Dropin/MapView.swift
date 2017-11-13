@@ -19,6 +19,12 @@ class MapView: UIView {
     var centerImage: UIImage!
     var centerButton: UIButton!
     
+    var sendDropView: UIImageView!
+    var sendDropRing: UIImage!
+    
+    var sendDropImage: UIImage!
+    var sendDropButton: UIButton!
+    
     var toDropsImage: UIImage!
     var toDropsButton: UIButton!
     var toFriendsImage: UIImage!
@@ -35,19 +41,28 @@ class MapView: UIView {
         map.center = self.center
         self.addSubview(map)
         
-        swipeZone = UIView()
-        swipeZone.frame = super.frame
-        self.addSubview(swipeZone)
-
         centerImage = UIImage(named: "crosshair")
         centerButton = UIButton(type: .custom)
         centerButton.setImage(centerImage, for: .normal)
         self.addSubview(centerButton)
         
+        sendDropRing = UIImage(named: "send-drop-ring")!
+        sendDropView = UIImageView(image: sendDropRing)
+        self.addSubview(sendDropView)
+        
+        swipeZone = UIView()
+        swipeZone.frame = super.frame
+        self.addSubview(swipeZone)
+        
         toDropsImage = UIImage(named: "nav-drop")
         toDropsButton = UIButton(type: .custom)
         toDropsButton.setImage(toDropsImage, for: .normal)
         swipeZone.addSubview(toDropsButton)
+        
+        sendDropImage = UIImage(named: "send-drop-button")
+        sendDropButton = UIButton(type: .custom)
+        sendDropButton.setImage(sendDropImage, for: .normal)
+        swipeZone.addSubview(sendDropButton)
         
         toFriendsImage = UIImage(named: "nav-friends")
         toFriendsButton = UIButton(type: .custom)
@@ -62,6 +77,10 @@ class MapView: UIView {
                 make.bottom.equalTo(superview.snp.bottom)
             }
         }
+        sendDropView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(super.snp.centerX)
+            make.centerY.equalTo(super.snp.centerY)
+        }
         centerButton.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top).offset(20)
             make.left.equalTo(super.snp.left).offset(10)
@@ -75,15 +94,20 @@ class MapView: UIView {
             make.right.equalTo(super.snp.right)
         }
         toDropsButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(super.snp.bottom).offset(-20)
+            make.centerY.equalTo(sendDropButton.snp.centerY).offset(15)
             make.width.equalTo(23)
             make.height.equalTo(27)
             make.left.equalTo(super.snp.left).offset(25)
         }
+        sendDropButton.snp.makeConstraints { (make) in
+            make.height.equalTo(50)
+            make.bottom.equalTo(super.snp.bottom).offset(-30)
+            make.centerX.equalTo(super.snp.centerX)
+        }
         toFriendsButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(toDropsButton.snp.centerY)
-            make.width.equalTo(40)
-            make.height.equalTo(30)
+            make.centerY.equalTo(sendDropButton.snp.centerY).offset(15)
+            make.width.equalTo(35)
+            make.height.equalTo(25)
             make.right.equalTo(super.snp.right).offset(-25)
         }
     }
