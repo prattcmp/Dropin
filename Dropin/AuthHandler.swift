@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 let navController = UINavigationController()
 var currentUser: User!
@@ -49,6 +50,12 @@ func launchDropin() {
     let dropinViewController : DropinViewController = DropinViewController()
 
     navController.viewControllers = [dropinViewController]
+    
+    let center = UNUserNotificationCenter.current()
+    center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        // Enable or disable features based on authorization.
+    }
+    UIApplication.shared.registerForRemoteNotifications()
     
     appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
     appDelegate.window!.rootViewController = navController

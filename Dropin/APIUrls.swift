@@ -26,3 +26,6 @@ let send_drops = base_url + "drops/send"
 let get_drops_from = base_url + "drops/get/from"
 let get_drops_to = base_url + "drops/get/to"
 let get_drop_by_id = base_url + "drops/get/id"
+
+// Push Tokens
+let add_push_token = base_url + "push_token/add"
