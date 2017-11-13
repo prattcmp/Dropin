@@ -37,16 +37,12 @@ class User: Equatable {
             self.username = username
             self.name = name
         }
-        
-        self.refreshFriends {_ in }
     }
     
     init(id: Int, username: String, name: String) {
         self.id = id
         self.username = username
         self.name = name
-        
-        self.refreshFriends {_ in }
     }
     
     static func ==(lhs: User, rhs: User) -> Bool {
@@ -56,7 +52,7 @@ class User: Equatable {
     func refreshFriends(done: @escaping ((_ isSuccess: Bool) -> Void)) {
         self.getFriends { (_ isSuccess: Bool, _ message: String, _ friends: [User]) in
             self.friends = friends
-            
+
             done(true)
         }
     }

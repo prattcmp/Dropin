@@ -19,16 +19,8 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var locManager: CLLocationManager!
     var userLocation: CLLocation!
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_  animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_  animated: Bool) {
+        super.viewDidAppear(animated)
         
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
@@ -60,6 +52,18 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Show the table
         self.view.addSubview(myDropsView)
+        
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                currentUser.refreshDrops { (_ isSuccess: Bool) in
+                    self.drops = currentUser.drops
+                    
+                    DispatchQueue.main.async {
+                        self.myDropsView.dropTable.reloadData()
+                    }
+                }
+            }
+        }
         
     }
     

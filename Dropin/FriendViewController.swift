@@ -22,6 +22,9 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.init(nibName: nil, bundle: nil)
         
         self.friends = currentUser.friends
+        if currentUser.friends.count > 0 {
+            self.loading = false
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

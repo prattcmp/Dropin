@@ -63,6 +63,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func sendDrop() {
+        sendDropView.sendButton.isUserInteractionEnabled = false
         Drop.send(to: friendsSelected, coordinates: self.coordinates) { (_ isSuccess: Bool, _ message: String)
             in
             if (!isSuccess) {
@@ -73,6 +74,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             navController.popViewController(animated: true)
+            self.sendDropView.sendButton.isUserInteractionEnabled = true
         }
     }
     
