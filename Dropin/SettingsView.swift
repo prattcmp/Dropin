@@ -27,7 +27,6 @@ class SettingsView: UIView {
         settingsTable = UITableView()
         settingsTable.frame = super.frame
         settingsTable.separatorInset = .zero
-        settingsTable.sectionHeaderHeight = 45
         self.addSubview(settingsTable)
         
         logoutCell = UITableViewCell()
@@ -37,15 +36,14 @@ class SettingsView: UIView {
         headerView = UIView()
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
         headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
+        self.addSubview(headerView)
         
-        /*
         headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
         headerLabel.font = UIFont(name: "Adobe Gothic Std", size: headerLabel.font.pointSize)
         headerLabel.text = "Settings"
         headerLabel.sizeToFit()
         headerView.addSubview(headerLabel)
-        */
         
         backImage = UIImage(named: "back-arrow-white")
         backButton = UIButton(type: .custom)
@@ -54,12 +52,6 @@ class SettingsView: UIView {
         backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
         headerView.addSubview(backButton)
         
-        /*
-        headerLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(backButton.snp.centerY)
-            make.leading.equalTo(backButton.snp.trailing).offset(7)
-        }
-        */
         if let superview = self.superview {
             self.snp.makeConstraints { (make) in
                 make.top.equalTo(superview.snp.top)
@@ -68,9 +60,19 @@ class SettingsView: UIView {
                 make.bottom.equalTo(superview.snp.bottom)
             }
         }
+        headerView.snp.makeConstraints { (make) in
+            make.top.equalTo(super.snp.top)
+            make.left.equalTo(super.snp.left)
+            make.right.equalTo(super.snp.right)
+            make.height.equalTo(55)
+        }
+        headerLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(backButton.snp.centerY)
+            make.leading.equalTo(backButton.snp.trailing).offset(7)
+        }
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
-            make.centerY.equalTo(headerView.snp.centerY)
+            make.bottom.equalTo(headerView.snp.bottom).offset(-7)
             make.left.equalTo(headerView.snp.left).offset(10)
         }
     }
