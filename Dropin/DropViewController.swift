@@ -55,6 +55,8 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
 
         dropView.nameLabel.text = (drop.from?.name)!
         dropView.timeLabel.text = drop.created_at.timeAgoSinceNow()
+        dropView.textLabel.text = drop.text
+        dropView.textLabel.sizeToFit()
         
         self.view.addSubview(dropView)
         

@@ -25,6 +25,7 @@ class DropView: UIView {
     var timeLabel: UILabel!
     
     var toMapsButton: UIButton!
+    var textLabel: UILabel!
     
     init() {
         super.init(frame: UIScreen.main.bounds)
@@ -59,6 +60,12 @@ class DropView: UIView {
         nameLabel.sizeToFit()
         detailZone.addSubview(timeLabel)
         
+        textLabel = UILabel()
+        textLabel.font = UIFont(name: nameLabel.font.fontName, size: 12)
+        textLabel.numberOfLines = 0
+        textLabel.lineBreakMode = .byWordWrapping
+        detailZone.addSubview(textLabel)
+        
         toMapsButton = UIButton(type: .system)
         toMapsButton.setTitle("Get Directions", for: .normal)
         toMapsButton.setTitleColor(.black, for: .normal)
@@ -90,7 +97,6 @@ class DropView: UIView {
             make.bottom.equalTo(detailZone.snp.top)
         }
         detailZone.snp.makeConstraints { (make) in
-            make.height.equalTo(map.snp.height).multipliedBy(0.15)
             make.bottom.equalTo(super.snp.bottom)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
@@ -103,8 +109,13 @@ class DropView: UIView {
             make.topMargin.equalTo(nameLabel.snp.topMargin)
             make.right.equalTo(super.snp.right).offset(-7)
         }
+        textLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.left.equalTo(super.snp.left).offset(7)
+            make.right.equalTo(super.snp.right).offset(-7)
+        }
         toMapsButton.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(15)
+            make.top.equalTo(textLabel.snp.bottom).offset(15)
             make.left.equalTo(super.snp.left).offset(7)
             make.width.equalTo(super.snp.width).multipliedBy(0.33)
             make.bottom.equalTo(super.snp.bottom).offset(-10)

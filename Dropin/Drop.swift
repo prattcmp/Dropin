@@ -13,6 +13,7 @@ import MapKit
 class Drop: Equatable {
     var id: Int!
     var coordinates: CLLocationCoordinate2D!
+    var text: String!
     
     var expires_at: Date!
     var created_at: Date!
@@ -21,6 +22,7 @@ class Drop: Equatable {
     
     init(empty: Bool) {
         self.id = 0
+        self.text = ""
         self.coordinates = CLLocationCoordinate2DMake(0.0, 0.0)
         self.expires_at = Date()
         self.created_at = Date()
@@ -28,10 +30,11 @@ class Drop: Equatable {
         self.to = User(empty: true)
     }
     
-    init(id: Int, from: User, to: User, coordinates: CLLocationCoordinate2D, expires_at: Date, created_at: Date) {
+    init(id: Int, from: User, to: User, text: String, coordinates: CLLocationCoordinate2D, expires_at: Date, created_at: Date) {
         self.id = id
         self.from = from
         self.to = to
+        self.text = text
         self.coordinates = coordinates
         self.expires_at = expires_at
         self.created_at = created_at
@@ -41,7 +44,7 @@ class Drop: Equatable {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
     
-    static func send(to: [User], coordinates: CLLocationCoordinate2D, done: @escaping ((_ isSuccess: Bool, _ message: String) -> Void)) {
+    static func send(to: [User], coordinates: CLLocationCoordinate2D, text: String, done: @escaping ((_ isSuccess: Bool, _ message: String) -> Void)) {
         let (username, auth_token) = fetchAuth()
         let coordinates = String(coordinates.latitude) + "," + String(coordinates.longitude)
         let friends = try? JSONSerialization.data(withJSONObject: to.map{ $0.toDict() }, options: [])
@@ -50,7 +53,8 @@ class Drop: Equatable {
             "username": username,
             "token": auth_token,
             "friends": String(data: friends!, encoding: .ascii)!,
-            "coordinates": coordinates
+            "coordinates": coordinates,
+            "text": text
         ]
         
         Alamofire.request(send_drops, method: .post, parameters: params).validate().responseJSON {
@@ -84,6 +88,7 @@ class Drop: Equatable {
                 if let result = json["result"].int, let message = json["message"].string {
                     if result == 1 {
                         if let id = json["to_id"].int,
+                            let text = json["text"].string,
                             let coordinates = json["coordinates"].string,
                             let expires_at = json["expires_at"].string,
                             let created_at = json["created_at"].string {
@@ -96,7 +101,13 @@ class Drop: Equatable {
                             let coord_array = coordinates.components(separatedBy: ",")
                             let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
                             
-                            done(true, message, Drop(id: id, from: User(), to: User(id: id), coordinates: clCoordinates, expires_at: expires!, created_at: created!))
+                            done(true, message, Drop(id: id,
+                                                     from: currentUser,
+                                                     to: User(id: id),
+                                                     text: text,
+                                                     coordinates: clCoordinates,
+                                                     expires_at: expires!,
+                                                     created_at: created!))
                         }
                     } else {
                         done(false, message, Drop(empty: true))
@@ -134,6 +145,7 @@ class Drop: Equatable {
                                     let to_id = drop["user_id"].int,
                                     let to_username = drop["username"].string,
                                     let to_name = drop["name"].string,
+                                    let text = drop["text"].string,
                                     let coordinates = drop["coordinates"].string,
                                     let expires_at = drop["expires_at"].string,
                                     let created_at = drop["created_at"].string {
@@ -147,7 +159,16 @@ class Drop: Equatable {
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
                                     
-                                    my_drops.append(Drop(id: id, from: currentUser, to: User(id: to_id, username: to_username, name: to_name), coordinates: clCoordinates, expires_at: expires!, created_at: created!))
+                                    my_drops.append(Drop(id: id,
+                                                         from: currentUser,
+                                                         to: User(id: to_id,
+                                                                  username: to_username,
+                                                                  name: to_name),
+                                                         text: text,
+                                                         coordinates: clCoordinates,
+                                                         expires_at: expires!,
+                                                         created_at: created!)
+                                    )
                                 }
                             }
                             done(true, message, my_drops)
@@ -184,10 +205,11 @@ class Drop: Equatable {
                         var my_drops = [Drop]()
                         if let drops = json["drops"].array {
                             drops.forEach { drop in
-                                if let coordinates = drop["coordinates"].string,
-                                    let from_id = drop["user_id"].int,
+                                if let from_id = drop["user_id"].int,
                                     let from_username = drop["username"].string,
                                     let from_name = drop["name"].string,
+                                    let text = drop["text"].string,
+                                    let coordinates = drop["coordinates"].string,
                                     let expires_at = drop["expires_at"].string,
                                     let created_at = drop["created_at"].string {
                                     
@@ -200,7 +222,15 @@ class Drop: Equatable {
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
                                     
-                                    my_drops.append(Drop(id: id, from: User(id: from_id, username: from_username, name: from_name), to: currentUser, coordinates: clCoordinates, expires_at: expires!, created_at: created!))
+                                    my_drops.append(Drop(id: id,
+                                                         from: User(id: from_id,
+                                                                    username: from_username,
+                                                                    name: from_name),
+                                                         to: currentUser,
+                                                         text: text,
+                                                         coordinates: clCoordinates,
+                                                         expires_at: expires!,
+                                                         created_at: created!))
                                 }
                             }
                             done(true, message, my_drops)

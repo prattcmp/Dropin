@@ -29,6 +29,8 @@ class MapView: UIView {
     var toDropsButton: UIButton!
     var toFriendsImage: UIImage!
     var toFriendsButton: UIButton!
+    
+    var textField: UITextView!
 
     init() {
         super.init(frame: UIScreen.main.bounds)
@@ -69,6 +71,17 @@ class MapView: UIView {
         toFriendsButton.setImage(toFriendsImage, for: .normal)
         swipeZone.addSubview(toFriendsButton)
         
+        textField = UITextView()
+        textField.font = .systemFont(ofSize: 14)
+        textField.backgroundColor = .white
+        textField.autocorrectionType = .no
+        textField.keyboardType = .default
+        textField.textContainer.lineBreakMode = .byWordWrapping
+        textField.isScrollEnabled = false
+        textField.returnKeyType = .send
+        textField.isHidden = true
+        self.addSubview(textField)
+        
         if let superview = self.superview {
             self.snp.makeConstraints { (make) in
                 make.top.equalTo(superview.snp.top)
@@ -80,6 +93,13 @@ class MapView: UIView {
         sendDropView.snp.makeConstraints { (make) in
             make.centerX.equalTo(super.snp.centerX)
             make.centerY.equalTo(super.snp.centerY)
+        }
+        
+        textField.snp.makeConstraints { (make) in
+            make.left.equalTo(super.snp.left)
+            make.right.equalTo(super.snp.right)
+            make.bottom.equalTo(super.snp.bottom)
+            make.height.equalTo(25)
         }
         centerButton.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top).offset(20)

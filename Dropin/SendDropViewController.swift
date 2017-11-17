@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import MGSwipeTableCell
+import SwiftSpinner
 
 class SendDropViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
     var sendDropView: SendDropView!
@@ -17,12 +18,14 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     var friendsSelected = [User]()
     
     var coordinates: CLLocationCoordinate2D!
+    var text: String!
     
-    init(currentUser: User, coordinates: CLLocationCoordinate2D) {
+    init(currentUser: User, coordinates: CLLocationCoordinate2D, text: String) {
         super.init(nibName: nil, bundle: nil)
         
         self.friends = currentUser.friends
         self.coordinates = coordinates
+        self.text = text
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,7 +67,9 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     
     func sendDrop() {
         sendDropView.sendButton.isUserInteractionEnabled = false
-        Drop.send(to: friendsSelected, coordinates: self.coordinates) { (_ isSuccess: Bool, _ message: String)
+        SwiftSpinner.show("Sending...")
+        
+        Drop.send(to: friendsSelected, coordinates: self.coordinates, text: self.text) { (_ isSuccess: Bool, _ message: String)
             in
             if (!isSuccess) {
                 let alertController = UIAlertController(title: "Uh oh", message: message != "" ? message : "Something went wrong. Try again later.", preferredStyle: .alert)
@@ -75,6 +80,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
             
             navController.popViewController(animated: true)
             self.sendDropView.sendButton.isUserInteractionEnabled = true
+            SwiftSpinner.hide()
         }
     }
     
