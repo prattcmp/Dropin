@@ -44,7 +44,7 @@ class DropView: UIView {
         self.addSubview(detailZone)
         
         nameLabel = UILabel()
-        nameLabel.font = UIFont(name: nameLabel.font.fontName, size: 14)
+        nameLabel.font = UIFont(name: nameLabel.font.fontName + "-bold", size: 14)
         nameLabel.sizeToFit()
         detailZone.addSubview(nameLabel)
 
@@ -61,7 +61,7 @@ class DropView: UIView {
         detailZone.addSubview(timeLabel)
         
         textLabel = UILabel()
-        textLabel.font = UIFont(name: nameLabel.font.fontName, size: 12)
+        textLabel.font = UIFont(name: textLabel.font.fontName, size: 12)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
         detailZone.addSubview(textLabel)
