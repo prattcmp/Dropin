@@ -72,7 +72,7 @@ class MapView: UIView {
         swipeZone.addSubview(toFriendsButton)
         
         textField = UITextView()
-        textField.font = .systemFont(ofSize: 12)
+        textField.font = .systemFont(ofSize: 14)
         textField.backgroundColor = .white
         textField.autocorrectionType = .no
         textField.keyboardType = .default
@@ -100,7 +100,7 @@ class MapView: UIView {
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
             make.bottom.equalTo(super.snp.bottom)
-            make.height.equalTo(25)
+            make.height.equalTo(27)
         }
         centerButton.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top).offset(20)

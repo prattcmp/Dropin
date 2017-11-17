@@ -48,9 +48,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                         self.map.removeAnnotations(self.map.annotations)
                                         
                                         self.drops = [Drop]()
-                                        self.drops += toDrops + fromDrops
                                         
-                                        for drop in self.drops {
+                                        for drop in toDrops {
+                                            let annotation = TypedPointAnnotation()
+                                            annotation.type = "drop-blue"
+                                            annotation.coordinate = drop.coordinates
+                                            annotation.title = "@" + (drop.from?.username)!
+                                            annotation.id = self.drops.count
+                                            
+                                            self.map.addAnnotation(annotation)
+                                            self.drops.append(drop)
+                                        }
+                                        for drop in fromDrops {
                                             let annotation = TypedPointAnnotation()
                                             annotation.type = "drop-green"
                                             annotation.coordinate = drop.coordinates
@@ -123,6 +132,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return false
         }
         
+        resizeTextView(textView)
+        
+        return (textView.text.characters.count - range.length + text.characters.count) < 128
+    }
+    
+    func resizeTextView(_ textView: UITextView) {
         // Resize window based on number of lines
         let fixedWidth = textView.frame.size.width
         let oldHeight = textView.frame.height
@@ -131,12 +146,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
         textView.frame = newFrame
         textView.frame.origin.y += oldHeight - newFrame.height
-        
-        return (textView.text.characters.count - range.length + text.characters.count) < 128
     }
     
     func sendDropPressed(_ sender: AnyObject?) {
         textField.text = ""
+        resizeTextView(self.textField)
         textField.isHidden = false
         textField.becomeFirstResponder()
     }

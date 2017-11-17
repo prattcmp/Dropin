@@ -61,7 +61,7 @@ class DropView: UIView {
         detailZone.addSubview(timeLabel)
         
         textLabel = UILabel()
-        textLabel.font = UIFont(name: textLabel.font.fontName, size: 12)
+        textLabel.font = UIFont(name: textLabel.font.fontName, size: 14)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
         detailZone.addSubview(textLabel)

@@ -112,17 +112,21 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         if annotation is MKUserLocation {
             return nil
         }
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "drop-blue")
+        var identifier = "drop-blue"
+        if drop.from == currentUser {
+            identifier = "drop-green"
+        }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "drop-blue")
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
-            annotationView?.image = UIImage(named: "drop-blue")!.alpha(0.9)
+            annotationView?.image = UIImage(named: identifier)!.alpha(0.9)
         } else {
             annotationView?.annotation = annotation
         }
