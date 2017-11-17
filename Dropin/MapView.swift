@@ -72,11 +72,12 @@ class MapView: UIView {
         swipeZone.addSubview(toFriendsButton)
         
         textField = UITextView()
-        textField.font = .systemFont(ofSize: 14)
+        textField.font = .systemFont(ofSize: 12)
         textField.backgroundColor = .white
         textField.autocorrectionType = .no
         textField.keyboardType = .default
         textField.textContainer.lineBreakMode = .byWordWrapping
+        textField.textContainerInset = UIEdgeInsetsMake(5,3,5,3);
         textField.isScrollEnabled = false
         textField.returnKeyType = .send
         textField.isHidden = true
