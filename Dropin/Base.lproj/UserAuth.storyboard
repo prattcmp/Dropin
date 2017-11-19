@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7AT-Rf-WdC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7AT-Rf-WdC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -205,6 +205,25 @@
                                     <constraint firstItem="FmH-GP-yIa" firstAttribute="top" secondItem="1G0-CP-Oa7" secondAttribute="top" id="n9k-DH-TkW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking &quot;Create account&quot;, you agree to the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-lQ-6cv">
+                                <rect key="frame" x="16" y="530" width="241" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXE-aP-U4K">
+                                <rect key="frame" x="260" y="527" width="76" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="76" id="ZNv-gZ-1sP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Privacy Policy.">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gTE-LL-VIU" kind="show" id="Lc5-gM-X1v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0020586303435266018" green="0.79325693845748901" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -218,14 +237,19 @@
                             <constraint firstItem="R6W-ZS-gUg" firstAttribute="leading" secondItem="b69-cL-sQa" secondAttribute="leadingMargin" id="UDy-jH-dAy"/>
                             <constraint firstItem="1G0-CP-Oa7" firstAttribute="trailing" secondItem="0mZ-Qw-Pqy" secondAttribute="trailing" id="VEo-w7-f0P"/>
                             <constraint firstItem="R6W-ZS-gUg" firstAttribute="leading" secondItem="aqf-iq-9EN" secondAttribute="leading" id="VFU-on-uFw"/>
+                            <constraint firstItem="kPu-lQ-6cv" firstAttribute="centerY" secondItem="yXE-aP-U4K" secondAttribute="centerY" id="Xas-pi-P2m"/>
+                            <constraint firstItem="kPu-lQ-6cv" firstAttribute="leading" secondItem="0mZ-Qw-Pqy" secondAttribute="leading" id="Yoq-jg-j8w"/>
+                            <constraint firstItem="yXE-aP-U4K" firstAttribute="leading" secondItem="kPu-lQ-6cv" secondAttribute="trailing" constant="3" id="akU-fX-CsK"/>
                             <constraint firstItem="aqf-iq-9EN" firstAttribute="top" secondItem="R6W-ZS-gUg" secondAttribute="bottom" constant="8" symbolic="YES" id="d3l-6g-kPM"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="leading" secondItem="1G0-CP-Oa7" secondAttribute="leading" id="dKw-LU-ZSd"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="top" secondItem="aqf-iq-9EN" secondAttribute="bottom" constant="30" id="frt-X2-H4T"/>
                             <constraint firstItem="aqf-iq-9EN" firstAttribute="trailing" secondItem="f57-rX-Z68" secondAttribute="trailing" id="gb8-ri-OKo"/>
+                            <constraint firstItem="0mZ-Qw-Pqy" firstAttribute="top" secondItem="yXE-aP-U4K" secondAttribute="bottom" constant="6" id="iLe-Ia-0Jo"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="top" secondItem="b69-cL-sQa" secondAttribute="top" constant="230" id="ibM-Hs-4lp"/>
                             <constraint firstItem="aqf-iq-9EN" firstAttribute="leading" secondItem="f57-rX-Z68" secondAttribute="leading" id="lJi-7Z-H5j"/>
                             <constraint firstItem="1G0-CP-Oa7" firstAttribute="top" secondItem="f57-rX-Z68" secondAttribute="bottom" constant="30" id="nck-cO-j3n"/>
                             <constraint firstItem="cDZ-Fw-XaZ" firstAttribute="leading" secondItem="b69-cL-sQa" secondAttribute="leading" id="stN-5W-WZS"/>
+                            <constraint firstItem="0mZ-Qw-Pqy" firstAttribute="top" secondItem="kPu-lQ-6cv" secondAttribute="bottom" constant="8" symbolic="YES" id="vk5-L1-vOm"/>
                         </constraints>
                     </view>
                     <connections>
@@ -237,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ned-xN-rQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="-386"/>
+            <point key="canvasLocation" x="928.79999999999995" y="-386.35682158920542"/>
         </scene>
         <!--Login-->
         <scene sceneID="agz-gQ-2Yy">
@@ -366,11 +390,133 @@
             </objects>
             <point key="canvasLocation" x="929" y="334"/>
         </scene>
+        <!--Privacy Policy-->
+        <scene sceneID="fDQ-b2-Ukm">
+            <objects>
+                <viewController storyboardIdentifier="Privacy" title="Privacy Policy" id="gTE-LL-VIU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZaA-sJ-Yee"/>
+                        <viewControllerLayoutGuide type="bottom" id="W0X-Jg-xNW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kml-l7-nQr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5f-bL-ceA">
+                                <rect key="frame" x="0.0" y="20" width="127" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="9If-MM-z2i"/>
+                                    <constraint firstAttribute="height" constant="55" id="d7D-MN-oKh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="  &lt; Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2my-Dj-O5q" kind="show" id="Psy-UD-oCP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-B7-SJC">
+                                <rect key="frame" x="16" y="559" width="343" height="75"/>
+                                <color key="backgroundColor" red="0.13040047490000001" green="0.90466370559999998" blue="0.15672759950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="vmg-RG-VA5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <segue destination="2my-Dj-O5q" kind="show" id="Hdr-pt-d5H"/>
+                                </connections>
+                            </button>
+                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obY-mc-jin">
+                                <rect key="frame" x="16" y="74" width="343" height="477"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Privacy Policy
+
+Christopher Pratt built the Dropin app as a Free-to-use app, although advertisements may be included in the future. This SERVICE is provided by Christopher Pratt at no cost and is intended for use as is.
+
+This screen is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decides to use my Service.
+
+If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
+
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Dropin unless otherwise defined in this Privacy Policy.
+
+Information Collection and Use
+
+For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to full name, username, password, birthday, location data, friends. The information that I request is retained on your device and is not collected by me in any way
+
+The app does use third party services that may collect information used to identify you.
+
+Log Data
+
+I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
+
+Cookies
+
+Cookies are files with small amount of data that is commonly used an anonymous unique identifier. These are sent to your browser from the website that you visit and are stored on your device internal memory.
+
+This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collection information and to improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+
+Service Providers
+
+I may employ third-party companies and individuals due to the following reasons:
+
+To facilitate our Service;
+To provide the Service on our behalf;
+To perform Service-related services; or
+To assist us in analyzing how our Service is used.
+I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+
+Security
+
+I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+
+Links to Other Sites
+
+This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+
+Children’s Privacy
+
+These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do necessary actions.
+
+Changes to This Privacy Policy
+
+I may update our Privacy Policy from time to time. Thus, you are advised to review this screen periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this screen with any app updates. These changes are effective immediately after they are posted on this screen and apply retroactively to any information collected in this app.
+
+Contact Us
+
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at chris@wedropin.com.</mutableString>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.002058630344" green="0.79325693850000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Y5f-bL-ceA" firstAttribute="leading" secondItem="kml-l7-nQr" secondAttribute="leading" id="7oi-mt-Zm1"/>
+                            <constraint firstItem="obY-mc-jin" firstAttribute="trailing" secondItem="kml-l7-nQr" secondAttribute="trailingMargin" id="851-df-yYq"/>
+                            <constraint firstItem="obY-mc-jin" firstAttribute="top" secondItem="ZaA-sJ-Yee" secondAttribute="bottom" constant="54" id="BNS-SV-ZNI"/>
+                            <constraint firstItem="obY-mc-jin" firstAttribute="leading" secondItem="gdz-B7-SJC" secondAttribute="leading" id="JAa-iS-Jb9"/>
+                            <constraint firstItem="W0X-Jg-xNW" firstAttribute="top" secondItem="gdz-B7-SJC" secondAttribute="bottom" constant="33" id="SgM-ZB-WkJ"/>
+                            <constraint firstItem="Y5f-bL-ceA" firstAttribute="top" secondItem="ZaA-sJ-Yee" secondAttribute="bottom" id="Sqn-pe-wcv"/>
+                            <constraint firstItem="gdz-B7-SJC" firstAttribute="top" secondItem="obY-mc-jin" secondAttribute="bottom" constant="8" symbolic="YES" id="Ug4-3k-eP6"/>
+                            <constraint firstItem="obY-mc-jin" firstAttribute="leading" secondItem="kml-l7-nQr" secondAttribute="leadingMargin" id="e3Y-R2-W6b"/>
+                            <constraint firstItem="obY-mc-jin" firstAttribute="trailing" secondItem="gdz-B7-SJC" secondAttribute="trailing" id="vuF-3r-5j8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t0i-hE-jWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773.5999999999999" y="-386.35682158920542"/>
+        </scene>
     </scenes>
     <resources>
         <image name="dropin-logo.png" width="647" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Psy-UD-oCP"/>
         <segue reference="wUu-xJ-KdI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
