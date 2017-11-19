@@ -29,6 +29,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -83,6 +91,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,8 +119,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropPressed), for: .touchUpInside)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
     func centerButtonPressed(_ sender: AnyObject?) {
@@ -189,12 +202,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Sticks the text field to the top of the keyboard
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            // Push the text field to the bottom of the screen
-            self.textField.frame.origin.y = (UIScreen.main.bounds.height - self.textField.frame.height)
-            // Move it up, just above the keyboard
-            self.textField.frame.origin.y -= keyboardSize.height
-        }        
+    func keyboardWillHide() {
+        self.textField.frame.origin.y = 0
+    }
+    
+    func keyboardWillChange(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if textField.isFirstResponder {
+                self.textField.frame.origin.y = UIScreen.main.bounds.height - keyboardSize.height - self.textField.frame.height
+            }
+        }
     }
 }

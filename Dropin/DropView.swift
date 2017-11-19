@@ -20,11 +20,12 @@ class DropView: UIView {
     
     var backImage: UIImage!
     var backButton: UIButton!
-    
     var nameLabel: UILabel!
     var timeLabel: UILabel!
     
-    var toMapsButton: UIButton!
+    var getDirectionsImage: UIImage!
+    var getDirectionsButton: UIButton!
+    
     var textLabel: UILabel!
     
     init() {
@@ -40,42 +41,54 @@ class DropView: UIView {
         
         detailZone = UIView()
         detailZone.frame = super.frame
-        detailZone.backgroundColor = .white
+        detailZone.backgroundColor = UIColor(white: 1.0, alpha: 0.9)
         self.addSubview(detailZone)
         
-        nameLabel = UILabel()
-        nameLabel.font = UIFont(name: nameLabel.font.fontName + "-bold", size: 14)
-        nameLabel.sizeToFit()
-        detailZone.addSubview(nameLabel)
-
         backImage = UIImage(named: "back-arrow-white")
         backButton = UIButton(type: .custom)
         backButton.setImage(backImage, for: .normal)
-        backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
+        backButton.frame = CGRect(x: 0, y: 0, width: 200, height: 60)
+        backButton.titleLabel!.font = UIFont(name: backButton.titleLabel!.font.fontName + "-bold", size: 18)
+        backButton.titleLabel!.sizeToFit()
+        backButton.titleLabel!.isUserInteractionEnabled = false
+        backButton.titleLabel!.isExclusiveTouch = false
+        backButton.titleLabel!.layer.shadowColor = UIColor.black.cgColor
+        backButton.titleLabel!.layer.shadowRadius = 2.0
+        backButton.titleLabel!.layer.shadowOpacity = 0.3
+        backButton.titleLabel!.layer.shadowOffset = CGSize(width: 0, height: 1)
+        backButton.titleLabel!.layer.masksToBounds = false
         self.addSubview(backButton)
-        
+
         timeLabel = UILabel()
-        timeLabel.font = UIFont(name: timeLabel.font.fontName, size: 12)
-        timeLabel.alpha = 0.5
-        nameLabel.sizeToFit()
-        detailZone.addSubview(timeLabel)
+        timeLabel.font = UIFont(name: timeLabel.font.fontName, size: 14)
+        timeLabel.textColor = .white
+        timeLabel.layer.shadowColor = UIColor.black.cgColor
+        timeLabel.layer.shadowRadius = 2.0
+        timeLabel.layer.shadowOpacity = 0.3
+        timeLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
+        timeLabel.layer.masksToBounds = false
+        self.addSubview(timeLabel)
         
         textLabel = UILabel()
-        textLabel.font = UIFont(name: textLabel.font.fontName, size: 14)
+        textLabel.font = UIFont(name: textLabel.font.fontName, size: 16)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
         detailZone.addSubview(textLabel)
         
-        toMapsButton = UIButton(type: .system)
-        toMapsButton.setTitle("Get Directions", for: .normal)
-        toMapsButton.setTitleColor(.black, for: .normal)
-        toMapsButton.titleLabel!.font =  UIFont(name: toMapsButton.titleLabel!.font.fontName, size: 14)
-        toMapsButton.titleLabel!.alpha = 0.5
-        toMapsButton.backgroundColor = .clear
-        toMapsButton.layer.cornerRadius = 5
-        toMapsButton.layer.borderWidth = 1
-        toMapsButton.layer.borderColor = UIColor.lightGray.cgColor
-        detailZone.addSubview(toMapsButton)
+        getDirectionsImage = UIImage(named: "get-directions-button")
+        getDirectionsButton = UIButton(type: .custom)
+        getDirectionsButton.setImage(getDirectionsImage, for: .normal)
+        /*
+        getDirectionsButton.setTitle("Get Directions", for: .normal)
+        getDirectionsButton.setTitleColor(.black, for: .normal)
+        getDirectionsButton.titleLabel!.font =  UIFont(name: getDirectionsButton.titleLabel!.font.fontName, size: 14)
+        getDirectionsButton.titleLabel!.alpha = 0.5
+        getDirectionsButton.backgroundColor = .clear
+        getDirectionsButton.layer.cornerRadius = 5
+        getDirectionsButton.layer.borderWidth = 1
+        getDirectionsButton.layer.borderColor = UIColor.lightGray.cgColor
+        */
+        self.addSubview(getDirectionsButton)
         
         if let superview = self.superview {
             self.snp.makeConstraints { (make) in
@@ -86,7 +99,7 @@ class DropView: UIView {
             }
         }
         backButton.snp.makeConstraints { (make) in
-            make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
+            make.size.lessThanOrEqualTo(CGSize(width: 200, height: 60))
             make.top.equalTo(super.snp.top).offset(25)
             make.left.equalTo(super.snp.left).offset(10)
         }
@@ -94,31 +107,28 @@ class DropView: UIView {
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
-            make.bottom.equalTo(detailZone.snp.top)
+            make.bottom.equalTo(super.snp.bottom)
         }
         detailZone.snp.makeConstraints { (make) in
             make.bottom.equalTo(super.snp.bottom)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
         }
-        nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(detailZone.snp.top).offset(5)
-            make.left.equalTo(super.snp.left).offset(7)
-        }
         timeLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(nameLabel.snp.topMargin)
+            make.centerY.equalTo(backButton.snp.centerY)
             make.right.equalTo(super.snp.right).offset(-7)
         }
         textLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.left.equalTo(super.snp.left).offset(7)
-            make.right.equalTo(super.snp.right).offset(-7)
+            make.top.equalTo(detailZone.snp.top).offset(10)
+            make.left.greaterThanOrEqualTo(super.snp.left).offset(7)
+            make.right.lessThanOrEqualTo(super.snp.right).offset(-7)
+            make.centerX.equalTo(super.snp.centerX)
+            make.bottom.equalTo(detailZone.snp.bottom).offset(-10)
         }
-        toMapsButton.snp.makeConstraints { (make) in
-            make.top.equalTo(textLabel.snp.bottom).offset(15)
-            make.left.equalTo(super.snp.left).offset(7)
-            make.width.equalTo(super.snp.width).multipliedBy(0.33)
-            make.bottom.equalTo(super.snp.bottom).offset(-10)
+        getDirectionsButton.snp.makeConstraints { (make) in
+            make.size.lessThanOrEqualTo(CGSize(width: 40, height: 40))
+            make.right.equalTo(super.snp.right).offset(-7)
+            make.top.equalTo(timeLabel.snp.bottom).offset(10)
         }
         
     }

@@ -53,15 +53,18 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
         map.setRegion(region, animated: false)
 
-        dropView.nameLabel.text = (drop.from?.name)!
+        dropView.backButton.setTitle((drop.from!.name), for: .normal)
+        dropView.backButton.setTitleColor(.white, for: .normal)
+        dropView.backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 5.0, 0.0, -5.0)
         dropView.timeLabel.text = drop.created_at.timeAgoSinceNow()
         dropView.textLabel.text = drop.text
+        dropView.backButton.sizeToFit()
         dropView.textLabel.sizeToFit()
         
         self.view.addSubview(dropView)
         
         dropView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
-        dropView.toMapsButton.addTarget(self, action: #selector(openMaps), for: .touchUpInside)
+        dropView.getDirectionsButton.addTarget(self, action: #selector(openMaps), for: .touchUpInside)
     }
     
     func openMaps() {
