@@ -373,10 +373,11 @@ class User: Equatable {
                     return
                 }
                 else if result == 1 {
-                    if let id = data["id"] as? Int,
+                    if let id = data["id"] as? String,
                         let username = data["username"] as? String,
                         let name = data["name"] as? String
                     {
+                        let id = Int(id)!
                         let user = User(id: id, username: username, name: name)
                         
                         done(true, message, user)
@@ -465,4 +466,74 @@ class User: Equatable {
         task.resume()
     }
     
+    func blockFriend(id: Int, done: @escaping ((_ isSuccess: Bool, _ message: String) -> Void)) {
+        
+        let package: NSDictionary = NSMutableDictionary()
+        
+        let (username, auth_token) = fetchAuth()
+        
+        package.setValue(String(id), forKey: "id")
+        package.setValue(username, forKey: "username")
+        package.setValue(auth_token, forKey: "token")
+        
+        let url:URL = URL(string: block_friend)!
+        let session = URLSession.shared
+        
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = "POST"
+        request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+        
+        var paramString = ""
+        
+        
+        for (key, value) in package
+        {
+            paramString = paramString + (key as! String) + "=" + (value as! String) + "&"
+        }
+        
+        request.httpBody = paramString.data(using: String.Encoding.utf8)
+        
+        let task = session.dataTask(with: request as URLRequest, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response, error == nil else {
+                done(false, "")
+                return
+            }
+            
+            let json: Any?
+            
+            do
+            {
+                json = try JSONSerialization.jsonObject(with: data!, options: [])
+            }
+            catch
+            {
+                done(false, "")
+                return
+            }
+            
+            guard let data = json as? NSDictionary else
+            {
+                done(false, "")
+                return
+            }
+            
+            if let result = data["result"] as? Int,
+                let message = data["message"] as? String
+            {
+                if result == 0 {
+                    done(false, message)
+                    return
+                }
+                else if result == 1 {
+                    done(true, message)
+                    return
+                }
+            }
+        })
+        
+        task.resume()
+    }
 }

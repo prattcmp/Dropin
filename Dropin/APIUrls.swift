@@ -19,6 +19,7 @@ let get_user_by_id = base_url + "user/get/id"
 let get_current_user = base_url + "user/get/current"
 let add_friend = base_url + "user/friends/add"
 let remove_friend = base_url + "user/friends/remove"
+let block_friend = base_url + "user/friends/block"
 let get_friends = base_url + "user/friends/get"
 
 // Drops

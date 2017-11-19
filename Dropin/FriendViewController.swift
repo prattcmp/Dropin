@@ -9,7 +9,6 @@
 import UIKit
 import MGSwipeTableCell
 import SnapKit
-import SwiftSpinner
 
 class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
     var friendView: FriendView!
@@ -112,7 +111,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.detailTextLabel!.text = "@" + self.friends[(indexPath.row - 1)].username
         cell.detailTextLabel!.alpha = 0.5
         
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red)]
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red), MGSwipeButton(title: "Block", backgroundColor: .orange)]
         cell.rightSwipeSettings.transition = .border
         
         return cell
@@ -156,17 +155,16 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Remove friend
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
-        
-        self.removeFriend(indexPath: self.friendView.friendTable.indexPath(for: cell)!)
+        if index == 0 {
+            self.removeFriend(indexPath: self.friendView.friendTable.indexPath(for: cell)!)
+        } else if index == 1 {
+            self.blockFriend(indexPath: self.friendView.friendTable.indexPath(for: cell)!)
+        }
         
         return true
     }
     
     func addFriend(username: String) {
-        SwiftSpinner.show("Adding friend...").addTapHandler({
-            SwiftSpinner.hide()
-        }, subtitle: "tap to hide")
-
         currentUser?.addFriend(username: username) { (_ isSuccess: Bool, _ message: String, _ friend: User) in
             if (!isSuccess) {
                 let alertController = UIAlertController(title: "Uh oh", message: message != "" ? message : "Something went wrong. Try again later.", preferredStyle: .alert)
@@ -174,7 +172,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 alertController.addAction(defaultAction)
                 
                 self.present(alertController, animated: true, completion: nil)
-                SwiftSpinner.hide()
                 return
             }
             
@@ -184,17 +181,11 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.friendView.friendTable.beginUpdates()
                 self.friendView.friendTable.insertRows(at: [IndexPath(row: self.friends.count, section: 0)], with: .automatic)
                 self.friendView.friendTable.endUpdates()
-                
-                SwiftSpinner.hide()
             }
         }
     }
     
     func removeFriend(indexPath: IndexPath) {
-        SwiftSpinner.show("Removing friend...").addTapHandler({
-            SwiftSpinner.hide()
-        }, subtitle: "tap to hide")
-        
         let id = self.friends[indexPath.row - 1].id as Int
         
         currentUser?.removeFriend(id: id) { (_ isSuccess: Bool, _ message: String) in
@@ -204,16 +195,34 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 alertController.addAction(defaultAction)
                 
                 self.present(alertController, animated: true, completion: nil)
-                
-                print(message)
-                SwiftSpinner.hide()
+
                 return
             }
             
             DispatchQueue.main.async {
                 self.friends.remove(at: (indexPath.row - 1))
                 self.friendView.friendTable.deleteRows(at: [indexPath], with: .automatic)
-                SwiftSpinner.hide()
+            }
+        }
+    }
+    
+    func blockFriend(indexPath: IndexPath) {
+        let id = self.friends[indexPath.row - 1].id as Int
+        
+        currentUser?.blockFriend(id: id) { (_ isSuccess: Bool, _ message: String) in
+            if (!isSuccess) {
+                let alertController = UIAlertController(title: "Uh oh", message: message != "" ? message : "Something went wrong. Try again later.", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+
+                return
+            }
+            
+            DispatchQueue.main.async {
+                // If the user was successfully blocked, then remove them
+                self.removeFriend(indexPath: indexPath)
             }
         }
     }

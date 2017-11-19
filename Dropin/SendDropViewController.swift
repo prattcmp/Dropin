@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import MGSwipeTableCell
-import SwiftSpinner
 
 class SendDropViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
     var sendDropView: SendDropView!
@@ -67,7 +66,8 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     
     func sendDrop() {
         sendDropView.sendButton.isUserInteractionEnabled = false
-        SwiftSpinner.show("Sending...")
+        
+        navController.popViewController(animated: true)
         
         Drop.send(to: friendsSelected, coordinates: self.coordinates, text: self.text) { (_ isSuccess: Bool, _ message: String)
             in
@@ -78,9 +78,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            navController.popViewController(animated: true)
             self.sendDropView.sendButton.isUserInteractionEnabled = true
-            SwiftSpinner.hide()
         }
     }
     
