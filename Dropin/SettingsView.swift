@@ -60,6 +60,12 @@ class SettingsView: UIView {
                 make.bottom.equalTo(superview.snp.bottom)
             }
         }
+        settingsTable.snp.makeConstraints { (make) in
+            make.top.equalTo(headerView.snp.bottom)
+            make.left.equalTo(super.snp.left)
+            make.right.equalTo(super.snp.right)
+            make.bottom.equalTo(super.snp.bottom)
+        }
         headerView.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)
