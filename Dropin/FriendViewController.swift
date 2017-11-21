@@ -227,7 +227,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func showSettings() {
+    @objc func showSettings() {
         navController.pushViewController(SettingsViewController(), animated: true)
     }
 }

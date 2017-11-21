@@ -19,7 +19,7 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func textFieldChanged(_ sender: UITextField?) {
-        if(nameTextField.text!.characters.count > 0) {
+        if(nameTextField.text!.count > 0) {
             startButton.isHidden = false
         } else {
             startButton.isHidden = true

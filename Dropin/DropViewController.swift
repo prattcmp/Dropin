@@ -67,7 +67,7 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         dropView.getDirectionsButton.addTarget(self, action: #selector(openMaps), for: .touchUpInside)
     }
     
-    func openMaps() {
+    @objc func openMaps() {
         let regionDistance: CLLocationDistance = 1000
         let regionSpan = MKCoordinateRegionMakeWithDistance(drop.coordinates, regionDistance, regionDistance)
         
@@ -151,7 +151,7 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         return renderer
     }
     
-    func goBack() {
+    @objc func goBack() {
         navController.popViewController(animated: true)
     }
 }

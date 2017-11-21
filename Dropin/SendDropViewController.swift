@@ -64,7 +64,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func sendDrop() {
+    @objc func sendDrop() {
         sendDropView.sendButton.isUserInteractionEnabled = false
         
         navController.popViewController(animated: true)
@@ -143,7 +143,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
-    func goBack() {
+    @objc func goBack() {
         navController.popViewController(animated: true)
     }
 }

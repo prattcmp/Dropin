@@ -32,9 +32,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField?) {
-        if(usernameTextField.text!.characters.count > 3
-            && passwordTextField.text!.characters.count > 0
-            && birthdayTextField.text!.characters.count > 7) {
+        if(usernameTextField.text!.count > 3
+            && passwordTextField.text!.count > 0
+            && birthdayTextField.text!.count > 7) {
             createAccountButton.isHidden = false
         } else {
             createAccountButton.isHidden = true
@@ -139,7 +139,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         task.resume()
     }
     
-    func handleDatePicker(_ sender: UIDatePicker) {
+    @objc func handleDatePicker(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         birthdayTextField.text = dateFormatter.string(from: sender.date)
@@ -156,7 +156,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func dismissPicker() {
+    @objc func dismissPicker() {
         textFieldChanged(nil)
         self.view.endEditing(true)
     }

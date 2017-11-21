@@ -59,12 +59,12 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         scrollView.bounces = (scrollView.contentOffset.y > 100);
     }
     
-    func showDropsPage() {
+    @objc func showDropsPage() {
         let index = self.pages.index(of: myDropsViewController)!
         self.pageViewController.setViewControllers([self.pages[index]], direction: .reverse, animated: true, completion: nil)
     }
     
-    func showFriendsPage() {
+    @objc func showFriendsPage() {
         let index = self.pages.index(of: friendViewController)!
         self.pageViewController.setViewControllers([self.pages[index]], direction: .forward, animated: true, completion: nil)
     }

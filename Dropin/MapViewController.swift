@@ -121,14 +121,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropPressed), for: .touchUpInside)
     }
     
-    func centerButtonPressed(_ sender: AnyObject?) {
+    @objc func centerButtonPressed(_ sender: AnyObject?) {
         if let coords = map.userLocation.location?.coordinate {
             let coordRegion = MKCoordinateRegionMakeWithDistance(coords, 500, 500)
             map.setRegion(coordRegion, animated: true)
         }
     }
     
-    func dismissTextField() {
+    @objc func dismissTextField() {
         mapView.endEditing(true)
         textField.isHidden = true
     }
@@ -147,7 +147,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         resizeTextView(textView)
         
-        return (textView.text.characters.count - range.length + text.characters.count) < 128
+        return (textView.text.count - range.length + text.count) < 128
     }
     
     func resizeTextView(_ textView: UITextView) {
@@ -161,7 +161,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         textView.frame.origin.y += oldHeight - newFrame.height
     }
     
-    func sendDropPressed(_ sender: AnyObject?) {
+    @objc func sendDropPressed(_ sender: AnyObject?) {
         textField.text = ""
         resizeTextView(self.textField)
         textField.isHidden = false
@@ -202,11 +202,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Sticks the text field to the top of the keyboard
-    func keyboardWillHide() {
+    @objc func keyboardWillHide() {
         self.textField.frame.origin.y = 0
     }
     
-    func keyboardWillChange(notification: NSNotification) {
+    @objc func keyboardWillChange(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if textField.isFirstResponder {
                 self.textField.frame.origin.y = UIScreen.main.bounds.height - keyboardSize.height - self.textField.frame.height

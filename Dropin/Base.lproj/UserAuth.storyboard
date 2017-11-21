@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7AT-Rf-WdC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7AT-Rf-WdC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -205,28 +205,114 @@
                                     <constraint firstItem="FmH-GP-yIa" firstAttribute="top" secondItem="1G0-CP-Oa7" secondAttribute="top" id="n9k-DH-TkW"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking &quot;Create account&quot;, you agree to the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-lQ-6cv">
-                                <rect key="frame" x="16" y="530" width="241" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXE-aP-U4K">
-                                <rect key="frame" x="260" y="527" width="76" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="76" id="ZNv-gZ-1sP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="Privacy Policy.">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMl-iK-NSS">
+                                <rect key="frame" x="16" y="521" width="343" height="30"/>
                                 <connections>
-                                    <segue destination="gTE-LL-VIU" kind="show" id="Lc5-gM-X1v"/>
+                                    <segue destination="gTE-LL-VIU" kind="show" id="h7h-f5-5s0"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-Hs-2Ke">
+                                <rect key="frame" x="16" y="521" width="343" height="30"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="By clicking &quot;Create account&quot;, you agree to the ">
+                                        <attributes>
+                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="84">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="112">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="140">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="168">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="196">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="224">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="252">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="280">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="308">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="336">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Privacy Policy.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.43160999999999999" green="0.43160999999999999" blue="0.43160999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="84">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="112">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="140">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="168">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="196">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="224">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="252">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="280">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="308">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="336">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.0020586303435266018" green="0.79325693845748901" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rcj-Hs-2Ke" firstAttribute="top" secondItem="JMl-iK-NSS" secondAttribute="top" id="70f-WI-KIY"/>
                             <constraint firstItem="1G0-CP-Oa7" firstAttribute="top" secondItem="b69-cL-sQa" secondAttribute="top" constant="310" id="Gns-yv-qeN"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="trailing" secondItem="1G0-CP-Oa7" secondAttribute="trailing" id="JdT-LX-4XA"/>
                             <constraint firstItem="R6W-ZS-gUg" firstAttribute="top" secondItem="cDZ-Fw-XaZ" secondAttribute="bottom" constant="16" id="OpL-ne-dpp"/>
@@ -237,19 +323,20 @@
                             <constraint firstItem="R6W-ZS-gUg" firstAttribute="leading" secondItem="b69-cL-sQa" secondAttribute="leadingMargin" id="UDy-jH-dAy"/>
                             <constraint firstItem="1G0-CP-Oa7" firstAttribute="trailing" secondItem="0mZ-Qw-Pqy" secondAttribute="trailing" id="VEo-w7-f0P"/>
                             <constraint firstItem="R6W-ZS-gUg" firstAttribute="leading" secondItem="aqf-iq-9EN" secondAttribute="leading" id="VFU-on-uFw"/>
-                            <constraint firstItem="kPu-lQ-6cv" firstAttribute="centerY" secondItem="yXE-aP-U4K" secondAttribute="centerY" id="Xas-pi-P2m"/>
-                            <constraint firstItem="kPu-lQ-6cv" firstAttribute="leading" secondItem="0mZ-Qw-Pqy" secondAttribute="leading" id="Yoq-jg-j8w"/>
-                            <constraint firstItem="yXE-aP-U4K" firstAttribute="leading" secondItem="kPu-lQ-6cv" secondAttribute="trailing" constant="3" id="akU-fX-CsK"/>
+                            <constraint firstItem="rcj-Hs-2Ke" firstAttribute="leading" secondItem="JMl-iK-NSS" secondAttribute="leading" id="Yge-0J-hIQ"/>
                             <constraint firstItem="aqf-iq-9EN" firstAttribute="top" secondItem="R6W-ZS-gUg" secondAttribute="bottom" constant="8" symbolic="YES" id="d3l-6g-kPM"/>
+                            <constraint firstItem="0mZ-Qw-Pqy" firstAttribute="top" secondItem="JMl-iK-NSS" secondAttribute="bottom" constant="8" symbolic="YES" id="d40-k7-ioN"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="leading" secondItem="1G0-CP-Oa7" secondAttribute="leading" id="dKw-LU-ZSd"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="top" secondItem="aqf-iq-9EN" secondAttribute="bottom" constant="30" id="frt-X2-H4T"/>
+                            <constraint firstItem="0mZ-Qw-Pqy" firstAttribute="top" secondItem="rcj-Hs-2Ke" secondAttribute="bottom" constant="8" symbolic="YES" id="gOm-a0-NmD"/>
                             <constraint firstItem="aqf-iq-9EN" firstAttribute="trailing" secondItem="f57-rX-Z68" secondAttribute="trailing" id="gb8-ri-OKo"/>
-                            <constraint firstItem="0mZ-Qw-Pqy" firstAttribute="top" secondItem="yXE-aP-U4K" secondAttribute="bottom" constant="6" id="iLe-Ia-0Jo"/>
                             <constraint firstItem="f57-rX-Z68" firstAttribute="top" secondItem="b69-cL-sQa" secondAttribute="top" constant="230" id="ibM-Hs-4lp"/>
+                            <constraint firstItem="rcj-Hs-2Ke" firstAttribute="leading" secondItem="0mZ-Qw-Pqy" secondAttribute="leading" id="k38-OC-2M3"/>
+                            <constraint firstItem="rcj-Hs-2Ke" firstAttribute="trailing" secondItem="0mZ-Qw-Pqy" secondAttribute="trailing" id="kQR-oi-rOd"/>
                             <constraint firstItem="aqf-iq-9EN" firstAttribute="leading" secondItem="f57-rX-Z68" secondAttribute="leading" id="lJi-7Z-H5j"/>
                             <constraint firstItem="1G0-CP-Oa7" firstAttribute="top" secondItem="f57-rX-Z68" secondAttribute="bottom" constant="30" id="nck-cO-j3n"/>
                             <constraint firstItem="cDZ-Fw-XaZ" firstAttribute="leading" secondItem="b69-cL-sQa" secondAttribute="leading" id="stN-5W-WZS"/>
-                            <constraint firstItem="0mZ-Qw-Pqy" firstAttribute="top" secondItem="kPu-lQ-6cv" secondAttribute="bottom" constant="8" symbolic="YES" id="vk5-L1-vOm"/>
+                            <constraint firstItem="rcj-Hs-2Ke" firstAttribute="trailing" secondItem="JMl-iK-NSS" secondAttribute="trailing" id="uVM-qL-8bf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -261,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ned-xN-rQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.79999999999995" y="-386.35682158920542"/>
+            <point key="canvasLocation" x="928.125" y="-386.61971830985914"/>
         </scene>
         <!--Login-->
         <scene sceneID="agz-gQ-2Yy">
@@ -433,7 +520,7 @@
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obY-mc-jin">
                                 <rect key="frame" x="16" y="74" width="343" height="477"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Privacy Policy
+                                <string key="text">Privacy Policy
 
 Christopher Pratt built the Dropin app as a Free-to-use app, although advertisements may be included in the future. This SERVICE is provided by Christopher Pratt at no cost and is intended for use as is.
 
@@ -487,7 +574,7 @@ I may update our Privacy Policy from time to time. Thus, you are advised to revi
 
 Contact Us
 
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at chris@wedropin.com.</mutableString>
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at chris@wedropin.com.</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -516,6 +603,7 @@ If you have any questions or suggestions about my Privacy Policy, do not hesitat
         <image name="dropin-logo.png" width="647" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="h7h-f5-5s0"/>
         <segue reference="Psy-UD-oCP"/>
         <segue reference="wUu-xJ-KdI"/>
     </inferredMetricsTieBreakers>

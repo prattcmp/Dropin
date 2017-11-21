@@ -71,7 +71,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func goBack() {
+    @objc func goBack() {
         navController.popViewController(animated: true)
     }
 }

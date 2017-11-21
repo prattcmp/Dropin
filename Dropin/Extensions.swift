@@ -22,7 +22,7 @@ extension UITextField {
             addTarget(self, action: #selector(fix), for: .editingChanged)
         }
     }
-    func fix(_ textField: UITextField) {
+    @objc func fix(_ textField: UITextField) {
         let t = textField.text
         textField.text = t?.safelyLimitedTo(length: maxLength)
     }
@@ -31,7 +31,7 @@ extension UITextField {
 extension String
 {
     func safelyLimitedTo(length n: Int)->String {
-        let c = self.characters
+        let c = self
         if (c.count <= n) { return self }
         return String( Array(c).prefix(upTo: n) )
     }

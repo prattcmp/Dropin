@@ -31,8 +31,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField?) {
-        if(usernameTextField.text!.characters.count > 3
-            && passwordTextField.text!.characters.count > 0) {
+        if(usernameTextField.text!.count > 3
+            && passwordTextField.text!.count > 0) {
             loginButton.isHidden = false
         } else {
             loginButton.isHidden = true
@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func dismissPicker() {
+    @objc func dismissPicker() {
         textFieldChanged(nil)
         self.view.endEditing(true)
     }
