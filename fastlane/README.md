@@ -30,9 +30,14 @@ xcode-select --install
 
 # Available Actions
 ## iOS
-### ios beta
+### ios crashlytics
 ```
-fastlane ios beta
+fastlane ios crashlytics
+```
+
+### ios testflight
+```
+fastlane ios testflight
 ```
 
 

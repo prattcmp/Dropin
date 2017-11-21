@@ -24,7 +24,15 @@ class MapSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     var searchCompleter: MKLocalSearchCompleter!
     var searchAddresses = [MKLocalSearchCompletion]()
     
-    var currentCoordinates: CLLocationCoordinate2D!
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        searchCompleter = MKLocalSearchCompleter()
+        searchCompleter.delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +48,15 @@ class MapSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         searchTextField = mapSearchView.searchTextField
         searchTextField.becomeFirstResponder()
         
-        searchCompleter = MKLocalSearchCompleter()
-        searchCompleter.delegate = self
-        searchCompleter.region = MKCoordinateRegionMakeWithDistance(self.currentCoordinates, 10_000, 10_000)
-        
         // Show the table
         self.view.addSubview(mapSearchView)
         
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         mapSearchView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+    }
+    
+    func updateSearchRegion(coordinates: CLLocationCoordinate2D) {
+        self.searchCompleter.region = MKCoordinateRegionMakeWithDistance(coordinates, 10_000, 10_000)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -92,7 +100,7 @@ class MapSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         let search = MKLocalSearch(request: searchRequest)
         
         search.start { (response, error) in
-            navController.popViewController(animated: true)
+            self.goBack()
             
             if let response = response {
                 self.delegate?.searchCompleted(coordinates: response.mapItems[0].placemark.coordinate)
@@ -105,6 +113,7 @@ class MapSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func goBack() {
+        searchTextField.text = ""
         navController.popViewController(animated: true)
     }
     

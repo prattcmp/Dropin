@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MapSearchView.swift">
-   </FileRef>
-   <FileRef
       location = "group:Dropin.xcodeproj">
    </FileRef>
    <FileRef

@@ -135,7 +135,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @objc func searchButtonPressed(_ sender: AnyObject?) {
-        mapSearchViewController.currentCoordinates = map.centerCoordinate
+        mapSearchViewController.updateSearchRegion(coordinates: map.centerCoordinate)
         
         navController.pushViewController(mapSearchViewController, animated: true)
     }
