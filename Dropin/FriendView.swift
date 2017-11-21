@@ -36,7 +36,7 @@ class FriendView: UIView {
         addFriendCell.textLabel!.text = "Add Friend"
         
         headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 55)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60)
         headerView.backgroundColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         
         headerLabel = UILabel()

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		420F5A179093F66F87C30810 /* Pods_Dropin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */; };
+		830CB6281FC3E3F7000ABA0F /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */; };
+		830CB62A1FC3E40E000ABA0F /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CB6291FC3E40E000ABA0F /* MapSearchView.swift */; };
 		832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */; };
 		832AF9111F8FF57E0024BE26 /* SendDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF9101F8FF57E0024BE26 /* SendDropView.swift */; };
 		832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dropin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		457819D515D7C57DAF1599AE /* Pods-Dropin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dropin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dropin/Pods-Dropin.release.xcconfig"; sourceTree = "<group>"; };
+		830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
+		830CB6291FC3E40E000ABA0F /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapSearchView.swift; path = /Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MapSearchView.swift; sourceTree = "<absolute>"; };
 		832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropViewController.swift; sourceTree = "<group>"; };
 		832AF9101F8FF57E0024BE26 /* SendDropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropView.swift; sourceTree = "<group>"; };
 		832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdobeGothicStd-Bold.otf"; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		834E8E011F664D94007E3050 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				830CB6291FC3E40E000ABA0F /* MapSearchView.swift */,
 				83546F691F66E32900492BB2 /* MapView.swift */,
 				839669A81F733829000468DA /* FriendView.swift */,
 				835D26681F799C41000BC98E /* SettingsView.swift */,
@@ -271,6 +276,7 @@
 				832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */,
 				83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */,
 				83F42F321FA55CBD00313510 /* DropViewController.swift */,
+				830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				836777521FB12D8D006DB1A3 /* AnnotationType.swift in Sources */,
 				834E8DF81F5E52C9007E3050 /* LoginViewController.swift in Sources */,
 				83546F6A1F66E32900492BB2 /* MapView.swift in Sources */,
+				830CB62A1FC3E40E000ABA0F /* MapSearchView.swift in Sources */,
 				832AF9111F8FF57E0024BE26 /* SendDropView.swift in Sources */,
 				834E8DFE1F5F84BB007E3050 /* AuthHandler.swift in Sources */,
 				83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */,
@@ -536,6 +543,7 @@
 				8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */,
 				8337BB081F439D99002C1639 /* Extensions.swift in Sources */,
 				835D26671F75A061000BC98E /* DropinViewController.swift in Sources */,
+				830CB6281FC3E3F7000ABA0F /* MapSearchViewController.swift in Sources */,
 				835D266B1F79A240000BC98E /* SettingsViewController.swift in Sources */,
 				839669A91F733829000468DA /* FriendView.swift in Sources */,
 				83F42F2F1FA4055000313510 /* TimeUntil.swift in Sources */,

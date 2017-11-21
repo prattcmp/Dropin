@@ -19,6 +19,9 @@ class MapView: UIView {
     var centerImage: UIImage!
     var centerButton: UIButton!
     
+    var searchImage: UIImage!
+    var searchButton: UIButton!
+    
     var sendDropView: UIImageView!
     var sendDropRing: UIImage!
     
@@ -47,6 +50,11 @@ class MapView: UIView {
         centerButton = UIButton(type: .custom)
         centerButton.setImage(centerImage, for: .normal)
         self.addSubview(centerButton)
+        
+        searchImage = UIImage(named: "glass-searcher")
+        searchButton = UIButton(type: .custom)
+        searchButton.setImage(searchImage, for: .normal)
+        self.addSubview(searchButton)
         
         sendDropRing = UIImage(named: "send-drop-ring")!
         sendDropView = UIImageView(image: sendDropRing)
@@ -98,6 +106,12 @@ class MapView: UIView {
         centerButton.snp.makeConstraints { (make) in
             make.top.equalTo(super.snp.top).offset(20)
             make.left.equalTo(super.snp.left).offset(10)
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        searchButton.snp.makeConstraints { (make) in
+            make.top.equalTo(super.snp.top).offset(20)
+            make.leading.equalTo(centerButton.snp.trailing).offset(20)
             make.width.equalTo(30)
             make.height.equalTo(30)
         }

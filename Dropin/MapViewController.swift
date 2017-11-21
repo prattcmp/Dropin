@@ -11,7 +11,7 @@ import CoreData
 import MapKit
 import SnapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextViewDelegate, MapSearchViewControllerDelegate {
     var pageIndex: Int!
     
     var mapView: MapView!
@@ -19,6 +19,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var textField: UITextView!
     
     var drops = [Drop]()
+    
+    var mapSearchViewController: MapSearchViewController!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -105,6 +107,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         map = mapView.map
         textField = mapView.textField
         
+        mapSearchViewController = MapSearchViewController()
+        mapSearchViewController.delegate = self
+        
         map.delegate = self
         textField.delegate = self
         
@@ -118,6 +123,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.view.addSubview(mapView)
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
+        mapView.searchButton?.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropPressed), for: .touchUpInside)
     }
     
@@ -128,9 +134,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    @objc func searchButtonPressed(_ sender: AnyObject?) {
+        mapSearchViewController.currentCoordinates = map.centerCoordinate
+        
+        navController.pushViewController(mapSearchViewController, animated: true)
+    }
+    
     @objc func dismissTextField() {
         mapView.endEditing(true)
         textField.isHidden = true
+    }
+    
+    func searchCompleted(coordinates: CLLocationCoordinate2D) {
+        let coordRegion = MKCoordinateRegionMakeWithDistance(coordinates, 500, 500)
+        map.setRegion(coordRegion, animated: true)
+        
+        sendDropPressed(nil)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
