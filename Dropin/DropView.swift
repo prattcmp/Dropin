@@ -110,7 +110,7 @@ class DropView: UIView {
             make.bottom.equalTo(super.snp.bottom)
         }
         detailZone.snp.makeConstraints { (make) in
-            make.bottom.equalTo(super.snp.bottom)
+            make.centerY.equalTo(super.snp.bottom).multipliedBy(0.85)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
         }
