@@ -34,8 +34,17 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.friends = currentUser.friends
-        sendDropView.friendTable.reloadData()
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                currentUser.refreshFriends { (_ isSuccess: Bool) in
+                    DispatchQueue.main.async {
+                        self.friends = currentUser.friends
+                        
+                        self.sendDropView.friendTable.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
