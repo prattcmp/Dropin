@@ -34,6 +34,7 @@ class FriendView: UIView {
         addFriendCell = UITableViewCell()
         addFriendCell.accessoryType = .disclosureIndicator
         addFriendCell.textLabel!.text = "Add Friend"
+        addFriendCell.textLabel!.font = UIFont(name: addFriendCell.textLabel!.font.fontName, size: 15)
         
         headerView = UIView()
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60)
