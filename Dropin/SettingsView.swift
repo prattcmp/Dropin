@@ -17,7 +17,6 @@ class SettingsView: UIView {
     var headerCell: UITableViewCell!
     var logoutCell: UITableViewCell!
     var headerView: UIView!
-    var headerLabel: UILabel!
     var backImage: UIImage!
     var backButton: UIButton!
     
@@ -38,18 +37,12 @@ class SettingsView: UIView {
         headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
         self.addSubview(headerView)
         
-        headerLabel = UILabel()
-        headerLabel.textColor = UIColor.white
-        headerLabel.font = UIFont(name: "Adobe Gothic Std", size: headerLabel.font.pointSize)
-        headerLabel.text = "Settings"
-        headerLabel.sizeToFit()
-        headerView.addSubview(headerLabel)
-        
         backImage = UIImage(named: "back-arrow-white")
         backButton = UIButton(type: .custom)
         backButton.setImage(backImage, for: .normal)
-        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
+        backButton.frame = CGRect(x: 0, y: 0, width: 200, height: 60)
+        backButton.titleLabel!.font = UIFont(name: backButton.titleLabel!.font.fontName + "-bold", size: 18)
+        backButton.titleLabel!.sizeToFit()
         headerView.addSubview(backButton)
         
         if let superview = self.superview {
@@ -72,12 +65,8 @@ class SettingsView: UIView {
             make.right.equalTo(super.snp.right)
             make.height.equalTo(55)
         }
-        headerLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(backButton.snp.centerY)
-            make.leading.equalTo(backButton.snp.trailing).offset(7)
-        }
         backButton.snp.makeConstraints { (make) in
-            make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
+            make.size.lessThanOrEqualTo(CGSize(width: 200, height: 60))
             make.bottom.equalTo(headerView.snp.bottom).offset(-7)
             make.left.equalTo(headerView.snp.left).offset(10)
         }

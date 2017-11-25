@@ -50,8 +50,6 @@ class DropView: UIView {
         backButton.frame = CGRect(x: 0, y: 0, width: 200, height: 60)
         backButton.titleLabel!.font = UIFont(name: backButton.titleLabel!.font.fontName + "-bold", size: 18)
         backButton.titleLabel!.sizeToFit()
-        backButton.titleLabel!.isUserInteractionEnabled = false
-        backButton.titleLabel!.isExclusiveTouch = false
         backButton.titleLabel!.layer.shadowColor = UIColor.black.cgColor
         backButton.titleLabel!.layer.shadowRadius = 2.0
         backButton.titleLabel!.layer.shadowOpacity = 0.3

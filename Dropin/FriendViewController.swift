@@ -108,6 +108,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Adding 1 because of the "Add Friend" cell
         cell.textLabel!.text = self.friends[(indexPath.row - 1)].name
+        cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 15)
         cell.detailTextLabel!.text = "@" + self.friends[(indexPath.row - 1)].username
         cell.detailTextLabel!.alpha = 0.5
         

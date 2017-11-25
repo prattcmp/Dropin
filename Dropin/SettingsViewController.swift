@@ -21,10 +21,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         settingsView.settingsTable.delegate = self
         settingsView.settingsTable.dataSource = self
         
-        settingsView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        settingsView.backButton.setTitle("Settings", for: .normal)
+        settingsView.backButton.setTitleColor(.white, for: .normal)
+        settingsView.backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 5.0, 0.0, -5.0)
+        settingsView.backButton.sizeToFit()
         
         // Show the table
         self.view.addSubview(settingsView)
+        
+        settingsView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

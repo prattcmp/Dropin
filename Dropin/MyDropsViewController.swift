@@ -112,7 +112,7 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
         
         cell.textLabel!.text = name
-        cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName + "-bold", size: 14)
+        cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 15)
         cell.detailTextLabel!.text = self.drops[indexPath.row].expires_at.timeAgoSinceNow()
         cell.detailTextLabel!.alpha = 0.5
         

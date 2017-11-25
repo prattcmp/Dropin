@@ -56,6 +56,11 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
         sendDropView.friendTable.delegate = self
         sendDropView.friendTable.dataSource = self
         
+        sendDropView.backButton.setTitle("Send to...", for: .normal)
+        sendDropView.backButton.setTitleColor(.white, for: .normal)
+        sendDropView.backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 5.0, 0.0, -5.0)
+        sendDropView.backButton.sizeToFit()
+        
         // Show the table
         self.view.addSubview(sendDropView)
         

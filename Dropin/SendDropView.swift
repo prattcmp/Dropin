@@ -17,7 +17,6 @@ class SendDropView: UIView {
     var addFriendCell: UITableViewCell!
     
     var headerView: UIView!
-    var headerLabel: UILabel!
     let headerHeight: CGFloat = 60.0
     let rowHeight: CGFloat = 50.0
     
@@ -44,18 +43,12 @@ class SendDropView: UIView {
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
         
-        headerLabel = UILabel()
-        headerLabel.textColor = UIColor.white
-        headerLabel.font = UIFont(name: "Adobe Gothic Std", size: headerLabel.font.pointSize)
-        headerLabel.text = "Send your drop to..."
-        headerLabel.sizeToFit()
-        
         backImage = UIImage(named: "back-arrow-white")
         backButton = UIButton(type: .custom)
         backButton.setImage(backImage, for: .normal)
-        backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
-        backButton.addSubview(headerLabel)
-        
+        backButton.frame = CGRect(x: 0, y: 0, width: 200, height: 60)
+        backButton.titleLabel!.font = UIFont(name: backButton.titleLabel!.font.fontName + "-bold", size: 18)
+        backButton.titleLabel!.sizeToFit()
         headerView.addSubview(backButton)
         
         sendImage = UIImage(named: "send-button-background")
@@ -80,12 +73,8 @@ class SendDropView: UIView {
             make.right.equalTo(super.snp.right)
             make.bottom.equalTo(sendButton.snp.top)
         }
-        headerLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(backButton.snp.centerY)
-            make.leading.equalTo(backButton.snp.trailing).offset(10)
-        }
         backButton.snp.makeConstraints { (make) in
-            make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
+            make.size.lessThanOrEqualTo(CGSize(width: 200, height: 60))
             make.bottom.equalTo(headerView.snp.bottom).offset(-7)
             make.left.equalTo(headerView.snp.left).offset(10)
         }
