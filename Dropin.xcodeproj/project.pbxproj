@@ -11,6 +11,7 @@
 		830CB6281FC3E3F7000ABA0F /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */; };
 		830CB62C1FC3FE84000ABA0F /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CB62B1FC3FE84000ABA0F /* MapSearchView.swift */; };
 		832A95BA1FCC7BA2004A5810 /* PointCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A95B91FCC7BA2004A5810 /* PointCountView.swift */; };
+		832A95BC1FCCC6B2004A5810 /* AppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A95BB1FCCC6B2004A5810 /* AppReview.swift */; };
 		832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */; };
 		832AF9111F8FF57E0024BE26 /* SendDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF9101F8FF57E0024BE26 /* SendDropView.swift */; };
 		832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */; };
@@ -72,6 +73,7 @@
 		830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		830CB62B1FC3FE84000ABA0F /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapSearchView.swift; path = /Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MapSearchView.swift; sourceTree = "<absolute>"; };
 		832A95B91FCC7BA2004A5810 /* PointCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCountView.swift; sourceTree = "<group>"; };
+		832A95BB1FCCC6B2004A5810 /* AppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReview.swift; sourceTree = "<group>"; };
 		832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropViewController.swift; sourceTree = "<group>"; };
 		832AF9101F8FF57E0024BE26 /* SendDropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropView.swift; sourceTree = "<group>"; };
 		832AF9131F9115010024BE26 /* AdobeGothicStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdobeGothicStd-Bold.otf"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				83F42F2E1FA4055000313510 /* TimeUntil.swift */,
 				836777511FB12D8D006DB1A3 /* AnnotationType.swift */,
 				83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */,
+				832A95BB1FCCC6B2004A5810 /* AppReview.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */,
 				8337BB081F439D99002C1639 /* Extensions.swift in Sources */,
 				835D26671F75A061000BC98E /* DropinViewController.swift in Sources */,
+				832A95BC1FCCC6B2004A5810 /* AppReview.swift in Sources */,
 				832A95BA1FCC7BA2004A5810 /* PointCountView.swift in Sources */,
 				830CB6281FC3E3F7000ABA0F /* MapSearchViewController.swift in Sources */,
 				835D266B1F79A240000BC98E /* SettingsViewController.swift in Sources */,
