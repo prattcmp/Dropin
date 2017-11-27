@@ -103,18 +103,25 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return cell
         }
         
-        let cell: MGSwipeTableCell = MGSwipeTableCell(style: .subtitle, reuseIdentifier: "cell")
+        // Subtracting 1 because of the "Add Friend" cell
+        let friend = self.friends[(indexPath.row - 1)]
+        let cell: MGSwipeTableCell = MGSwipeTableCell(style: .subtitle, reuseIdentifier: "friend-cell")
         cell.delegate = self
         
-        // Adding 1 because of the "Add Friend" cell
-        cell.textLabel!.text = self.friends[(indexPath.row - 1)].name
+        cell.textLabel!.text = friend.name
         cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 15)
-        cell.detailTextLabel!.text = "@" + self.friends[(indexPath.row - 1)].username
+        cell.detailTextLabel!.text = "@" + friend.username
         cell.detailTextLabel!.alpha = 0.5
         
         cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red), MGSwipeButton(title: "Block", backgroundColor: .orange)]
         cell.rightSwipeSettings.transition = .border
         
+        let pointCountView = PointCountView()
+        if let points = friend.points {
+            pointCountView.setPoints(points)
+            cell.accessoryView = pointCountView
+        }
+
         return cell
     }
     

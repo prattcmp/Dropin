@@ -12,6 +12,7 @@ class User: Equatable {
     var id: Int!
     var username: String!
     var name: String!
+    var points: Int?
     var friends = [User]()
     var drops = [Drop]()
     
@@ -39,10 +40,11 @@ class User: Equatable {
         }
     }
     
-    init(id: Int, username: String, name: String) {
+    init(id: Int, username: String, name: String, points: Int? = nil) {
         self.id = id
         self.username = username
         self.name = name
+        self.points = points
     }
     
     static func ==(lhs: User, rhs: User) -> Bool {
@@ -289,7 +291,8 @@ class User: Equatable {
                     for friend in data["friends"] as! [Dictionary<String, Any>]  {
                         let user = User(id: (friend["id"] as! Int),
                                         username: (friend["username"] as! String),
-                                        name: (friend["name"] as! String) )
+                                        name: (friend["name"] as! String),
+                                        points: (friend["total_points"] as! Int))
                         friends.append(user)
                     }
                     
