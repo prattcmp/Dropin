@@ -51,6 +51,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         }
+        
+        showReviewPopup()
     }
     
     override func viewDidLoad() {
@@ -66,8 +68,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.addSubview(friendView)
         
         friendView.settingsButton?.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
-        
-        showReviewPopup()
     }
     
     // Disables tableview bouncing at the top
