@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         launchByAuthStatus()
 
+        incrementReviewLaunches()
         return true
     }
 

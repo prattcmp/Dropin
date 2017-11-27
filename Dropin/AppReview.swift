@@ -10,7 +10,7 @@ import StoreKit
 
 let minLaunchesForReview = 3
 
-func incrementLaunches() {
+func incrementReviewLaunches() {
     var launches = UserDefaults().value(forKey: "launchesSinceReviewPopup") as? Int ?? 0
     
     launches += 1
@@ -19,7 +19,7 @@ func incrementLaunches() {
     UserDefaults().synchronize()
 }
 
-func showReview() {
+func showReviewPopup() {
     let launches = UserDefaults().value(forKey: "launchesSinceReviewPopup") as? Int ?? 0
     
     if (launches > minLaunchesForReview) {
