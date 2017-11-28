@@ -130,7 +130,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         UserDefaults.standard.set(session_data, forKey: "session_data")
                         
-                        DispatchQueue.main.async(execute: launchByAuthStatus)
+                        DispatchQueue.main.async { launchByAuthStatus() }
                     }
                 }
             }

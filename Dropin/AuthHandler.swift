@@ -41,13 +41,13 @@ func launchNameScreen() {
     appDelegate?.window?.makeKeyAndVisible()
 }
 
-func launchDropin() {
+func launchDropin(_ launchScreen: String = "") {
     currentUser = User()
     
     navController.isToolbarHidden = true
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let dropinViewController : DropinViewController = DropinViewController()
+    let dropinViewController: DropinViewController = DropinViewController(launchScreen)
 
     navController.viewControllers = [dropinViewController]
     
@@ -79,7 +79,7 @@ func fetchAuth() -> (String, String) {
     return (username, auth_token)
 }
 
-func launchByAuthStatus() {    
+func launchByAuthStatus(_ launchScreen: String = "") {
     if(fetchAuth().0 == "") {
         launchAuthScreen()
         return
@@ -142,14 +142,14 @@ func launchByAuthStatus() {
             }
             else if result == 1 {
                 if (UserDefaults.standard.object(forKey: "name") as? String) != nil {
-                    DispatchQueue.main.async(execute: launchDropin)
+                    DispatchQueue.main.async { launchDropin(launchScreen) }
                     return
                 }
                 else {
                     if let name = data["name"] as? String
                     {
                         UserDefaults.standard.set(name, forKey: "name")
-                        DispatchQueue.main.async(execute: launchDropin)
+                        DispatchQueue.main.async { launchDropin(launchScreen) }
                         return
                     }
                     else {

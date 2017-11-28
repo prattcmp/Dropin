@@ -97,7 +97,7 @@ class NameViewController: UIViewController, UITextFieldDelegate {
                     {
                         UserDefaults.standard.set(name, forKey: "name")
                         
-                        DispatchQueue.main.async(execute: launchDropin)
+                        DispatchQueue.main.async { launchDropin() }
                         return
                     }
                 }

@@ -9,16 +9,21 @@
 import UIKit
 import Fabric
 import Crashlytics
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    var launchScreen: String! = ""
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
-
+        
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
         
         let launchStoryboard : UIStoryboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
         let launchViewController : UIViewController = launchStoryboard.instantiateViewController(withIdentifier: "Loading") as UIViewController
@@ -27,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = launchViewController
         self.window?.makeKeyAndVisible()
         
-        launchByAuthStatus()
-
         incrementReviewLaunches()
+        launchByAuthStatus(launchScreen)
+        
         return true
     }
 
@@ -38,6 +43,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tokenString = token.reduce("", {$0 + String(format: "%02X", $1)})
         
         PushToken.add(token: tokenString, done: {_,_ in })
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent: UNNotification, withCompletionHandler: @escaping (UNNotificationPresentationOptions)->()) {
+        
+        withCompletionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler: @escaping ()->()) {
+        
+        withCompletionHandler()
+        if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            if response.notification.request.content.body.contains("friend") {
+                launchScreen = "friends"
+            } else if response.notification.request.content.body.contains("sent you")  {
+                launchScreen = "drops"
+            }
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

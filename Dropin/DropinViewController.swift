@@ -19,7 +19,19 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
     var friendViewController: FriendViewController!
     
     var locManager: CLLocationManager!
-
+    
+    var launchScreen: String!
+    
+    init(_ launchScreen: String) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.launchScreen = launchScreen
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +54,7 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
 
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.pageViewController.dataSource = self
-        self.resetPageController(sender: self)
+        self.setStartingPageController()
         self.addChildViewController(self.pageViewController)
 
         self.view.addSubview(self.pageViewController.view)
@@ -57,6 +69,16 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         scrollView.bounces = (scrollView.contentOffset.y > 100);
+    }
+    
+    func setStartingPageController() {
+        if self.launchScreen == "friends" {
+            self.showFriendsPage()
+        } else if self.launchScreen == "drops" {
+            self.showDropsPage()
+        } else {
+            self.resetPageController(sender: self)
+        }
     }
     
     @objc func showDropsPage() {
