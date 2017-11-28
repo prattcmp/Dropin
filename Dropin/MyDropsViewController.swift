@@ -75,9 +75,10 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
             let distance: CLLocationDistance = self.userLocation.distance(from: CLLocation(latitude: drop.coordinates.latitude, longitude: drop.coordinates.longitude))
             self.distances[i] = distance.toPrettyDistance()
             
-            self.myDropsView.dropTable.reloadRows(at: [IndexPath(item: i, section: 0)], with: .none)
             i += 1
         }
+        
+        self.myDropsView.dropTable.reloadData()
     }
     
     // Disables tableview bouncing at the top
