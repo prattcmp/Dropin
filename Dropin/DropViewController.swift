@@ -60,6 +60,9 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         dropView.textLabel.text = drop.text
         dropView.backButton.sizeToFit()
         dropView.textLabel.sizeToFit()
+        if drop.text == "" {
+            dropView.detailZone.isHidden = true
+        }
         
         self.view.addSubview(dropView)
         
