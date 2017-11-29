@@ -37,6 +37,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        self.drops = [Drop]()
+        self.map.removeAnnotations(self.map.annotations)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,37 +54,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     
                     Drop.getByToID(id: currentUser.id) { (isSuccess: Bool, username: String, toDrops: [Drop]) in
                         if (isSuccess) {
-                            Drop.getByFromID(id: currentUser.id) { (isSuccess: Bool, username: String, fromDrops: [Drop]) in
-                                if (isSuccess) {
+                            DispatchQueue.main.async {
+                                for drop in toDrops {
+                                    let annotation = TypedPointAnnotation()
+                                    annotation.type = "drop-blue"
+                                    annotation.coordinate = drop.coordinates
+                                    annotation.title = "@" + (drop.from?.username)!
+                                    annotation.id = self.drops.count
+                                    
+                                    self.map.addAnnotation(annotation)
+                                    self.drops.append(drop)
+                                }
+                            }
+                        } else {
+                            success = false
+                        }
+                    }
+                    
+                    Drop.getByFromID(id: currentUser.id) { (isSuccess: Bool, username: String, fromDrops: [Drop]) in
+                        if (isSuccess) {
                             
-                                    DispatchQueue.main.async {
-                                        self.map.removeAnnotations(self.map.annotations)
-                                        
-                                        self.drops = [Drop]()
-                                        
-                                        for drop in toDrops {
-                                            let annotation = TypedPointAnnotation()
-                                            annotation.type = "drop-blue"
-                                            annotation.coordinate = drop.coordinates
-                                            annotation.title = "@" + (drop.from?.username)!
-                                            annotation.id = self.drops.count
-                                            
-                                            self.map.addAnnotation(annotation)
-                                            self.drops.append(drop)
-                                        }
-                                        for drop in fromDrops {
-                                            let annotation = TypedPointAnnotation()
-                                            annotation.type = "drop-green"
-                                            annotation.coordinate = drop.coordinates
-                                            annotation.title = "@" + (drop.to?.username)!
-                                            annotation.id = self.drops.count
-                                            
-                                            self.map.addAnnotation(annotation)
-                                            self.drops.append(drop)
-                                        }
-                                    }
-                                } else {
-                                    success = false
+                            DispatchQueue.main.async {
+                                for drop in fromDrops {
+                                    let annotation = TypedPointAnnotation()
+                                    annotation.type = "drop-green"
+                                    annotation.coordinate = drop.coordinates
+                                    annotation.title = "@" + (drop.to?.username)!
+                                    annotation.id = self.drops.count
+                                    
+                                    self.map.addAnnotation(annotation)
+                                    self.drops.append(drop)
                                 }
                             }
                         } else {
@@ -234,6 +236,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        var i = -1;
+        for view in views {
+            i += 1;
+            if view.annotation is MKUserLocation {
+                continue;
+            }
+            
+            // Check if current annotation is inside visible map rect, else go to next one
+            let point: MKMapPoint = MKMapPointForCoordinate(view.annotation!.coordinate);
+            if (!MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
+                continue;
+            }
+            
+            // Animate drop
+            let delay = 0.1 * Double(i)
+            view.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            UIView.animate(withDuration: 0.5, delay: delay, animations: {() -> Void in
+                view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
+        }
+    }
+        
     // Sticks the text field to the top of the keyboard
     @objc func keyboardWillHide() {
         self.textField.frame.origin.y = 0
