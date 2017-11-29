@@ -142,7 +142,13 @@ func launchByAuthStatus(_ launchScreen: String = "") {
             }
             else if result == 1 {
                 if (UserDefaults.standard.object(forKey: "name") as? String) != nil {
+                    // Reset the push token on the server if user logs back in
+                    if let token = UserDefaults.standard.object(forKey: "device_push_token")  as? String {
+                        PushToken.add(token: token, done: {_,_ in })
+                    }
+                    
                     DispatchQueue.main.async { launchDropin(launchScreen) }
+                    
                     return
                 }
                 else {

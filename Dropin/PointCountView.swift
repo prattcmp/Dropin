@@ -30,13 +30,13 @@ class PointCountView: UIView {
         self.addSubview(pointLabel)
         
         starImageView.snp.makeConstraints { (make) in
-            make.right.equalTo(super.snp.right).offset(-25)
+            make.right.equalTo(super.snp.right)
             make.centerY.equalTo(pointLabel.snp.centerY)
             make.width.equalTo(size)
             make.height.equalTo(size)
         }
         pointLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(starImageView.snp.trailing).offset(5)
+            make.trailing.equalTo(starImageView.snp.leading).offset(-5)
             make.centerY.equalTo(super.snp.centerY)
         }
     }

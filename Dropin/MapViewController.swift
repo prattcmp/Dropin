@@ -124,7 +124,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
         mapView.searchButton?.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
-        mapView.sendDropButton?.addTarget(self, action: #selector(sendDropPressed), for: .touchUpInside)
+        mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchDown), for: .touchDown)
+        mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpOutside), for: .touchUpOutside)
+        mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpInside), for: .touchUpInside)
     }
     
     @objc func centerButtonPressed(_ sender: AnyObject?) {
@@ -140,7 +142,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         navController.pushViewController(mapSearchViewController, animated: true)
     }
     
+    @objc func sendDropTouchDown(_ sender: AnyObject?) {
+        mapView.shrinkSendDropRing()
+    }
+    
+    @objc func sendDropTouchUpOutside(_ sender: AnyObject?) {
+        mapView.growShrinkSendDropRing()
+    }
+    
+    @objc func sendDropTouchUpInside(_ sender: AnyObject?) {
+        mapView.shrinkSendDropRing()
+        textField.text = ""
+        resizeTextView(self.textField)
+        textField.isHidden = false
+        textField.becomeFirstResponder()
+    }
+    
     @objc func dismissTextField() {
+        mapView.growShrinkSendDropRing()
         mapView.endEditing(true)
         textField.isHidden = true
     }
@@ -149,13 +168,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let coordRegion = MKCoordinateRegionMakeWithDistance(coordinates, 500, 500)
         map.setRegion(coordRegion, animated: true)
         
-        sendDropPressed(nil)
+        sendDropTouchUpInside(nil)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // If the user hits "Send"
         if(text == "\n") {
+            mapView.resetSendDropRing()
+            
             textField.resignFirstResponder()
             textField.isHidden = true
             
@@ -178,13 +199,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
         textView.frame = newFrame
         textView.frame.origin.y += oldHeight - newFrame.height
-    }
-    
-    @objc func sendDropPressed(_ sender: AnyObject?) {
-        textField.text = ""
-        resizeTextView(self.textField)
-        textField.isHidden = false
-        textField.becomeFirstResponder()
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

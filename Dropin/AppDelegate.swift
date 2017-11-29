@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let tokenString = token.reduce("", {$0 + String(format: "%02X", $1)})
         
+        UserDefaults.standard.set(tokenString, forKey: "device_push_token")
+        
         PushToken.add(token: tokenString, done: {_,_ in })
     }
     
@@ -52,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler: @escaping ()->()) {
         
-        withCompletionHandler()
         if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
             if response.notification.request.content.body.contains("friend") {
                 launchScreen = "friends"
@@ -60,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 launchScreen = "drops"
             }
         }
+        withCompletionHandler()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

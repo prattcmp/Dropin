@@ -143,5 +143,27 @@ class MapView: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
+    
+    func shrinkSendDropRing() {
+        UIView.animate(withDuration: 0.4, animations: {() -> Void in
+            self.sendDropView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        })
+    }
+    
+    func resetSendDropRing() {
+        UIView.animate(withDuration: 0.1, animations: {() -> Void in
+            self.sendDropView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+    }
+    
+    func growShrinkSendDropRing() {
+        UIView.animate(withDuration: 0.1, animations: {() -> Void in
+            self.sendDropView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }, completion: {(_ finished: Bool) -> Void in
+            UIView.animate(withDuration: 0.25, animations: {() -> Void in
+                self.sendDropView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        })
+    }
 }
 
