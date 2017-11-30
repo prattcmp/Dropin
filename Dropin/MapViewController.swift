@@ -37,9 +37,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        self.drops = [Drop]()
-        self.map.removeAnnotations(self.map.annotations)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,6 +97,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        self.drops = [Drop]()
+        self.map.removeAnnotations(self.map.annotations)
     }
     
     override func viewDidLoad() {

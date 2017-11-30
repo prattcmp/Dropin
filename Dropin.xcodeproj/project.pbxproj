@@ -23,7 +23,6 @@
 		8337BAE51F40F53E002C1639 /* DropinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BAE41F40F53E002C1639 /* DropinTests.swift */; };
 		8337BAF01F40F53E002C1639 /* DropinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BAEF1F40F53E002C1639 /* DropinUITests.swift */; };
 		8337BAFF1F40F57D002C1639 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8337BAFE1F40F57D002C1639 /* MapKit.framework */; };
-		8337BB041F4119BB002C1639 /* dropin-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8337BB031F4119BB002C1639 /* dropin-logo.png */; };
 		8337BB061F41647F002C1639 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BB051F41647F002C1639 /* SignUpViewController.swift */; };
 		8337BB081F439D99002C1639 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BB071F439D99002C1639 /* Extensions.swift */; };
 		8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337BB091F44B662002C1639 /* APIUrls.swift */; };
@@ -91,7 +90,6 @@
 		8337BAEF1F40F53E002C1639 /* DropinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropinUITests.swift; sourceTree = "<group>"; };
 		8337BAF11F40F53E002C1639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8337BAFE1F40F57D002C1639 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		8337BB031F4119BB002C1639 /* dropin-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropin-logo.png"; sourceTree = "<group>"; };
 		8337BB051F41647F002C1639 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8337BB071F439D99002C1639 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8337BB091F44B662002C1639 /* APIUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUrls.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				834E8E011F664D94007E3050 /* Views */,
 				8337BAD61F40F53E002C1639 /* Assets.xcassets */,
 				8337BADB1F40F53E002C1639 /* Info.plist */,
-				8337BB021F4117E4002C1639 /* Image Assets */,
 			);
 			path = Dropin;
 			sourceTree = "<group>";
@@ -222,14 +219,6 @@
 				3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8337BB021F4117E4002C1639 /* Image Assets */ = {
-			isa = PBXGroup;
-			children = (
-				8337BB031F4119BB002C1639 /* dropin-logo.png */,
-			);
-			name = "Image Assets";
 			sourceTree = "<group>";
 		};
 		834E8DFF1F664D37007E3050 /* Auth */ = {
@@ -431,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				834E8DF61F57344B007E3050 /* CreateName.storyboard in Resources */,
-				8337BB041F4119BB002C1639 /* dropin-logo.png in Resources */,
 				8337BADA1F40F53E002C1639 /* LaunchScreen.storyboard in Resources */,
 				8337BAD71F40F53E002C1639 /* Assets.xcassets in Resources */,
 				832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */,
@@ -734,7 +722,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
@@ -759,7 +747,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
