@@ -23,7 +23,7 @@ class FriendView: UIView {
     let rowHeight: CGFloat = 50.0
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         friendTable = UITableView(frame: super.frame, style: .plain)
         friendTable.separatorInset = .zero

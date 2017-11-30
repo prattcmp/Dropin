@@ -29,7 +29,7 @@ class DropView: UIView {
     var textLabel: UILabel!
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         map = MKMapView()
         map.frame = super.frame

@@ -30,7 +30,7 @@ class SendDropView: UIView {
     var dropButtonBottomConstraint: Constraint? = nil
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         friendTable = UITableView(frame: super.frame, style: .grouped)
         friendTable.separatorInset = .zero

@@ -36,7 +36,7 @@ class MapView: UIView {
     var textField: UITextView!
 
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         map = MKMapView()
         map.frame = super.frame
@@ -123,8 +123,8 @@ class MapView: UIView {
         }
         toDropsButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(sendDropButton.snp.centerY).offset(15)
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
             make.left.equalTo(super.snp.left).offset(25)
         }
         sendDropButton.snp.makeConstraints { (make) in
@@ -134,8 +134,8 @@ class MapView: UIView {
         }
         toFriendsButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(sendDropButton.snp.centerY).offset(15)
-            make.width.equalTo(35)
-            make.height.equalTo(35)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
             make.right.equalTo(super.snp.right).offset(-25)
         }
     }

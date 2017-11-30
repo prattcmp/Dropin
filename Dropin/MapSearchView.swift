@@ -24,7 +24,7 @@ class MapSearchView: UIView {
     var backButton: UIButton!
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         searchTable = UITableView(frame: super.frame, style: .plain)
         searchTable.separatorInset = .zero

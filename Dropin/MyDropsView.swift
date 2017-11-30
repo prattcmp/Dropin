@@ -22,7 +22,7 @@ class MyDropsView: UIView {
     var settingsButton: UIButton!
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         dropTable = UITableView(frame: super.frame, style: .plain)
         dropTable.separatorInset = .zero

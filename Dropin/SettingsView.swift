@@ -21,7 +21,7 @@ class SettingsView: UIView {
     var backButton: UIButton!
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: usableScreen.getFrame())
         
         settingsTable = UITableView()
         settingsTable.frame = super.frame
