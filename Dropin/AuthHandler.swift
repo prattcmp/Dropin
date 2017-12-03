@@ -32,7 +32,7 @@ func launchAuthScreen() {
 
 func launchNameScreen() {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-
+    
     let nameStoryboard : UIStoryboard = UIStoryboard(name: "CreateName", bundle: nil)
     let nameViewController : UIViewController = nameStoryboard.instantiateViewController(withIdentifier: "Name") as UIViewController
     
@@ -42,24 +42,26 @@ func launchNameScreen() {
 }
 
 func launchDropin(_ launchScreen: String = "") {
-    currentUser = User()
-    
-    navController.isToolbarHidden = true
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let dropinViewController: DropinViewController = DropinViewController(launchScreen)
-
-    navController.viewControllers = [dropinViewController]
-    
-    let center = UNUserNotificationCenter.current()
-    center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-        // Enable or disable features based on authorization.
+    currentUser = User() {
+        DispatchQueue.main.async {
+            navController.isToolbarHidden = true
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let dropinViewController: DropinViewController = DropinViewController(launchScreen)
+            
+            navController.viewControllers = [dropinViewController]
+            
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            UIApplication.shared.registerForRemoteNotifications()
+            
+            appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+            appDelegate.window!.rootViewController = navController
+            appDelegate.window?.makeKeyAndVisible()
+        }
     }
-    UIApplication.shared.registerForRemoteNotifications()
-    
-    appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-    appDelegate.window!.rootViewController = navController
-    appDelegate.window?.makeKeyAndVisible()
 }
 
 func fetchAuth() -> (String, String) {

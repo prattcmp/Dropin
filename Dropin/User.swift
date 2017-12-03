@@ -22,13 +22,15 @@ class User: Equatable {
         self.name = ""
     }
     
-    required init() {
+    required init(done: @escaping (() -> Void)) {
         self.getCurrentUser() { (_ isSuccess: Bool, _ id: Int, _ username: String, _ name: String) in
             self.id = id
             self.username = username
             self.name = name
             
-            self.refreshFriends {_ in }
+            self.refreshFriends {_ in
+                done()
+            }
         }
     }
     
