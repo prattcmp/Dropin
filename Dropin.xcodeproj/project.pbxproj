@@ -42,6 +42,7 @@
 		83A2FE301FB4E64F0072A819 /* PrettyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */; };
 		83A2FE331FB7FE840072A819 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE321FB7FE840072A819 /* PushToken.swift */; };
 		83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F22E531FD0AE7F005777F7 /* UsableScreen.swift */; };
+		83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F22E551FD38384005777F7 /* awsconfiguration.json */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
 		83F42F2B1FA2B0B700313510 /* MyDropsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */; };
 		83F42F2D1FA2B14E00313510 /* MyDropsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F2C1FA2B14E00313510 /* MyDropsView.swift */; };
@@ -111,6 +112,7 @@
 		83A2FE311FB66DD50072A819 /* Dropin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dropin.entitlements; sourceTree = "<group>"; };
 		83A2FE321FB7FE840072A819 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		83F22E531FD0AE7F005777F7 /* UsableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableScreen.swift; sourceTree = "<group>"; };
+		83F22E551FD38384005777F7 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
 		83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsViewController.swift; sourceTree = "<group>"; };
 		83F42F2C1FA2B14E00313510 /* MyDropsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropsView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				834E8E011F664D94007E3050 /* Views */,
 				8337BAD61F40F53E002C1639 /* Assets.xcassets */,
 				8337BADB1F40F53E002C1639 /* Info.plist */,
+				83F22E551FD38384005777F7 /* awsconfiguration.json */,
 			);
 			path = Dropin;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 			files = (
 				834E8DF61F57344B007E3050 /* CreateName.storyboard in Resources */,
 				8337BADA1F40F53E002C1639 /* LaunchScreen.storyboard in Resources */,
+				83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */,
 				8337BAD71F40F53E002C1639 /* Assets.xcassets in Resources */,
 				832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */,
 				8337BAD51F40F53E002C1639 /* UserAuth.storyboard in Resources */,
