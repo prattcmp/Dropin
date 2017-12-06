@@ -55,6 +55,7 @@ func launchDropin(_ launchScreen: String = "") {
             center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
                 // Enable or disable features based on authorization.
             }
+            
             UIApplication.shared.registerForRemoteNotifications()
             
             appDelegate.window = UIWindow(frame: UIScreen.main.bounds)

@@ -102,12 +102,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"

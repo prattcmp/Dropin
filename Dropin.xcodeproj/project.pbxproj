@@ -41,6 +41,7 @@
 		839669AB1F7338DB000468DA /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839669AA1F7338DB000468DA /* FriendViewController.swift */; };
 		83A2FE301FB4E64F0072A819 /* PrettyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */; };
 		83A2FE331FB7FE840072A819 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE321FB7FE840072A819 /* PushToken.swift */; };
+		83CC9CF61FD7850200807C4C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC9CF51FD7850200807C4C /* DeviceType.swift */; };
 		83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F22E531FD0AE7F005777F7 /* UsableScreen.swift */; };
 		83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F22E551FD38384005777F7 /* awsconfiguration.json */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
@@ -111,6 +112,7 @@
 		83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyDistance.swift; sourceTree = "<group>"; };
 		83A2FE311FB66DD50072A819 /* Dropin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dropin.entitlements; sourceTree = "<group>"; };
 		83A2FE321FB7FE840072A819 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
+		83CC9CF51FD7850200807C4C /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		83F22E531FD0AE7F005777F7 /* UsableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableScreen.swift; sourceTree = "<group>"; };
 		83F22E551FD38384005777F7 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */,
 				832A95BB1FCCC6B2004A5810 /* AppReview.swift */,
 				83F22E531FD0AE7F005777F7 /* UsableScreen.swift */,
+				83CC9CF51FD7850200807C4C /* DeviceType.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -504,6 +507,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Dropin/Pods-Dropin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -511,6 +518,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSPinpoint.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -558,6 +569,7 @@
 				835D266D1F7DB0F1000BC98E /* User.swift in Sources */,
 				8337BAD01F40F53E002C1639 /* AppDelegate.swift in Sources */,
 				835D26691F799C41000BC98E /* SettingsView.swift in Sources */,
+				83CC9CF61FD7850200807C4C /* DeviceType.swift in Sources */,
 				83F42F331FA55CBD00313510 /* DropViewController.swift in Sources */,
 				830CB62C1FC3FE84000ABA0F /* MapSearchView.swift in Sources */,
 			);

@@ -9,4 +9,6 @@ target ‘Dropin’ do
     pod 'SwiftyJSON'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'AWSMobileClient'
+    pod 'AWSPinpoint'
 end

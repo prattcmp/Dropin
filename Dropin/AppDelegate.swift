@@ -10,12 +10,15 @@ import UIKit
 import Fabric
 import Crashlytics
 import UserNotifications
+import AWSMobileClient
+import AWSPinpoint
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var launchScreen: String! = ""
+    var pinpoint: AWSPinpoint?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
@@ -35,7 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         incrementReviewLaunches()
         launchByAuthStatus(launchScreen)
         
-        return true
+        pinpoint = AWSPinpoint(configuration:
+                AWSPinpointConfiguration.defaultPinpointConfiguration(launchOptions: launchOptions))
+
+        return AWSMobileClient.sharedInstance().interceptApplication(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken token: Data) {
@@ -43,8 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let tokenString = token.reduce("", {$0 + String(format: "%02X", $1)})
         
         UserDefaults.standard.set(tokenString, forKey: "device_push_token")
-        
         PushToken.add(token: tokenString, done: {_,_ in })
+        
+        pinpoint!.notificationManager.interceptDidRegisterForRemoteNotifications(
+            withDeviceToken: token)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent: UNNotification, withCompletionHandler: @escaping (UNNotificationPresentationOptions)->()) {
@@ -52,16 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         withCompletionHandler([.alert, .sound, .badge])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler: @escaping ()->()) {
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completionHandler:
+        @escaping (UIBackgroundFetchResult) -> Void) {
         
-        if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
-            if response.notification.request.content.body.contains("friend") {
-                launchScreen = "friends"
-            } else if response.notification.request.content.body.contains("sent you")  {
-                launchScreen = "drops"
-            }
-        }
-        withCompletionHandler()
+        pinpoint!.notificationManager.interceptDidReceiveRemoteNotification(
+            userInfo, fetchCompletionHandler: completionHandler)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

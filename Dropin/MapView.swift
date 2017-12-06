@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import SnapKit
 
-class MapView: UIView {
+class MapView: UIView {    
     var map: MKMapView!
 
     var swipeZone: UIView!
@@ -104,13 +104,17 @@ class MapView: UIView {
             make.centerY.equalTo(super.snp.centerY)
         }
         centerButton.snp.makeConstraints { (make) in
-            make.top.equalTo(super.snp.top).offset(20)
+            if UIDevice.current.iPhoneX {
+                make.top.equalTo(super.snp.top).offset(35)
+            } else {
+                make.top.equalTo(super.snp.top).offset(25)
+            }
             make.left.equalTo(super.snp.left).offset(10)
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
         searchButton.snp.makeConstraints { (make) in
-            make.top.equalTo(super.snp.top).offset(20)
+            make.top.equalTo(centerButton.snp.top)
             make.leading.equalTo(centerButton.snp.trailing).offset(20)
             make.width.equalTo(30)
             make.height.equalTo(30)

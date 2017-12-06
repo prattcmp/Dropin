@@ -66,7 +66,7 @@ class FriendView: UIView {
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
-            make.height.equalTo(55)
+            make.height.equalTo(60)
         }
         friendTable.snp.makeConstraints { (make) in
             make.top.equalTo(headerView.snp.bottom)
