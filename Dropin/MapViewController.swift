@@ -131,13 +131,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpInside), for: .touchUpInside)
     }
     
-    @objc func centerButtonPressed(_ sender: AnyObject?) {
+    @objc func centerButtonPressed(_ sender: AnyObject?, _ animated: Bool = true) {
         if let coords = map.userLocation.location?.coordinate {
-            print("Let")
             let coordRegion = MKCoordinateRegionMakeWithDistance(coords, 500, 500)
-            map.setRegion(coordRegion, animated: true)
+            map.setRegion(coordRegion, animated: animated)
         }
-        print("Happened")
     }
     
     @objc func searchButtonPressed(_ sender: AnyObject?) {
@@ -208,7 +206,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
-            centerButtonPressed(nil)
+            centerButtonPressed(nil, false)
             return nil
         }
         
