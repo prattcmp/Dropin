@@ -173,6 +173,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         sendDropTouchUpInside(nil)
     }
     
+    func zoomOnCoordinates(_ coordinates: CLLocationCoordinate2D, animated: Bool = true) {
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegion(center: coordinates, span: span)
+        
+        map.setRegion(region, animated: animated)
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // If the user hits "Send"
@@ -227,13 +234,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let pinToZoomOn = view.annotation
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegion(center: pinToZoomOn!.coordinate, span: span)
-        
-        map.setRegion(region, animated: true)
+        self.zoomOnCoordinates(pinToZoomOn!.coordinate)
         
         if let typedAnnotation = view.annotation as? TypedPointAnnotation {
-            navController.pushViewController(DropViewController(drop: self.drops[typedAnnotation.id]), animated: true)
+            navController.pushViewController(DropViewController(drop: self.drops[typedAnnotation.id], mapViewController: self), animated: true)
         }
     }
     

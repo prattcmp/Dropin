@@ -19,10 +19,12 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
 
     var directionsUpdated = false
     
-    init(drop: Drop) {
+    init(drop: Drop, mapViewController: MapViewController) {
         super.init(nibName: nil, bundle: nil)
         
         self.drop = drop
+        
+        mapViewController.zoomOnCoordinates(drop.coordinates, animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {

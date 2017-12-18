@@ -11,6 +11,8 @@ import MGSwipeTableCell
 import MapKit
 
 class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate, CLLocationManagerDelegate {
+    var mapViewController: MapViewController!
+    
     var myDropsView: MyDropsView!
 
     var drops = [Drop]()
@@ -18,6 +20,16 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var locManager: CLLocationManager!
     var userLocation: CLLocation!
+    
+    init(mapViewController: MapViewController) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.mapViewController = mapViewController
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidAppear(_  animated: Bool) {
         super.viewDidAppear(animated)
@@ -139,7 +151,7 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navController.pushViewController(DropViewController(drop: self.drops[indexPath.row]), animated: true)
+        navController.pushViewController(DropViewController(drop: self.drops[indexPath.row], mapViewController: self.mapViewController), animated: true)
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

@@ -44,8 +44,8 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         self.locManager.requestWhenInUseAuthorization()
         self.locManager.startUpdatingLocation()
         
-        myDropsViewController = MyDropsViewController()
         mapViewController = MapViewController()
+        myDropsViewController = MyDropsViewController(mapViewController: mapViewController)
         friendViewController = FriendViewController()
         
         self.pages.append(myDropsViewController)
