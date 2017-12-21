@@ -48,11 +48,15 @@ class MapSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         searchTextField = mapSearchView.searchTextField
         searchTextField.becomeFirstResponder()
         
-        // Show the table
         self.view.addSubview(mapSearchView)
         
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         mapSearchView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+    }
+    
+    @objc func goBack() {
+        searchTextField.text = ""
+        navController.popViewController(animated: true)
     }
     
     func updateSearchRegion(coordinates: CLLocationCoordinate2D) {
@@ -111,10 +115,4 @@ class MapSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    @objc func goBack() {
-        searchTextField.text = ""
-        navController.popViewController(animated: true)
-    }
-    
 }
