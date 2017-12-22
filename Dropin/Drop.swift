@@ -9,6 +9,7 @@
 import Alamofire
 import SwiftyJSON
 import MapKit
+import UserNotifications
 
 struct DropDateFormatter {
     static func stringToDate(_ string: String) -> Date {
@@ -16,6 +17,28 @@ struct DropDateFormatter {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         return dateFormatter.date(from: string) as Date!
+    }
+}
+
+struct DropNotification {
+    static func create(_ drop: Drop) {
+        let content = UNMutableNotificationContent()
+        content.userInfo["locked-drop-id"] = drop.id
+        content.body = "from " + drop.from.name + " is unlocked"
+        content.sound = UNNotificationSound.default()
+        
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: drop.locked_until)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                    repeats: false)
+        
+        let request = UNNotificationRequest(identifier: String(drop.id),
+                                            content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                print("There was a problem creating a notification for a locked drop.")
+                print("Locked drop error: " + error.localizedDescription)
+            }
+        })
     }
 }
 
@@ -52,6 +75,7 @@ class Drop: Equatable {
         self.locked_until = locked_until
         self.expires_at = expires_at
         self.created_at = created_at
+        
         self.locked = (locked_until.timeIntervalSinceNow.sign == .plus)
     }
     
@@ -238,16 +262,22 @@ class Drop: Equatable {
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
                                     
-                                    my_drops.append(Drop(id: id,
-                                                         from: User(id: from_id,
-                                                                    username: from_username,
-                                                                    name: from_name),
-                                                         to: currentUser,
-                                                         text: text,
-                                                         coordinates: clCoordinates,
-                                                         locked_until: locked,
-                                                         expires_at: expires,
-                                                         created_at: created))
+                                    let drop = Drop(id: id,
+                                         from: User(id: from_id,
+                                                    username: from_username,
+                                                    name: from_name),
+                                         to: currentUser,
+                                         text: text,
+                                         coordinates: clCoordinates,
+                                         locked_until: locked,
+                                         expires_at: expires,
+                                         created_at: created)
+                                    
+                                    my_drops.append(drop)
+                                    // Only create the notification if the drop is locked
+                                    if (locked.timeIntervalSinceNow.sign == .plus) {
+                                        DropNotification.create(drop)
+                                    }
                                 }
                             }
                             done(true, message, my_drops)
