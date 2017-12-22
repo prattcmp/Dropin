@@ -10,6 +10,8 @@
 		420F5A179093F66F87C30810 /* Pods_Dropin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBBB2450FAC9F7942EDA513 /* Pods_Dropin.framework */; };
 		830CB6281FC3E3F7000ABA0F /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */; };
 		830CB62C1FC3FE84000ABA0F /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CB62B1FC3FE84000ABA0F /* MapSearchView.swift */; };
+		831BA7591FEB86B90009CE56 /* LockPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BA7581FEB86B90009CE56 /* LockPickerViewController.swift */; };
+		831BA75B1FEB86C40009CE56 /* LockPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831BA75A1FEB86C40009CE56 /* LockPickerView.swift */; };
 		832A95BA1FCC7BA2004A5810 /* PointCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A95B91FCC7BA2004A5810 /* PointCountView.swift */; };
 		832A95BC1FCCC6B2004A5810 /* AppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A95BB1FCCC6B2004A5810 /* AppReview.swift */; };
 		832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */; };
@@ -74,6 +76,8 @@
 		457819D515D7C57DAF1599AE /* Pods-Dropin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dropin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dropin/Pods-Dropin.release.xcconfig"; sourceTree = "<group>"; };
 		830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		830CB62B1FC3FE84000ABA0F /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapSearchView.swift; path = /Users/Chris/Documents/OneDrive/Code/Dropin/Dropin/MapSearchView.swift; sourceTree = "<absolute>"; };
+		831BA7581FEB86B90009CE56 /* LockPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockPickerViewController.swift; sourceTree = "<group>"; };
+		831BA75A1FEB86C40009CE56 /* LockPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockPickerView.swift; sourceTree = "<group>"; };
 		832A95B91FCC7BA2004A5810 /* PointCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCountView.swift; sourceTree = "<group>"; };
 		832A95BB1FCCC6B2004A5810 /* AppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReview.swift; sourceTree = "<group>"; };
 		832AF90E1F8FF5640024BE26 /* SendDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDropViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 				83F42F2C1FA2B14E00313510 /* MyDropsView.swift */,
 				83F42F301FA55CA200313510 /* DropView.swift */,
 				832A95B91FCC7BA2004A5810 /* PointCountView.swift */,
+				831BA75A1FEB86C40009CE56 /* LockPickerView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				83F42F2A1FA2B0B700313510 /* MyDropsViewController.swift */,
 				83F42F321FA55CBD00313510 /* DropViewController.swift */,
 				830CB6271FC3E3F7000ABA0F /* MapSearchViewController.swift */,
+				831BA7581FEB86B90009CE56 /* LockPickerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -381,6 +387,9 @@
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -542,6 +551,7 @@
 				836777521FB12D8D006DB1A3 /* AnnotationType.swift in Sources */,
 				834E8DF81F5E52C9007E3050 /* LoginViewController.swift in Sources */,
 				83546F6A1F66E32900492BB2 /* MapView.swift in Sources */,
+				831BA75B1FEB86C40009CE56 /* LockPickerView.swift in Sources */,
 				832AF9111F8FF57E0024BE26 /* SendDropView.swift in Sources */,
 				834E8DFE1F5F84BB007E3050 /* AuthHandler.swift in Sources */,
 				83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */,
@@ -552,6 +562,7 @@
 				83F42F311FA55CA200313510 /* DropView.swift in Sources */,
 				832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */,
 				8337BB061F41647F002C1639 /* SignUpViewController.swift in Sources */,
+				831BA7591FEB86B90009CE56 /* LockPickerViewController.swift in Sources */,
 				8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */,
 				8337BB081F439D99002C1639 /* Extensions.swift in Sources */,
 				835D26671F75A061000BC98E /* DropinViewController.swift in Sources */,

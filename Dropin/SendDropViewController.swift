@@ -18,13 +18,15 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     
     var coordinates: CLLocationCoordinate2D!
     var text: String!
+    var lockDuration: Int!
     
-    init(currentUser: User, coordinates: CLLocationCoordinate2D, text: String) {
+    init(currentUser: User, coordinates: CLLocationCoordinate2D, text: String, lockDuration: Int) {
         super.init(nibName: nil, bundle: nil)
         
         self.friends = currentUser.friends
         self.coordinates = coordinates
         self.text = text
+        self.lockDuration = lockDuration
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,7 +85,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
         
         navController.popViewController(animated: true)
         
-        Drop.send(to: friendsSelected, coordinates: self.coordinates, text: self.text) { (_ isSuccess: Bool, _ message: String)
+        Drop.send(to: friendsSelected, coordinates: self.coordinates, text: self.text, lockDuration: self.lockDuration) { (_ isSuccess: Bool, _ message: String)
             in
             if (!isSuccess) {
                 let alertController = UIAlertController(title: "Uh oh", message: message != "" ? message : "Something went wrong. Try again later.", preferredStyle: .alert)

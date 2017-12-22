@@ -10,15 +10,28 @@ import Alamofire
 import SwiftyJSON
 import MapKit
 
+struct DropDateFormatter {
+    static func stringToDate(_ string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: string) as Date!
+    }
+}
+
 class Drop: Equatable {
     var id: Int!
     var coordinates: CLLocationCoordinate2D!
     var text: String!
     
+    var locked_until: Date!
     var expires_at: Date!
     var created_at: Date!
+    
     var from: User!
     var to: User!
+    
+    var locked: Bool!
     
     init(empty: Bool) {
         self.id = 0
@@ -30,21 +43,23 @@ class Drop: Equatable {
         self.to = User(empty: true)
     }
     
-    init(id: Int, from: User, to: User, text: String, coordinates: CLLocationCoordinate2D, expires_at: Date, created_at: Date) {
+    init(id: Int, from: User, to: User, text: String, coordinates: CLLocationCoordinate2D, locked_until: Date, expires_at: Date, created_at: Date) {
         self.id = id
         self.from = from
         self.to = to
         self.text = text
         self.coordinates = coordinates
+        self.locked_until = locked_until
         self.expires_at = expires_at
         self.created_at = created_at
+        self.locked = (locked_until.timeIntervalSinceNow.sign == .plus)
     }
     
     static func ==(lhs: Drop, rhs: Drop) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
     
-    static func send(to: [User], coordinates: CLLocationCoordinate2D, text: String, done: @escaping ((_ isSuccess: Bool, _ message: String) -> Void)) {
+    static func send(to: [User], coordinates: CLLocationCoordinate2D, text: String, lockDuration: Int, done: @escaping ((_ isSuccess: Bool, _ message: String) -> Void)) {
         let (username, auth_token) = fetchAuth()
         let coordinates = String(coordinates.latitude) + "," + String(coordinates.longitude)
         let friends = try? JSONSerialization.data(withJSONObject: to.map{ $0.toDict() }, options: [])
@@ -54,7 +69,8 @@ class Drop: Equatable {
             "token": auth_token,
             "friends": String(data: friends!, encoding: .ascii)!,
             "coordinates": coordinates,
-            "text": text
+            "text": text,
+            "lockDuration": lockDuration
         ]
         
         Alamofire.request(send_drops, method: .post, parameters: params).validate().responseJSON {
@@ -90,13 +106,13 @@ class Drop: Equatable {
                         if let id = json["to_id"].int,
                             let text = json["text"].string,
                             let coordinates = json["coordinates"].string,
+                            let locked_until = json["locked_until"].string,
                             let expires_at = json["expires_at"].string,
                             let created_at = json["created_at"].string {
                             
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                            let expires = dateFormatter.date(from: expires_at) as Date!
-                            let created = dateFormatter.date(from: created_at) as Date!
+                            let locked = DropDateFormatter.stringToDate(locked_until)
+                            let expires = DropDateFormatter.stringToDate(expires_at)
+                            let created = DropDateFormatter.stringToDate(created_at)
                             
                             let coord_array = coordinates.components(separatedBy: ",")
                             let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
@@ -106,8 +122,9 @@ class Drop: Equatable {
                                                      to: User(id: id),
                                                      text: text,
                                                      coordinates: clCoordinates,
-                                                     expires_at: expires!,
-                                                     created_at: created!))
+                                                     locked_until: locked,
+                                                     expires_at: expires,
+                                                     created_at: created))
                         }
                     } else {
                         done(false, message, Drop(empty: true))
@@ -147,14 +164,13 @@ class Drop: Equatable {
                                     let to_name = drop["name"].string,
                                     let text = drop["text"].string,
                                     let coordinates = drop["coordinates"].string,
+                                    let locked_until = drop["locked_until"].string,
                                     let expires_at = drop["expires_at"].string,
                                     let created_at = drop["created_at"].string {
                                     
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                    dateFormatter.timeZone = TimeZone(identifier: "UTC")!
-                                    let expires = dateFormatter.date(from: expires_at) as Date!
-                                    let created = dateFormatter.date(from: created_at) as Date!
+                                    let locked = DropDateFormatter.stringToDate(locked_until)
+                                    let expires = DropDateFormatter.stringToDate(expires_at)
+                                    let created = DropDateFormatter.stringToDate(created_at)
                                     
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
@@ -166,8 +182,9 @@ class Drop: Equatable {
                                                                   name: to_name),
                                                          text: text,
                                                          coordinates: clCoordinates,
-                                                         expires_at: expires!,
-                                                         created_at: created!)
+                                                         locked_until: locked,
+                                                         expires_at: expires,
+                                                         created_at: created)
                                     )
                                 }
                             }
@@ -210,14 +227,13 @@ class Drop: Equatable {
                                     let from_name = drop["name"].string,
                                     let text = drop["text"].string,
                                     let coordinates = drop["coordinates"].string,
+                                    let locked_until = drop["locked_until"].string,
                                     let expires_at = drop["expires_at"].string,
                                     let created_at = drop["created_at"].string {
                                     
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                    dateFormatter.timeZone = TimeZone(identifier: "UTC")!
-                                    let expires = dateFormatter.date(from: expires_at) as Date!
-                                    let created = dateFormatter.date(from: created_at) as Date!
+                                    let locked = DropDateFormatter.stringToDate(locked_until)
+                                    let expires = DropDateFormatter.stringToDate(expires_at)
+                                    let created = DropDateFormatter.stringToDate(created_at)
                                     
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
@@ -229,8 +245,9 @@ class Drop: Equatable {
                                                          to: currentUser,
                                                          text: text,
                                                          coordinates: clCoordinates,
-                                                         expires_at: expires!,
-                                                         created_at: created!))
+                                                         locked_until: locked,
+                                                         expires_at: expires,
+                                                         created_at: created))
                                 }
                             }
                             done(true, message, my_drops)

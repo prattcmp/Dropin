@@ -22,6 +22,9 @@ class MapView: UIView {
     var searchImage: UIImage!
     var searchButton: UIButton!
     
+    var lockImage: UIImage!
+    var lockButton: UIButton!
+    
     var sendDropView: UIImageView!
     var sendDropRing: UIImage!
     
@@ -43,6 +46,7 @@ class MapView: UIView {
         map.mapType = MKMapType.hybrid
         map.isZoomEnabled = true
         map.isScrollEnabled = true
+        map.showsCompass = false
         map.center = self.center
         self.addSubview(map)
         
@@ -55,6 +59,11 @@ class MapView: UIView {
         searchButton = UIButton(type: .custom)
         searchButton.setImage(searchImage, for: .normal)
         self.addSubview(searchButton)
+        
+        lockImage = UIImage(named: "lock")
+        lockButton = UIButton(type: .custom)
+        lockButton.setImage(lockImage, for: .normal)
+        self.addSubview(lockButton)
         
         sendDropRing = UIImage(named: "send-drop-ring")!
         sendDropView = UIImageView(image: sendDropRing)
@@ -119,6 +128,12 @@ class MapView: UIView {
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
+        lockButton.snp.makeConstraints { (make) in
+            make.top.equalTo(centerButton.snp.top)
+            make.right.equalTo(super.snp.right).offset(-10)
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
         swipeZone.snp.makeConstraints { (make) in
             make.top.equalTo(toDropsButton.snp.top).offset(-30)
             make.bottom.equalTo(super.snp.bottom)
@@ -146,6 +161,26 @@ class MapView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
+    }
+    
+    func showMapIcons() {
+        centerButton.isHidden = false
+        searchButton.isHidden = false
+        lockButton.isHidden = false
+        sendDropView.isHidden = false
+        sendDropButton.isHidden = false
+        toDropsButton.isHidden = false
+        toFriendsButton.isHidden = false
+    }
+    
+    func hideMapIcons() {
+        centerButton.isHidden = true
+        searchButton.isHidden = true
+        lockButton.isHidden = true
+        sendDropView.isHidden = true
+        sendDropButton.isHidden = true
+        toDropsButton.isHidden = true
+        toFriendsButton.isHidden = true
     }
     
     func shrinkSendDropRing() {

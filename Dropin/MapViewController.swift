@@ -11,7 +11,7 @@ import CoreData
 import MapKit
 import SnapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextViewDelegate, MapSearchViewControllerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextViewDelegate, MapSearchViewControllerDelegate, LockPickerViewControllerDelegate {
     var pageIndex: Int!
     
     var mapView: MapView!
@@ -20,7 +20,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var drops = [Drop]()
     
+    var lockDuration: Int! = 0
+    
     var mapSearchViewController: MapSearchViewController!
+    var lockPickerViewController: LockPickerViewController!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -53,6 +56,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         if (isSuccess) {
                             DispatchQueue.main.async {
                                 for drop in toDrops {
+                                    if drop.locked == true {
+                                        continue
+                                    }
+                                    
                                     let annotation = TypedPointAnnotation()
                                     annotation.type = "drop-blue"
                                     annotation.coordinate = drop.coordinates
@@ -73,6 +80,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             
                             DispatchQueue.main.async {
                                 for drop in fromDrops {
+                                    
                                     let annotation = TypedPointAnnotation()
                                     annotation.type = "drop-green"
                                     annotation.coordinate = drop.coordinates
@@ -112,6 +120,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapSearchViewController = MapSearchViewController()
         mapSearchViewController.delegate = self
         
+        lockPickerViewController = LockPickerViewController()
+        lockPickerViewController.delegate = self
+        self.addChildViewController(lockPickerViewController)
+        
         map.delegate = self
         textField.delegate = self
         
@@ -126,6 +138,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
         mapView.searchButton?.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        mapView.lockButton.addTarget(self, action: #selector(lockButtonPressed), for: .touchUpInside)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchDown), for: .touchDown)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpOutside), for: .touchUpOutside)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpInside), for: .touchUpInside)
@@ -142,6 +155,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapSearchViewController.updateSearchRegion(coordinates: map.centerCoordinate)
         
         navController.pushViewController(mapSearchViewController, animated: true)
+    }
+    
+    @objc func lockButtonPressed(_ sender: AnyObject?) {
+        showLockPicker()
     }
     
     @objc func sendDropTouchDown(_ sender: AnyObject?) {
@@ -164,6 +181,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.growShrinkSendDropRing()
         mapView.endEditing(true)
         textField.isHidden = true
+    }
+    
+    func showLockPicker() {
+        self.mapView.addSubview(self.lockPickerViewController.view)
+        self.mapView.hideMapIcons()
+    }
+    
+    func hideLockPicker(sender: LockPickerViewController, lockDuration: Int) {
+        self.lockDuration = lockDuration
+        
+        sender.view.removeFromSuperview()
+        self.mapView.showMapIcons()
     }
     
     func searchCompleted(coordinates: CLLocationCoordinate2D) {
@@ -189,7 +218,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             textField.resignFirstResponder()
             textField.isHidden = true
             
-            navController.pushViewController(SendDropViewController(currentUser: currentUser, coordinates: map.centerCoordinate, text: textView.text ?? ""), animated: true)
+            navController.pushViewController(SendDropViewController(currentUser: currentUser,
+                                                                    coordinates: map.centerCoordinate,
+                                                                    text: textView.text ?? "",
+                                                                    lockDuration: self.lockDuration), animated: true)
             
             return false
         }

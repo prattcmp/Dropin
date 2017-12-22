@@ -114,19 +114,27 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var identifier = "received-box"
-        var name = self.drops[indexPath.row].from!.name
+        let drop = self.drops[indexPath.row]
         
-        if self.drops[indexPath.row].from?.username == currentUser.username {
+        var identifier = "received-box"
+        var name = drop.from!.name
+        
+        if drop.locked == true {
+            identifier = "lock-red"
+        }
+        if drop.from?.username == currentUser.username {
             identifier = "sent-arrow"
-            name = self.drops[indexPath.row].to!.name
+            if drop.locked == true {
+                identifier = "sent-arrow-red"
+            }
+            name = drop.to!.name
         }
         
         let cell: UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
         
         cell.textLabel!.text = name
         cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 15)
-        cell.detailTextLabel!.text = self.drops[indexPath.row].expires_at.timeAgoSinceNow()
+        cell.detailTextLabel!.text = drop.expires_at.timeAgoSinceNow()
         cell.detailTextLabel!.alpha = 0.5
         
         cell.imageView?.image = UIImage(named: identifier)
@@ -151,7 +159,13 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navController.pushViewController(DropViewController(drop: self.drops[indexPath.row], mapViewController: self.mapViewController), animated: true)
+        let drop = self.drops[indexPath.row]
+        
+        if (drop.locked && drop.from?.username != currentUser.username) {
+            myDropsView.dropTable.deselectRow(at: indexPath, animated: true)
+        } else {
+            navController.pushViewController(DropViewController(drop: drop, mapViewController: self.mapViewController), animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
