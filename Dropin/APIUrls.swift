@@ -24,6 +24,7 @@ let get_friends = base_url + "user/friends/get"
 
 // Drops
 let send_drops = base_url + "drops/send"
+let mark_drop_read = base_url + "drops/read"
 let get_drops_from = base_url + "drops/get/from"
 let get_drops_to = base_url + "drops/get/to"
 let get_drop_by_id = base_url + "drops/get/id"

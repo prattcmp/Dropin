@@ -50,11 +50,13 @@ class Drop: Equatable {
     var locked_until: Date!
     var expires_at: Date!
     var created_at: Date!
+    var read_at: Date!
     
     var from: User!
     var to: User!
     
     var locked: Bool!
+    var read: Bool!
     
     init(empty: Bool) {
         self.id = 0
@@ -66,7 +68,7 @@ class Drop: Equatable {
         self.to = User(empty: true)
     }
     
-    init(id: Int, from: User, to: User, text: String, coordinates: CLLocationCoordinate2D, locked_until: Date, expires_at: Date, created_at: Date) {
+    init(id: Int, from: User, to: User, text: String, coordinates: CLLocationCoordinate2D, locked_until: Date, expires_at: Date, created_at: Date, read_at: Date) {
         self.id = id
         self.from = from
         self.to = to
@@ -75,8 +77,35 @@ class Drop: Equatable {
         self.locked_until = locked_until
         self.expires_at = expires_at
         self.created_at = created_at
+        self.read_at = read_at
         
+        self.read = (Date(timeIntervalSinceReferenceDate: 5) < read_at)
         self.locked = (locked_until.timeIntervalSinceNow.sign == .plus)
+    }
+    
+    func markRead(done: @escaping ((_ isSuccess: Bool, _ message: String) -> Void)) {
+        let (username, auth_token) = fetchAuth()
+        
+        let params: Parameters = [
+            "username": username,
+            "token": auth_token,
+            "dropID": self.id
+        ]
+        
+        Alamofire.request(mark_drop_read, method: .post, parameters: params).validate().responseJSON {
+            response in
+            if let data = response.data {
+                let json = try! JSON(data: data)
+                if let result = json["result"].int, let message = json["message"].string {
+                    if result == 1 {
+                        self.read = true
+                        done(true, message)
+                    } else {
+                        done(false, message)
+                    }
+                }
+            }
+        }
     }
     
     static func ==(lhs: Drop, rhs: Drop) -> Bool {
@@ -132,11 +161,13 @@ class Drop: Equatable {
                             let coordinates = json["coordinates"].string,
                             let locked_until = json["locked_until"].string,
                             let expires_at = json["expires_at"].string,
-                            let created_at = json["created_at"].string {
+                            let created_at = json["created_at"].string,
+                            let read_at = json["read_at"].string {
                             
                             let locked = DropDateFormatter.stringToDate(locked_until)
                             let expires = DropDateFormatter.stringToDate(expires_at)
                             let created = DropDateFormatter.stringToDate(created_at)
+                            let read = DropDateFormatter.stringToDate(read_at)
                             
                             let coord_array = coordinates.components(separatedBy: ",")
                             let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
@@ -148,7 +179,8 @@ class Drop: Equatable {
                                                      coordinates: clCoordinates,
                                                      locked_until: locked,
                                                      expires_at: expires,
-                                                     created_at: created))
+                                                     created_at: created,
+                                                     read_at: read))
                         }
                     } else {
                         done(false, message, Drop(empty: true))
@@ -190,11 +222,13 @@ class Drop: Equatable {
                                     let coordinates = drop["coordinates"].string,
                                     let locked_until = drop["locked_until"].string,
                                     let expires_at = drop["expires_at"].string,
-                                    let created_at = drop["created_at"].string {
+                                    let created_at = drop["created_at"].string,
+                                    let read_at = drop["read_at"].string {
                                     
                                     let locked = DropDateFormatter.stringToDate(locked_until)
                                     let expires = DropDateFormatter.stringToDate(expires_at)
                                     let created = DropDateFormatter.stringToDate(created_at)
+                                    let read = DropDateFormatter.stringToDate(read_at)
                                     
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
@@ -208,7 +242,8 @@ class Drop: Equatable {
                                                          coordinates: clCoordinates,
                                                          locked_until: locked,
                                                          expires_at: expires,
-                                                         created_at: created)
+                                                         created_at: created,
+                                                         read_at: read)
                                     )
                                 }
                             }
@@ -246,32 +281,36 @@ class Drop: Equatable {
                         var my_drops = [Drop]()
                         if let drops = json["drops"].array {
                             drops.forEach { drop in
-                                if let from_id = drop["user_id"].int,
+                                if let id = drop["id"].int,
+                                    let from_id = drop["user_id"].int,
                                     let from_username = drop["username"].string,
                                     let from_name = drop["name"].string,
                                     let text = drop["text"].string,
                                     let coordinates = drop["coordinates"].string,
                                     let locked_until = drop["locked_until"].string,
                                     let expires_at = drop["expires_at"].string,
-                                    let created_at = drop["created_at"].string {
+                                    let created_at = drop["created_at"].string,
+                                    let read_at = drop["read_at"].string {
                                     
                                     let locked = DropDateFormatter.stringToDate(locked_until)
                                     let expires = DropDateFormatter.stringToDate(expires_at)
                                     let created = DropDateFormatter.stringToDate(created_at)
+                                    let read = DropDateFormatter.stringToDate(read_at)
                                     
                                     let coord_array = coordinates.components(separatedBy: ",")
                                     let clCoordinates = CLLocationCoordinate2DMake(Double(coord_array[0])!, Double(coord_array[1])!)
                                     
                                     let drop = Drop(id: id,
-                                         from: User(id: from_id,
-                                                    username: from_username,
-                                                    name: from_name),
-                                         to: currentUser,
-                                         text: text,
-                                         coordinates: clCoordinates,
-                                         locked_until: locked,
-                                         expires_at: expires,
-                                         created_at: created)
+                                                    from: User(id: from_id,
+                                                               username: from_username,
+                                                               name: from_name),
+                                                    to: currentUser,
+                                                    text: text,
+                                                    coordinates: clCoordinates,
+                                                    locked_until: locked,
+                                                    expires_at: expires,
+                                                    created_at: created,
+                                                    read_at: read)
                                     
                                     my_drops.append(drop)
                                     // Only create the notification if the drop is locked

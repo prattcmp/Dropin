@@ -282,17 +282,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
             
             // Check if current annotation is inside visible map rect, else go to next one
-            let point: MKMapPoint = MKMapPointForCoordinate(view.annotation!.coordinate);
-            if (!MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
-                continue;
+            if let annotation = view.annotation {
+                let point: MKMapPoint = MKMapPointForCoordinate(annotation.coordinate)
+                
+                if (!MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
+                    continue;
+                }
+                
+                // Animate drop
+                let delay = 0.1 * Double(i)
+                view.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                UIView.animate(withDuration: 0.5, delay: delay, animations: {() -> Void in
+                    view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                })
             }
-            
-            // Animate drop
-            let delay = 0.1 * Double(i)
-            view.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-            UIView.animate(withDuration: 0.5, delay: delay, animations: {() -> Void in
-                view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            })
         }
     }
         

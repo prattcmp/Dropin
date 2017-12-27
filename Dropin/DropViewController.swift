@@ -31,6 +31,18 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(self.drop.read == false && drop.from?.username != currentUser.username) {
+            self.drop.markRead(done: { (isSuccess, message) in
+                if(!isSuccess) {
+                    print("There was a problem marking the drop as read.")
+                }
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

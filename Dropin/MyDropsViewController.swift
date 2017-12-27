@@ -119,11 +119,18 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         var identifier = "received-box"
         var name = drop.from!.name
         
+        if drop.read == true {
+            identifier = "read-received-box"
+        }
         if drop.locked == true {
             identifier = "lock-red"
         }
         if drop.from?.username == currentUser.username {
             identifier = "sent-arrow"
+            
+            if drop.read == true {
+                identifier = "read-sent-arrow"
+            }
             if drop.locked == true {
                 identifier = "sent-arrow-red"
             }
