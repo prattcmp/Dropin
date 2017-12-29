@@ -139,9 +139,16 @@ class MyDropsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell: UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
         
+        var detailText = String()
+        if drop.locked == false {
+            detailText = "gone in " + drop.expires_at.timeAgoSinceNow(useNumericDates: true)
+        } else {
+            detailText = "locked for " + drop.locked_until.timeAgoSinceNow(useNumericDates: true)
+        }
+        
         cell.textLabel!.text = name
         cell.textLabel!.font = UIFont(name: cell.textLabel!.font.fontName, size: 15)
-        cell.detailTextLabel!.text = drop.expires_at.timeAgoSinceNow()
+        cell.detailTextLabel!.text = detailText
         cell.detailTextLabel!.alpha = 0.5
         
         cell.imageView?.image = UIImage(named: identifier)

@@ -47,20 +47,20 @@ struct DateComponentUnitFormatter {
                                 pastSingular: "yesterday"),
         
         DateComponentUnitFormat(unit: .hour,
-                                singularUnit: "hour",
-                                pluralUnit: "hours",
-                                futureSingular: "in an hour",
-                                pastSingular: "an hour ago"),
+                                singularUnit: "hr",
+                                pluralUnit: "hrs",
+                                futureSingular: "an hr",
+                                pastSingular: "an hr ago"),
         
         DateComponentUnitFormat(unit: .minute,
-                                singularUnit: "minute",
-                                pluralUnit: "minutes",
-                                futureSingular: "in a minute",
-                                pastSingular: "a minute ago"),
+                                singularUnit: "min",
+                                pluralUnit: "mins",
+                                futureSingular: "a min",
+                                pastSingular: "a min ago"),
         
         DateComponentUnitFormat(unit: .second,
-                                singularUnit: "second",
-                                pluralUnit: "seconds",
+                                singularUnit: "sec",
+                                pluralUnit: "secs",
                                 futureSingular: "just now",
                                 pastSingular: "just now"),
         
@@ -96,9 +96,9 @@ struct DateComponentUnitFormatter {
             case 1:
                 return useNumericDates ? "\(unitValue) \(format.singularUnit) ago" : format.pastSingular
             case -1:
-                return useNumericDates ? "gone in \(-unitValue) \(format.singularUnit)" : "gone " + format.futureSingular
+                return useNumericDates ? "\(-unitValue) \(format.singularUnit)" : format.futureSingular
             case Int.min ..< -1:
-                return "gone in \(-unitValue) \(format.pluralUnit)"
+                return "\(-unitValue) \(format.pluralUnit)"
             default:
                 break
             }
