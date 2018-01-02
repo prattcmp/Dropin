@@ -47,6 +47,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         var success = false
         
+        textField.text = "" // Reset the text field text
+        
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
                 while (success == false) {
@@ -175,7 +177,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @objc func sendDropTouchUpInside(_ sender: AnyObject?) {
         mapView.shrinkSendDropRing()
-        textField.text = ""
         resizeTextView(self.textField)
         textField.isHidden = false
         textField.becomeFirstResponder()
