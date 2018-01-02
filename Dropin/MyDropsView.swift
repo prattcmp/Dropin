@@ -31,7 +31,7 @@ class MyDropsView: UIView {
         self.addSubview(dropTable)
         
         headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 55)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
         
         headerLabel = UILabel()
@@ -55,7 +55,7 @@ class MyDropsView: UIView {
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
-            make.height.equalTo(60)
+            make.height.equalTo(headerHeight)
         }
         dropTable.snp.makeConstraints { (make) in
             make.top.equalTo(headerView.snp.bottom)

@@ -114,9 +114,9 @@ class MapView: UIView {
         }
         centerButton.snp.makeConstraints { (make) in
             if UIDevice.current.iPhoneX {
-                make.top.equalTo(super.snp.top).offset(35)
+                make.top.equalTo(super.snp.top).offset(45)
             } else {
-                make.top.equalTo(super.snp.top).offset(25)
+                make.top.equalTo(super.snp.top).offset(30)
             }
             make.left.equalTo(super.snp.left).offset(10)
             make.width.equalTo(30)
@@ -162,7 +162,7 @@ class MapView: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
-    
+
     func showMapIcons() {
         centerButton.isHidden = false
         searchButton.isHidden = false

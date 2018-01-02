@@ -11,4 +11,5 @@ target ‘Dropin’ do
     pod 'Crashlytics'
     pod 'AWSMobileClient'
     pod 'AWSPinpoint'
+    pod 'PMAlertController', :git => 'https://github.com/prattcmp/PMAlertController'
 end

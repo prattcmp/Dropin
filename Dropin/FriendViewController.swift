@@ -9,6 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 import SnapKit
+import PMAlertController
 
 class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MGSwipeTableCellDelegate {
     var friendView: FriendView!
@@ -129,28 +130,29 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let alert = UIAlertController(title: "Add a friend",
-                                          message: "Enter their username and press \"Add\"",
-                                          preferredStyle: .alert)
             
-            let addAction = UIAlertAction(title: "Add", style: .default) { (_) in
-                if (alert.textFields?[0].text) != nil {
-                    self.addFriend(username: (alert.textFields?[0].text)!)
-                } else {
-                    // user did not fill field
+            let alertVC = PMAlertController(title: "Add a friend", description: "Enter their username and press \"Add\"", image: nil, style: .alert)
+            
+            alertVC.addTextField { (textField) in
+                textField?.placeholder = "@username"
+                textField?.autocapitalizationType = .none
+                textField?.autocorrectionType = .no
+            }
+            alertVC.addAction(PMAlertAction(title: "Cancel", style: .cancel, action: nil))
+            alertVC.addAction(PMAlertAction(title: "Add", style: .default, action: { () in
+                if let textField = alertVC.textFields.first {
+                    let text = textField.text
+                    
+                    if (text) != nil {
+                        self.addFriend(username: (text)!)
+                    } else {
+                        // user did not fill field
+                    }
                 }
-            }
+            }))
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+            self.present(alertVC, animated: true, completion: nil)
             
-            alert.addTextField { (textField) in
-                textField.placeholder = "@dropin123"
-            }
-            
-            alert.addAction(addAction)
-            alert.addAction(cancelAction)
-            
-            self.present(alert, animated: true, completion: nil)
             return
         }
     }

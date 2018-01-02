@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import PMAlertController
 
 class DropinViewController: UIViewController, UIPageViewControllerDataSource, UIScrollViewDelegate, CLLocationManagerDelegate {
     var pages = [UIViewController]()
@@ -64,11 +65,33 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         mapViewController.mapView?.toDropsButton?.addTarget(self, action: #selector(showDropsPage), for: .touchUpInside)
         mapViewController.mapView?.toFriendsButton?.addTarget(self, action: #selector(showFriendsPage), for: .touchUpInside)
+        
+        newUserHelpers()
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         scrollView.bounces = (scrollView.contentOffset.y > 100);
+    }
+    
+    func newUserHelpers() {
+        let totalLaunches = UserDefaults().value(forKey: "totalLaunches") as? Int ?? 0
+        
+        if currentUser.friends.count == 0 {
+            let alertVC = PMAlertController(title: "Add friends", description: "To start sending drops, you have to add some friends.", image: nil, style: .alert)
+            
+            alertVC.addAction(PMAlertAction(title: "Okay", style: .default, action: { () in
+                self.showFriendsPage()
+            }))
+            
+            self.present(alertVC, animated: true, completion: nil)
+        } else if totalLaunches == 1 {
+            let alertVC = PMAlertController(title: "Sending a drop", description: "To send a drop, move the white cursor over your favorite location and hit the green button.", image: UIImage(named: "send-drop-button"), style: .alert)
+            
+            alertVC.addAction(PMAlertAction(title: "Okay", style: .default, action: nil))
+            
+            self.present(alertVC, animated: true, completion: nil)
+        }
     }
     
     func setStartingPageController() {

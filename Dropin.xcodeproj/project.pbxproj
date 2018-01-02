@@ -44,6 +44,7 @@
 		83A2FE301FB4E64F0072A819 /* PrettyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE2F1FB4E64F0072A819 /* PrettyDistance.swift */; };
 		83A2FE331FB7FE840072A819 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE321FB7FE840072A819 /* PushToken.swift */; };
 		83CC9CF61FD7850200807C4C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC9CF51FD7850200807C4C /* DeviceType.swift */; };
+		83D508921FFB5BCD00AD9ED9 /* CustomStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */; };
 		83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F22E531FD0AE7F005777F7 /* UsableScreen.swift */; };
 		83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F22E551FD38384005777F7 /* awsconfiguration.json */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
@@ -117,6 +118,7 @@
 		83A2FE311FB66DD50072A819 /* Dropin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dropin.entitlements; sourceTree = "<group>"; };
 		83A2FE321FB7FE840072A819 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		83CC9CF51FD7850200807C4C /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
+		83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyles.swift; sourceTree = "<group>"; };
 		83F22E531FD0AE7F005777F7 /* UsableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableScreen.swift; sourceTree = "<group>"; };
 		83F22E551FD38384005777F7 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				832A95BB1FCCC6B2004A5810 /* AppReview.swift */,
 				83F22E531FD0AE7F005777F7 /* UsableScreen.swift */,
 				83CC9CF51FD7850200807C4C /* DeviceType.swift */,
+				83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/PMAlertController/PMAlertController.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -533,6 +537,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSPinpoint.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMAlertController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -564,6 +569,7 @@
 				8337BB061F41647F002C1639 /* SignUpViewController.swift in Sources */,
 				831BA7591FEB86B90009CE56 /* LockPickerViewController.swift in Sources */,
 				8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */,
+				83D508921FFB5BCD00AD9ED9 /* CustomStyles.swift in Sources */,
 				8337BB081F439D99002C1639 /* Extensions.swift in Sources */,
 				835D26671F75A061000BC98E /* DropinViewController.swift in Sources */,
 				832A95BC1FCCC6B2004A5810 /* AppReview.swift in Sources */,

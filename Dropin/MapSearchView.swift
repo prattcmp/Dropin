@@ -33,7 +33,7 @@ class MapSearchView: UIView {
         self.addSubview(searchTable)
         
         headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         headerView.backgroundColor = UIColor.gray
         
         searchTextField = UITextField()

@@ -33,7 +33,7 @@ class SettingsView: UIView {
         logoutCell.textLabel!.text = "Logout"
         
         headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
         self.addSubview(headerView)
         
@@ -63,7 +63,7 @@ class SettingsView: UIView {
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
-            make.height.equalTo(60)
+            make.height.equalTo(headerHeight)
         }
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 200, height: 60))

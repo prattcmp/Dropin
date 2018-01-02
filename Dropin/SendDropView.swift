@@ -17,7 +17,6 @@ class SendDropView: UIView {
     var addFriendCell: UITableViewCell!
     
     var headerView: UIView!
-    let headerHeight: CGFloat = 60.0
     let rowHeight: CGFloat = 50.0
     
     var backImage: UIImage!
@@ -82,6 +81,9 @@ class SendDropView: UIView {
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
             make.centerX.equalTo(super.snp.centerX)
+            if UIDevice.current.iPhoneX {
+                make.height.greaterThanOrEqualTo(75)
+            }
             self.dropButtonTopConstraint = make.top.equalTo(super.snp.bottom).constraint
             self.dropButtonBottomConstraint = make.bottom.equalTo(super.snp.bottom).constraint
         }

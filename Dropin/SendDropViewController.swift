@@ -103,7 +103,7 @@ class SendDropViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sendDropView.headerHeight
+        return headerHeight
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

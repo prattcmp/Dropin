@@ -37,7 +37,7 @@ class FriendView: UIView {
         addFriendCell.textLabel!.font = UIFont(name: addFriendCell.textLabel!.font.fontName, size: 15)
         
         headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60)
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
         headerView.backgroundColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         
         headerLabel = UILabel()
@@ -66,7 +66,7 @@ class FriendView: UIView {
             make.top.equalTo(super.snp.top)
             make.left.equalTo(super.snp.left)
             make.right.equalTo(super.snp.right)
-            make.height.equalTo(60)
+            make.height.equalTo(headerHeight)
         }
         friendTable.snp.makeConstraints { (make) in
             make.top.equalTo(headerView.snp.bottom)

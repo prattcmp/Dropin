@@ -11,11 +11,13 @@ import StoreKit
 let minLaunchesForReview = 3
 
 func incrementReviewLaunches() {
-    var launches = UserDefaults().value(forKey: "launchesSinceReviewPopup") as? Int ?? 0
+    var totalLaunches = UserDefaults().value(forKey: "totalLaunches") as? Int ?? 0
+    var reviewLaunches = UserDefaults().value(forKey: "launchesSinceReviewPopup") as? Int ?? 0
     
-    launches += 1
-    
-    UserDefaults().setValuesForKeys(["launchesSinceReviewPopup": launches as Any])
+    totalLaunches += 1
+    reviewLaunches += 1
+
+    UserDefaults().setValuesForKeys(["launchesSinceReviewPopup": reviewLaunches as Any, "totalLaunches": totalLaunches as Any])
     UserDefaults().synchronize()
 }
 

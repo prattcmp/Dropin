@@ -99,9 +99,9 @@ class DropView: UIView {
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 200, height: 60))
             if UIDevice.current.iPhoneX {
-                make.top.equalTo(super.snp.top).offset(35)
+                make.top.equalTo(super.snp.top).offset(45)
             } else {
-                make.top.equalTo(super.snp.top).offset(25)
+                make.top.equalTo(super.snp.top).offset(30)
             }
             make.left.equalTo(super.snp.left).offset(10)
         }

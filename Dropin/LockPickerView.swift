@@ -41,7 +41,7 @@ class LockPickerView: UIView {
         
         backButton.snp.makeConstraints { (make) in
             make.size.lessThanOrEqualTo(CGSize(width: 50, height: 60))
-            make.top.equalTo(super.snp.top).offset(35)
+            make.top.equalTo(super.snp.top).offset(45)
             make.left.equalTo(super.snp.left).offset(10)
         }
         
