@@ -145,6 +145,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @objc func centerButtonPressed(_ sender: AnyObject?, _ animated: Bool = true) {
+        if sender == nil {
+            return
+        }
+        
         if let coords = map.userLocation.location?.coordinate {
             let coordRegion = MKCoordinateRegionMakeWithDistance(coords, 500, 500)
             map.setRegion(coordRegion, animated: animated)
