@@ -115,7 +115,7 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             guard let unwrappedResponse = response else { return }
             
             for route in unwrappedResponse.routes {
-                self.map.add(route.polyline)
+                self.map.addOverlays([route.polyline], level: .aboveRoads)
             }
         }
     }
@@ -164,7 +164,10 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.blue
+        
+        renderer.strokeColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
+        renderer.lineWidth = 5.0
+        
         return renderer
     }
     

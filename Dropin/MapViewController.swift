@@ -25,6 +25,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var mapSearchViewController: MapSearchViewController!
     var lockPickerViewController: LockPickerViewController!
     
+    var centeredAtLoad: Bool! = false
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -147,6 +149,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @objc func centerButtonPressed(_ sender: AnyObject?, _ animated: Bool = true) {
+        if sender == nil {
+            return
+        }
+        
         if let coords = map.userLocation.location?.coordinate {
             let coordRegion = MKCoordinateRegionMakeWithDistance(coords, 500, 500)
             map.setRegion(coordRegion, animated: animated)
@@ -176,6 +182,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         resizeTextView(self.textField)
         textField.isHidden = false
         textField.becomeFirstResponder()
+        
+        UserDefaults().setValuesForKeys(["sendDropButtonPressed": true as Any])
     }
     
     @objc func dismissTextField() {
@@ -244,9 +252,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         if annotation is MKUserLocation {
-            centerButtonPressed(nil, false)
+            if centeredAtLoad == false {
+                centerButtonPressed(annotation, false)
+                centeredAtLoad = true
+            }
+            
             return nil
         }
         
