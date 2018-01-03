@@ -12,6 +12,7 @@ import Crashlytics
 import UserNotifications
 import AWSMobileClient
 import AWSPinpoint
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
+        
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions) // Facebook SDK
         
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -44,6 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return AWSMobileClient.sharedInstance().interceptApplication(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
+    /* Start Facebook SDK stuff */
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        return SDKApplicationDelegate.shared.application(application, open: url, options: options)
+    }
+    /* End Facebook SDK stuff */
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken token: Data) {
         
         let tokenString = token.reduce("", {$0 + String(format: "%02X", $1)})
@@ -86,6 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
     func applicationDidBecomeActive(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        AppEventsLogger.activate(application) // Facebook SDK log app open
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

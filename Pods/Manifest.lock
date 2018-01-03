@@ -1,16 +1,42 @@
 PODS:
-  - Alamofire (4.5.1)
-  - AWSAuthCore (2.6.6):
-    - AWSCore (= 2.6.6)
-  - AWSCore (2.6.6)
-  - AWSMobileClient (2.6.6):
-    - AWSAuthCore (= 2.6.6)
-  - AWSPinpoint (2.6.6):
-    - AWSCore (= 2.6.6)
+  - Alamofire (4.6.0)
+  - AWSAuthCore (2.6.10):
+    - AWSCore (= 2.6.10)
+  - AWSCore (2.6.10)
+  - AWSMobileClient (2.6.10):
+    - AWSAuthCore (= 2.6.10)
+  - AWSPinpoint (2.6.10):
+    - AWSCore (= 2.6.10)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - Fabric (1.7.2)
+  - FacebookCore (0.3.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.27)
+  - FacebookLogin (0.3.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3)
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKLoginKit (~> 4.27)
+  - FacebookShare (0.3.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3)
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKShareKit (~> 4.27)
+  - FBSDKCoreKit (4.29.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.29.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.29.0):
+    - FBSDKCoreKit
   - MGSwipeTableCell (1.6.6)
+  - PMAlertController (3.1.0)
   - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
 
@@ -20,22 +46,43 @@ DEPENDENCIES:
   - AWSPinpoint
   - Crashlytics
   - Fabric
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
   - MGSwipeTableCell
+  - PMAlertController (from `https://github.com/prattcmp/PMAlertController`)
   - SnapKit
   - SwiftyJSON
 
+EXTERNAL SOURCES:
+  PMAlertController:
+    :git: https://github.com/prattcmp/PMAlertController
+
+CHECKOUT OPTIONS:
+  PMAlertController:
+    :commit: b185d287212f66fd02f65c898df47cdfd36918f1
+    :git: https://github.com/prattcmp/PMAlertController
+
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AWSAuthCore: 3d6f2d3a62efaa8a02fa4323ff4b297b56be0312
-  AWSCore: 64619e45b47678afab53ca0f9b4fa380ebee6f0b
-  AWSMobileClient: 7bc1e855a3da55de5545f9dc3efb9d91f04a1cef
-  AWSPinpoint: e5de8e8daa1c4b482c9d82ec0f83df18a18678da
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AWSAuthCore: d5e52ee671c815bee92c8fc1077fb6bd526f026a
+  AWSCore: 5bb072a6b5b185f43ddbd239d6554d2f8a285ad2
+  AWSMobileClient: 6bdf1228aa064a9f2ee9db1486f09bfc6bc64c1e
+  AWSPinpoint: 92ec19e8fa844ff2330ca08695c326520d7d08aa
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
+  FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
+  FacebookShare: 0469964297ebd75f052be2c5083389a4208e82b7
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
+  PMAlertController: c833afa38b2206a5bb2d99da08ec4816974916d6
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 984dcccc13b45a63b22f2d4735e4db6213bd5eee
+PODFILE CHECKSUM: 39743f7e8c4f6ad668c9a9b7237fd19020222fc9
 
 COCOAPODS: 1.3.1

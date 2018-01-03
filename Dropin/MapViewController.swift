@@ -65,7 +65,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                     let annotation = TypedPointAnnotation()
                                     annotation.type = "drop-blue"
                                     annotation.coordinate = drop.coordinates
-                                    annotation.title = "@" + (drop.from?.username)!
+                                    annotation.name = (drop.from?.name)!
                                     annotation.id = self.drops.count
                                     
                                     self.map.addAnnotation(annotation)
@@ -86,7 +86,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                     let annotation = TypedPointAnnotation()
                                     annotation.type = "drop-green"
                                     annotation.coordinate = drop.coordinates
-                                    annotation.title = "@" + (drop.to?.username)!
+                                    annotation.name = "Me"
                                     annotation.id = self.drops.count
                                     
                                     self.map.addAnnotation(annotation)
@@ -147,10 +147,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @objc func centerButtonPressed(_ sender: AnyObject?, _ animated: Bool = true) {
-        if sender == nil {
-            return
-        }
-        
         if let coords = map.userLocation.location?.coordinate {
             let coordRegion = MKCoordinateRegionMakeWithDistance(coords, 500, 500)
             map.setRegion(coordRegion, animated: animated)
@@ -256,12 +252,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let typedAnnotation = annotation as! TypedPointAnnotation
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: typedAnnotation.type)
+        let identifier = typedAnnotation.type + typedAnnotation.name
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: typedAnnotation.type)
-            annotationView?.canShowCallout = true
-            annotationView?.image = UIImage(named: typedAnnotation.type)!.alpha(0.9)
+            annotationView = DropAnnotationView(annotation: annotation, reuseIdentifier: identifier, name: typedAnnotation.name, type: typedAnnotation.type)
         } else {
             annotationView?.annotation = annotation
         }

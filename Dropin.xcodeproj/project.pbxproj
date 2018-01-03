@@ -45,6 +45,7 @@
 		83A2FE331FB7FE840072A819 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2FE321FB7FE840072A819 /* PushToken.swift */; };
 		83CC9CF61FD7850200807C4C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC9CF51FD7850200807C4C /* DeviceType.swift */; };
 		83D508921FFB5BCD00AD9ED9 /* CustomStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */; };
+		83D508961FFC4F9D00AD9ED9 /* DropAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508951FFC4F9D00AD9ED9 /* DropAnnotationView.swift */; };
 		83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F22E531FD0AE7F005777F7 /* UsableScreen.swift */; };
 		83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F22E551FD38384005777F7 /* awsconfiguration.json */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
@@ -119,6 +120,7 @@
 		83A2FE321FB7FE840072A819 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		83CC9CF51FD7850200807C4C /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyles.swift; sourceTree = "<group>"; };
+		83D508951FFC4F9D00AD9ED9 /* DropAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAnnotationView.swift; sourceTree = "<group>"; };
 		83F22E531FD0AE7F005777F7 /* UsableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableScreen.swift; sourceTree = "<group>"; };
 		83F22E551FD38384005777F7 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				83F42F301FA55CA200313510 /* DropView.swift */,
 				832A95B91FCC7BA2004A5810 /* PointCountView.swift */,
 				831BA75A1FEB86C40009CE56 /* LockPickerView.swift */,
+				83D508951FFC4F9D00AD9ED9 /* DropAnnotationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -524,6 +527,13 @@
 				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/PMAlertController/PMAlertController.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -536,6 +546,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSPinpoint.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMAlertController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -563,6 +580,7 @@
 				834E8DFC1F5F38B1007E3050 /* NameViewController.swift in Sources */,
 				839669A31F670A05000468DA /* MapViewController.swift in Sources */,
 				83A2FE331FB7FE840072A819 /* PushToken.swift in Sources */,
+				83D508961FFC4F9D00AD9ED9 /* DropAnnotationView.swift in Sources */,
 				83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */,
 				83F42F311FA55CA200313510 /* DropView.swift in Sources */,
 				832AF90F1F8FF5640024BE26 /* SendDropViewController.swift in Sources */,
@@ -759,7 +777,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
@@ -784,7 +802,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

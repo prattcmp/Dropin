@@ -11,5 +11,8 @@ target ‘Dropin’ do
     pod 'Crashlytics'
     pod 'AWSMobileClient'
     pod 'AWSPinpoint'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
     pod 'PMAlertController', :git => 'https://github.com/prattcmp/PMAlertController'
 end
