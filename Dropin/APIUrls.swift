@@ -6,6 +6,7 @@
 //  Copyright © 2017 Dropin. All rights reserved.
 //
 
+//let base_url = "http://localhost:8888/"
 let base_url = "https://api.wedropin.com/"
 
 // Auth
@@ -21,6 +22,12 @@ let add_friend = base_url + "user/friends/add"
 let remove_friend = base_url + "user/friends/remove"
 let block_friend = base_url + "user/friends/block"
 let get_friends = base_url + "user/friends/get"
+
+// User Locations
+let get_user_locations = base_url + "locations/get/all"
+let location_update = base_url + "locations/set/my"
+let location_set_enabled = base_url + "locations/set/enabled"
+let location_get_enabled = base_url + "locations/get/enabled"
 
 // Drops
 let send_drops = base_url + "drops/send"

@@ -14,8 +14,10 @@ import SnapKit
 class SettingsView: UIView {
     var settingsTable: UITableView!
     
-    var headerCell: UITableViewCell!
+    var userLocationCell: UITableViewCell!
+    var userLocationSwitch: UISwitch!
     var logoutCell: UITableViewCell!
+    
     var headerView: UIView!
     var backImage: UIImage!
     var backButton: UIButton!
@@ -28,13 +30,18 @@ class SettingsView: UIView {
         settingsTable.separatorInset = .zero
         self.addSubview(settingsTable)
         
+        userLocationCell = UITableViewCell()
+        userLocationSwitch = UISwitch()
+        userLocationCell.accessoryView = userLocationSwitch
+        userLocationCell.textLabel!.text = "Auto Location Sharing"
+        
         logoutCell = UITableViewCell()
         logoutCell.accessoryType = .disclosureIndicator
         logoutCell.textLabel!.text = "Logout"
         
         headerView = UIView()
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
-        headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
+        headerView.backgroundColor = DropinColor.blue
         self.addSubview(headerView)
         
         backImage = UIImage(named: "back-arrow-white")

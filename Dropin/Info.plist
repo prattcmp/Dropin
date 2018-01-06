@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.2</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>7</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -38,14 +38,19 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please enable &quot;Always Allow&quot; to share your location privately on Dropin.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Please enable &quot;Always Allow&quot; to share your location privately on Dropin.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This feature must be enabled to send drops at or near your current location in Dropin.</string>
+	<string>Please enable &quot;Always Allow&quot; to share your location privately on Dropin.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AdobeGothicStd-Bold.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -65,5 +70,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

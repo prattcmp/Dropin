@@ -40,7 +40,7 @@ class SendDropView: UIView {
 
         headerView = UIView()
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: headerHeight)
-        headerView.backgroundColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
+        headerView.backgroundColor = DropinColor.blue
         
         backImage = UIImage(named: "back-arrow-white")
         backButton = UIButton(type: .custom)

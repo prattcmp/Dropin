@@ -46,6 +46,9 @@
 		83CC9CF61FD7850200807C4C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC9CF51FD7850200807C4C /* DeviceType.swift */; };
 		83D508921FFB5BCD00AD9ED9 /* CustomStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */; };
 		83D508961FFC4F9D00AD9ED9 /* DropAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508951FFC4F9D00AD9ED9 /* DropAnnotationView.swift */; };
+		83D508981FFF195400AD9ED9 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508971FFF195400AD9ED9 /* UserLocation.swift */; };
+		83D5089A1FFF692900AD9ED9 /* NewUserWalkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D508991FFF692900AD9ED9 /* NewUserWalkthrough.storyboard */; };
+		83D5089C1FFFE92F00AD9ED9 /* LocationManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D5089B1FFFE92F00AD9ED9 /* LocationManagers.swift */; };
 		83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F22E531FD0AE7F005777F7 /* UsableScreen.swift */; };
 		83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F22E551FD38384005777F7 /* awsconfiguration.json */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
@@ -121,6 +124,9 @@
 		83CC9CF51FD7850200807C4C /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyles.swift; sourceTree = "<group>"; };
 		83D508951FFC4F9D00AD9ED9 /* DropAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAnnotationView.swift; sourceTree = "<group>"; };
+		83D508971FFF195400AD9ED9 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		83D508991FFF692900AD9ED9 /* NewUserWalkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewUserWalkthrough.storyboard; sourceTree = "<group>"; };
+		83D5089B1FFFE92F00AD9ED9 /* LocationManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagers.swift; sourceTree = "<group>"; };
 		83F22E531FD0AE7F005777F7 /* UsableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableScreen.swift; sourceTree = "<group>"; };
 		83F22E551FD38384005777F7 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
@@ -246,6 +252,7 @@
 				834E8DFB1F5F38B1007E3050 /* NameViewController.swift */,
 				8337BAD31F40F53E002C1639 /* UserAuth.storyboard */,
 				834E8DF51F57344B007E3050 /* CreateName.storyboard */,
+				83D508991FFF692900AD9ED9 /* NewUserWalkthrough.storyboard */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -256,6 +263,7 @@
 				835D266C1F7DB0F1000BC98E /* User.swift */,
 				832AF9151F9292E30024BE26 /* Drop.swift */,
 				83A2FE321FB7FE840072A819 /* PushToken.swift */,
+				83D508971FFF195400AD9ED9 /* UserLocation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 				83F22E531FD0AE7F005777F7 /* UsableScreen.swift */,
 				83CC9CF51FD7850200807C4C /* DeviceType.swift */,
 				83D508911FFB5BCD00AD9ED9 /* CustomStyles.swift */,
+				83D5089B1FFFE92F00AD9ED9 /* LocationManagers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -449,6 +458,7 @@
 				8337BAD71F40F53E002C1639 /* Assets.xcassets in Resources */,
 				832AF9141F9115010024BE26 /* AdobeGothicStd-Bold.otf in Resources */,
 				8337BAD51F40F53E002C1639 /* UserAuth.storyboard in Resources */,
+				83D5089A1FFF692900AD9ED9 /* NewUserWalkthrough.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				836777521FB12D8D006DB1A3 /* AnnotationType.swift in Sources */,
+				83D508981FFF195400AD9ED9 /* UserLocation.swift in Sources */,
 				834E8DF81F5E52C9007E3050 /* LoginViewController.swift in Sources */,
 				83546F6A1F66E32900492BB2 /* MapView.swift in Sources */,
 				831BA75B1FEB86C40009CE56 /* LockPickerView.swift in Sources */,
@@ -603,6 +614,7 @@
 				83F42F2D1FA2B14E00313510 /* MyDropsView.swift in Sources */,
 				835D266D1F7DB0F1000BC98E /* User.swift in Sources */,
 				8337BAD01F40F53E002C1639 /* AppDelegate.swift in Sources */,
+				83D5089C1FFFE92F00AD9ED9 /* LocationManagers.swift in Sources */,
 				835D26691F799C41000BC98E /* SettingsView.swift in Sources */,
 				83CC9CF61FD7850200807C4C /* DeviceType.swift in Sources */,
 				83F42F331FA55CBD00313510 /* DropViewController.swift in Sources */,
@@ -777,7 +789,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
@@ -802,7 +814,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

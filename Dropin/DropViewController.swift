@@ -165,7 +165,7 @@ class DropViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         
-        renderer.strokeColor = UIColor(red: 24/255, green: 190/255, blue: 255/255, alpha: 1)
+        renderer.strokeColor = DropinColor.blue
         renderer.lineWidth = 5.0
         
         return renderer

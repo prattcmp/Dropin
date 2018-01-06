@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var settingsView: SettingsView!
     var parentController: UIViewController!
 
+    var cells = [UITableViewCell]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,26 +23,57 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         settingsView.settingsTable.delegate = self
         settingsView.settingsTable.dataSource = self
         
+        self.cells.append(settingsView.userLocationCell)
+        self.cells.append(settingsView.logoutCell)
+        
         settingsView.backButton.setTitle("Settings", for: .normal)
         settingsView.backButton.setTitleColor(.white, for: .normal)
         settingsView.backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 5.0, 0.0, -5.0)
         settingsView.backButton.sizeToFit()
+        settingsView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         
+        UserLocation.getEnabled() { (isSuccess, message, enabled) in
+            if (isSuccess) {
+                self.settingsView.userLocationSwitch.setOn(enabled, animated: false)
+            }
+        }
+    
+        settingsView.userLocationSwitch.addTarget(self, action: #selector(userLocationSwitched), for: .valueChanged)
+
         // Show the table
         self.view.addSubview(settingsView)
+    }
+    
+    @objc func userLocationSwitched(_ sender: AnyObject?) {
+        if settingsView.userLocationSwitch.isOn {
+            significantUpdateManager.requestAlwaysAuthorization()
+            significantUpdateManager.startMonitoringSignificantLocationChanges()
+        } else {
+            significantUpdateManager.stopMonitoringSignificantLocationChanges()
+        }
         
-        settingsView.backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
-
+        UserLocation.setEnabled(settingsView.userLocationSwitch.isOn) { (isSuccess, message) in
+            if (!isSuccess) {
+                let alertController = UIAlertController(title: "Uh oh", message: message != "" ? message : "Something went wrong. Try again later.", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                self.settingsView.userLocationSwitch.setOn(!self.settingsView.userLocationSwitch.isOn, animated: false)
+                return
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cells.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            return settingsView.logoutCell
+        if indexPath.row < cells.count {
+            return cells[indexPath.row]
         }
         return UITableViewCell()
     }

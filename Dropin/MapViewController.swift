@@ -18,7 +18,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var map: MKMapView!
     var textField: UITextView!
     
-    var drops = [Drop]()
+    var userLocations = [UserLocation]()
     
     var lockDuration: Int! = 0
     
@@ -56,43 +56,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 while (success == false) {
                     success = true
                     
-                    Drop.getByToID(id: currentUser.id) { (isSuccess: Bool, username: String, toDrops: [Drop]) in
+                    UserLocation.getAll() { (isSuccess: Bool, message: String, userLocations: [UserLocation]) in
                         if (isSuccess) {
                             DispatchQueue.main.async {
-                                for drop in toDrops {
-                                    if drop.locked == true {
-                                        continue
-                                    }
-                                    
+                                for userLocation in userLocations {
                                     let annotation = TypedPointAnnotation()
                                     annotation.type = "drop-blue"
-                                    annotation.coordinate = drop.coordinates
-                                    annotation.name = (drop.from?.name)!
-                                    annotation.id = self.drops.count
+                                    annotation.coordinate = userLocation.coordinates
+                                    annotation.name = userLocation.name
+                                    annotation.id = self.userLocations.count
                                     
                                     self.map.addAnnotation(annotation)
-                                    self.drops.append(drop)
-                                }
-                            }
-                        } else {
-                            success = false
-                        }
-                    }
-                    
-                    Drop.getByFromID(id: currentUser.id) { (isSuccess: Bool, username: String, fromDrops: [Drop]) in
-                        if (isSuccess) {
-                            
-                            DispatchQueue.main.async {
-                                for drop in fromDrops {
-                                    
-                                    let annotation = TypedPointAnnotation()
-                                    annotation.type = "drop-green"
-                                    annotation.coordinate = drop.coordinates
-                                    annotation.name = "Me"
-                                    annotation.id = self.drops.count
-                                    
-                                    self.map.addAnnotation(annotation)
-                                    self.drops.append(drop)
+                                    self.userLocations.append(userLocation)
                                 }
                             }
                         } else {
@@ -110,7 +85,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
-        self.drops = [Drop]()
         self.map.removeAnnotations(self.map.annotations)
     }
     
@@ -130,8 +104,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         map.delegate = self
         textField.delegate = self
-        
-        map.showsUserLocation = true
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissTextField))
         
@@ -141,8 +113,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.view.addSubview(mapView)
         
         mapView.centerButton?.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
+        mapView.mapTypeButton?.addTarget(self, action: #selector(mapTypeButtonPressed), for: .touchUpInside)
         mapView.searchButton?.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        
         mapView.lockButton.addTarget(self, action: #selector(lockButtonPressed), for: .touchUpInside)
+        
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchDown), for: .touchDown)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpOutside), for: .touchUpOutside)
         mapView.sendDropButton?.addTarget(self, action: #selector(sendDropTouchUpInside), for: .touchUpInside)
@@ -156,6 +131,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if let coords = map.userLocation.location?.coordinate {
             let coordRegion = MKCoordinateRegionMakeWithDistance(coords, 500, 500)
             map.setRegion(coordRegion, animated: animated)
+        }
+    }
+    
+    @objc func mapTypeButtonPressed(_ sender: AnyObject?, _ animated: Bool = true) {
+        if self.map.mapType == .hybrid {
+            self.map.mapType = .standard
+        } else {
+            self.map.mapType = .hybrid
         }
     }
     
@@ -280,7 +263,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.zoomOnCoordinates(pinToZoomOn!.coordinate)
         
         if let typedAnnotation = view.annotation as? TypedPointAnnotation {
-            navController.pushViewController(DropViewController(drop: self.drops[typedAnnotation.id], mapViewController: self), animated: true)
+            self.zoomOnCoordinates(typedAnnotation.coordinate)
         }
     }
     

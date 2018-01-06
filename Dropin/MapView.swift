@@ -22,6 +22,9 @@ class MapView: UIView {
     var searchImage: UIImage!
     var searchButton: UIButton!
     
+    var mapTypeImage: UIImage!
+    var mapTypeButton: UIButton!
+    
     var lockImage: UIImage!
     var lockButton: UIButton!
     
@@ -47,7 +50,9 @@ class MapView: UIView {
         map.isZoomEnabled = true
         map.isScrollEnabled = true
         map.showsCompass = false
+        map.showsUserLocation = true
         map.center = self.center
+        map.tintColor = DropinColor.blue
         self.addSubview(map)
         
         centerImage = UIImage(named: "crosshair")
@@ -59,6 +64,11 @@ class MapView: UIView {
         searchButton = UIButton(type: .custom)
         searchButton.setImage(searchImage, for: .normal)
         self.addSubview(searchButton)
+        
+        mapTypeImage = UIImage(named: "map")
+        mapTypeButton = UIButton(type: .custom)
+        mapTypeButton.setImage(mapTypeImage, for: .normal)
+        self.addSubview(mapTypeButton)
         
         lockImage = UIImage(named: "lock")
         lockButton = UIButton(type: .custom)
@@ -122,9 +132,15 @@ class MapView: UIView {
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
-        searchButton.snp.makeConstraints { (make) in
-            make.top.equalTo(centerButton.snp.top)
+        mapTypeButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(centerButton.snp.centerY)
             make.leading.equalTo(centerButton.snp.trailing).offset(20)
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        searchButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(centerButton.snp.centerY)
+            make.leading.equalTo(mapTypeButton.snp.trailing).offset(20)
             make.width.equalTo(30)
             make.height.equalTo(30)
         }

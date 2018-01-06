@@ -19,9 +19,9 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
     var mapViewController: MapViewController!
     var friendViewController: FriendViewController!
     
-    var locManager: CLLocationManager!
-    
     var launchScreen: String!
+    
+    var backgroundUpdateTask: UIBackgroundTaskIdentifier!
     
     init(_ launchScreen: String) {
         super.init(nibName: nil, bundle: nil)
@@ -39,11 +39,23 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         self.view.backgroundColor = .white
         navController.isNavigationBarHidden = true
         
-        self.locManager = CLLocationManager()
-        self.locManager.delegate = self
-        self.locManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locManager.requestWhenInUseAuthorization()
-        self.locManager.startUpdatingLocation()
+        significantUpdateManager.delegate = self
+        significantUpdateManager.allowsBackgroundLocationUpdates = true
+        significantUpdateManager.requestAlwaysAuthorization()
+        UserLocation.getEnabled() { (isSuccess, message, enabled) in
+            if (isSuccess) {
+                if enabled {
+                    significantUpdateManager.startMonitoringSignificantLocationChanges()
+                } else {
+                    significantUpdateManager.stopMonitoringSignificantLocationChanges()
+                }
+            }
+        }
+        
+        inUseManager.allowsBackgroundLocationUpdates = false
+        inUseManager.desiredAccuracy = kCLLocationAccuracyBest
+        inUseManager.requestWhenInUseAuthorization()
+        inUseManager.startUpdatingLocation()
         
         mapViewController = MapViewController()
         myDropsViewController = MyDropsViewController(mapViewController: mapViewController)
@@ -140,5 +152,36 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
 
         return self.pages[index + 1]
+    }
+    
+    func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
+        var lastLocation = locations.last!
+        
+        inUseManager.startUpdatingLocation()
+        if inUseManager.location != nil {
+            lastLocation = inUseManager.location!
+        }
+        inUseManager.stopUpdatingLocation()
+        
+        // Get the background identifier if the app is in background mode
+        if UIApplication.shared.applicationState == .background {
+            backgroundUpdateTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+                if let strongSelf = self {
+                    UIApplication.shared.endBackgroundTask(strongSelf.backgroundUpdateTask)
+                    strongSelf.backgroundUpdateTask = UIBackgroundTaskInvalid
+                }
+            }
+        }
+        
+        // Call the api to update the location to your server
+        UserLocation.update(coordinates: lastLocation.coordinate) { (_ isSuccess: Bool, _ message: String)
+            in
+            
+            //API completion block invalidate the identifier if it is not invalid already.
+            if self.backgroundUpdateTask != nil && self.backgroundUpdateTask != UIBackgroundTaskInvalid {
+                UIApplication.shared.endBackgroundTask(self.backgroundUpdateTask)
+                self.backgroundUpdateTask = UIBackgroundTaskInvalid
+            }
+        }
     }
 }

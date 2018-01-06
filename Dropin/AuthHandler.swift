@@ -11,6 +11,9 @@ import UIKit
 import UserNotifications
 
 let navController = UINavigationController()
+
+var dropinViewController: DropinViewController?
+
 var currentUser: User!
 
 func getUsername() -> String {
@@ -47,9 +50,9 @@ func launchDropin(_ launchScreen: String = "") {
             navController.isToolbarHidden = true
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let dropinViewController: DropinViewController = DropinViewController(launchScreen)
+            dropinViewController = DropinViewController(launchScreen)
             
-            navController.viewControllers = [dropinViewController]
+            navController.viewControllers = [dropinViewController!]
             
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
