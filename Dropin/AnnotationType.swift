@@ -13,4 +13,5 @@ class TypedPointAnnotation: MKPointAnnotation {
     var id: Int! = 0
     var type: String! = "drop-green"
     var name: String! = ""
+    var created_at: Date! = Date()
 }

@@ -64,6 +64,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                     annotation.type = "drop-blue"
                                     annotation.coordinate = userLocation.coordinates
                                     annotation.name = userLocation.name
+                                    annotation.created_at = userLocation.created_at
                                     annotation.id = self.userLocations.count
                                     
                                     self.map.addAnnotation(annotation)
@@ -250,7 +251,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil {
-            annotationView = DropAnnotationView(annotation: annotation, reuseIdentifier: identifier, name: typedAnnotation.name, type: typedAnnotation.type)
+            annotationView = DropAnnotationView(annotation: annotation, reuseIdentifier: identifier, name: typedAnnotation.name, created_at: typedAnnotation.created_at, type: typedAnnotation.type)
         } else {
             annotationView?.annotation = annotation
         }
