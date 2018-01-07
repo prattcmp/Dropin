@@ -33,6 +33,17 @@ func launchAuthScreen() {
     appDelegate?.window?.makeKeyAndVisible()
 }
 
+func launchEmailScreen() {
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
+    let nameStoryboard : UIStoryboard = UIStoryboard(name: "CreateName", bundle: nil)
+    let emailViewController : UIViewController = nameStoryboard.instantiateViewController(withIdentifier: "Email") as UIViewController
+    
+    appDelegate?.window = UIWindow(frame: UIScreen.main.bounds)
+    appDelegate?.window?.rootViewController = emailViewController
+    appDelegate?.window?.makeKeyAndVisible()
+}
+
 func launchNameScreen() {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
@@ -53,13 +64,6 @@ func launchDropin(_ launchScreen: String = "") {
             dropinViewController = DropinViewController(launchScreen)
             
             navController.viewControllers = [dropinViewController!]
-            
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-                // Enable or disable features based on authorization.
-            }
-            
-            UIApplication.shared.registerForRemoteNotifications()
             
             appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
             appDelegate.window!.rootViewController = navController
@@ -147,6 +151,7 @@ func launchByAuthStatus(_ launchScreen: String = "") {
                 return
             }
             else if result == 1 {
+                if (UserDefaults.standard.object(forKey: "email_address") as? String) != nil {
                 if (UserDefaults.standard.object(forKey: "name") as? String) != nil {
                     // Reset the push token on the server if user logs back in
                     if let token = UserDefaults.standard.object(forKey: "device_push_token")  as? String {
@@ -166,6 +171,18 @@ func launchByAuthStatus(_ launchScreen: String = "") {
                     }
                     else {
                         DispatchQueue.main.async(execute: launchNameScreen)
+                        return
+                    }
+                }
+                } else {
+                    if let email_address = data["email_address"] as? String
+                    {
+                        UserDefaults.standard.set(email_address, forKey: "email_address")
+                        DispatchQueue.main.async { launchDropin(launchScreen) }
+                        return
+                    }
+                    else {
+                        DispatchQueue.main.async(execute: launchEmailScreen)
                         return
                     }
                 }

@@ -87,10 +87,16 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             if let result = data["result"] as? Int
             {
                 if result == 0 {
-                    UserDefaults.standard.removeObject(forKey: "session_data")
-                    
-                    DispatchQueue.main.async(execute: launchAuthScreen)
-                    return
+                    if let message = data["message"] as? String {
+                        let alert = UIAlertController(title: "Uh oh...",
+                                                      message: message,
+                                                      preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Okay",
+                                                      style: UIAlertActionStyle.default,
+                                                      handler: nil))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
                 else if result == 1 {
                     if let name = data["name"] as? String

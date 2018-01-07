@@ -41,7 +41,6 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         significantUpdateManager.delegate = self
         significantUpdateManager.allowsBackgroundLocationUpdates = true
-        significantUpdateManager.requestAlwaysAuthorization()
         UserLocation.getEnabled() { (isSuccess, message, enabled) in
             if (isSuccess) {
                 if enabled {
@@ -54,7 +53,6 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         inUseManager.allowsBackgroundLocationUpdates = false
         inUseManager.desiredAccuracy = kCLLocationAccuracyBest
-        inUseManager.requestWhenInUseAuthorization()
         inUseManager.startUpdatingLocation()
         
         mapViewController = MapViewController()
@@ -87,9 +85,16 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     
     func newUserHelpers() {
-        let sendDropButtonPressed = UserDefaults().value(forKey: "sendDropButtonPressed") as? Bool ?? false
+        let locationSharingWalkthroughDisplayed = UserDefaults().value(forKey: "locationSharingWalkthroughDisplayed") as? Bool ?? false
+        let playAroundDisplayed = UserDefaults().value(forKey: "playAroundDisplayed") as? Bool ?? false
         
-        if currentUser.friends.count == 0 {
+        if locationSharingWalkthroughDisplayed == false {
+            let storyboard: UIStoryboard = UIStoryboard(name: "NewUserWalkthrough", bundle: nil)
+            let walkthroughController = storyboard.instantiateViewController(withIdentifier: "LocationSharing1")
+            navController.pushViewController(walkthroughController, animated: false)
+            
+            UserDefaults().setValuesForKeys(["locationSharingWalkthroughDisplayed": true as Any])
+        } else if currentUser.friends.count == 0 {
             let alertVC = PMAlertController(title: "Add friends", description: "To start sending drops, you have to add some friends.", image: nil, style: .walkthrough)
             
             alertVC.addAction(PMAlertAction(title: "Okay", style: .default, action: { () in
@@ -97,12 +102,13 @@ class DropinViewController: UIViewController, UIPageViewControllerDataSource, UI
             }))
             
             self.present(alertVC, animated: true, completion: nil)
-        } else if sendDropButtonPressed == false {
-            let alertVC = PMAlertController(title: "Sending a drop", description: "To send a drop, move the white circular cursor to a location and tap the green button at the bottom of the screen.", image: nil, style: .walkthrough)
+        } else if playAroundDisplayed == false {
+            let alertVC = PMAlertController(title: "Play around", description: "Press some buttons and play around. Don't worry, you won't break anything (hopefully 🙄)!", image: nil, style: .walkthrough)
             
             alertVC.addAction(PMAlertAction(title: "Okay", style: .default, action: nil))
             
             self.present(alertVC, animated: true, completion: nil)
+            UserDefaults().setValuesForKeys(["playAroundDisplayed": true as Any])
         }
     }
     

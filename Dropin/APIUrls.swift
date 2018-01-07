@@ -14,6 +14,7 @@ let signup_url = base_url + "auth/signup"
 let login_url = base_url + "auth/login"
 let validate_url = base_url + "auth/validate"
 let name_set_url = base_url + "user/name/set"
+let email_set_url = base_url + "user/email/set"
 
 // User
 let get_user_by_id = base_url + "user/get/id"

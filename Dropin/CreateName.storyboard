@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="What's your name?" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n0-vB-dTS">
-                                <rect key="frame" x="20" y="100" width="238" height="51"/>
+                                <rect key="frame" x="20" y="135.66666666666666" width="238" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="238" id="D6e-gZ-TvF"/>
                                     <constraint firstAttribute="height" constant="51" id="pJO-mD-Ubm"/>
@@ -48,7 +48,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWO-kg-wjK">
-                                <rect key="frame" x="20" y="159" width="374" height="50"/>
+                                <rect key="frame" x="20" y="194.66666666666666" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name (e.g. John Smith)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rHQ-VK-BwP">
                                         <rect key="frame" x="5" y="0.0" width="366" height="50"/>
@@ -94,6 +94,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MrF-9m-Gnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="359" y="-682"/>
+        </scene>
+        <!--Email-->
+        <scene sceneID="ppW-Gv-gxl">
+            <objects>
+                <viewController storyboardIdentifier="Email" title="Email" id="GGg-Ls-Tvm" customClass="EmailViewController" customModule="Dropin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t3H-pf-BQb"/>
+                        <viewControllerLayoutGuide type="bottom" id="foE-76-Eke"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g6y-tr-BZc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpt-a9-iut">
+                                <rect key="frame" x="20" y="628" width="374" height="75"/>
+                                <color key="backgroundColor" red="0.13040047490000001" green="0.90466370559999998" blue="0.15672759950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="27S-Xk-MLc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="GGg-Ls-Tvm" eventType="touchUpInside" id="pVc-kH-hXD"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="What's your email?" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9M-gB-MNF">
+                                <rect key="frame" x="20" y="135.66666666666666" width="238" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="75t-Mz-WiY"/>
+                                    <constraint firstAttribute="height" constant="51" id="9RF-m1-7Q3"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iw7-86-COY">
+                                <rect key="frame" x="20" y="194.66666666666666" width="374" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email (e.g. john@gmail.com)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q53-uD-fwz" userLabel="Email Text Field">
+                                        <rect key="frame" x="5" y="0.0" width="366" height="50"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mLD-Au-u69"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                <integer key="value" value="44"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="GGg-Ls-Tvm" eventType="editingChanged" id="Xcu-HB-EQG"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="q53-uD-fwz" firstAttribute="top" secondItem="Iw7-86-COY" secondAttribute="top" id="Lps-zd-KMz"/>
+                                    <constraint firstAttribute="trailing" secondItem="q53-uD-fwz" secondAttribute="trailing" constant="3" id="NYH-k0-ZJv"/>
+                                    <constraint firstAttribute="bottom" secondItem="q53-uD-fwz" secondAttribute="bottom" id="SpR-Re-KRb"/>
+                                    <constraint firstAttribute="height" constant="50" id="SwH-1o-bNd"/>
+                                    <constraint firstItem="q53-uD-fwz" firstAttribute="leading" secondItem="Iw7-86-COY" secondAttribute="leading" constant="5" id="TW9-x8-CvX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.002058630344" green="0.79325693850000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Iw7-86-COY" firstAttribute="leading" secondItem="fpt-a9-iut" secondAttribute="leading" id="545-yu-QRY"/>
+                            <constraint firstItem="Iw7-86-COY" firstAttribute="trailing" secondItem="fpt-a9-iut" secondAttribute="trailing" id="6Cp-gn-1GY"/>
+                            <constraint firstItem="f9M-gB-MNF" firstAttribute="leading" secondItem="Iw7-86-COY" secondAttribute="leading" id="JXe-yj-ZSr"/>
+                            <constraint firstItem="Iw7-86-COY" firstAttribute="trailing" secondItem="g6y-tr-BZc" secondAttribute="trailingMargin" id="Kbf-bq-pwC"/>
+                            <constraint firstItem="f9M-gB-MNF" firstAttribute="leading" secondItem="g6y-tr-BZc" secondAttribute="leadingMargin" id="Oig-Vm-qwT"/>
+                            <constraint firstItem="foE-76-Eke" firstAttribute="top" secondItem="fpt-a9-iut" secondAttribute="bottom" constant="33" id="UnA-5Y-0WZ"/>
+                            <constraint firstItem="Iw7-86-COY" firstAttribute="top" secondItem="f9M-gB-MNF" secondAttribute="bottom" constant="8" symbolic="YES" id="kqh-Gv-rzS"/>
+                            <constraint firstItem="f9M-gB-MNF" firstAttribute="top" secondItem="g6y-tr-BZc" secondAttribute="topMargin" multiplier="16:9" constant="100" id="ym8-Sx-NS6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="q53-uD-fwz" id="e2t-pH-px1"/>
+                        <outlet property="nextButton" destination="fpt-a9-iut" id="VIa-Kd-Ynr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJ2-fI-vUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-368" y="-682"/>
         </scene>
     </scenes>
 </document>

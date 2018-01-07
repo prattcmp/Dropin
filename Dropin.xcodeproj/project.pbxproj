@@ -49,6 +49,9 @@
 		83D508981FFF195400AD9ED9 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508971FFF195400AD9ED9 /* UserLocation.swift */; };
 		83D5089A1FFF692900AD9ED9 /* NewUserWalkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D508991FFF692900AD9ED9 /* NewUserWalkthrough.storyboard */; };
 		83D5089C1FFFE92F00AD9ED9 /* LocationManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D5089B1FFFE92F00AD9ED9 /* LocationManagers.swift */; };
+		83D5089E20009B7C00AD9ED9 /* LocationSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D5089D20009B7C00AD9ED9 /* LocationSharingViewController.swift */; };
+		83D508A020009EB900AD9ED9 /* FinalLocationSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D5089F20009EB900AD9ED9 /* FinalLocationSharingViewController.swift */; };
+		83D508A22000A3C900AD9ED9 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D508A12000A3C900AD9ED9 /* EmailViewController.swift */; };
 		83F22E541FD0AE7F005777F7 /* UsableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F22E531FD0AE7F005777F7 /* UsableScreen.swift */; };
 		83F22E561FD38384005777F7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F22E551FD38384005777F7 /* awsconfiguration.json */; };
 		83F42F291FA112F900313510 /* UIImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F42F281FA112F900313510 /* UIImageAlpha.swift */; };
@@ -127,6 +130,9 @@
 		83D508971FFF195400AD9ED9 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		83D508991FFF692900AD9ED9 /* NewUserWalkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewUserWalkthrough.storyboard; sourceTree = "<group>"; };
 		83D5089B1FFFE92F00AD9ED9 /* LocationManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagers.swift; sourceTree = "<group>"; };
+		83D5089D20009B7C00AD9ED9 /* LocationSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSharingViewController.swift; sourceTree = "<group>"; };
+		83D5089F20009EB900AD9ED9 /* FinalLocationSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalLocationSharingViewController.swift; sourceTree = "<group>"; };
+		83D508A12000A3C900AD9ED9 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		83F22E531FD0AE7F005777F7 /* UsableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableScreen.swift; sourceTree = "<group>"; };
 		83F22E551FD38384005777F7 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		83F42F281FA112F900313510 /* UIImageAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAlpha.swift; sourceTree = "<group>"; };
@@ -250,9 +256,12 @@
 				8337BB051F41647F002C1639 /* SignUpViewController.swift */,
 				834E8DF71F5E52C9007E3050 /* LoginViewController.swift */,
 				834E8DFB1F5F38B1007E3050 /* NameViewController.swift */,
+				83D508A12000A3C900AD9ED9 /* EmailViewController.swift */,
 				8337BAD31F40F53E002C1639 /* UserAuth.storyboard */,
 				834E8DF51F57344B007E3050 /* CreateName.storyboard */,
 				83D508991FFF692900AD9ED9 /* NewUserWalkthrough.storyboard */,
+				83D5089D20009B7C00AD9ED9 /* LocationSharingViewController.swift */,
+				83D5089F20009EB900AD9ED9 /* FinalLocationSharingViewController.swift */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -580,6 +589,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D508A020009EB900AD9ED9 /* FinalLocationSharingViewController.swift in Sources */,
 				836777521FB12D8D006DB1A3 /* AnnotationType.swift in Sources */,
 				83D508981FFF195400AD9ED9 /* UserLocation.swift in Sources */,
 				834E8DF81F5E52C9007E3050 /* LoginViewController.swift in Sources */,
@@ -598,8 +608,10 @@
 				8337BB061F41647F002C1639 /* SignUpViewController.swift in Sources */,
 				831BA7591FEB86B90009CE56 /* LockPickerViewController.swift in Sources */,
 				8337BB0A1F44B662002C1639 /* APIUrls.swift in Sources */,
+				83D508A22000A3C900AD9ED9 /* EmailViewController.swift in Sources */,
 				83D508921FFB5BCD00AD9ED9 /* CustomStyles.swift in Sources */,
 				8337BB081F439D99002C1639 /* Extensions.swift in Sources */,
+				83D5089E20009B7C00AD9ED9 /* LocationSharingViewController.swift in Sources */,
 				835D26671F75A061000BC98E /* DropinViewController.swift in Sources */,
 				832A95BC1FCCC6B2004A5810 /* AppReview.swift in Sources */,
 				832A95BA1FCC7BA2004A5810 /* PointCountView.swift in Sources */,
@@ -789,7 +801,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
@@ -814,7 +826,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 748Q8DXLVV;
 				INFOPLIST_FILE = Dropin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

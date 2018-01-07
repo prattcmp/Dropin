@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == 1 {
             let alert = UIAlertController(title: "Are you sure?",
                                           message: "Are you sure you want to logout?",
                                           preferredStyle: .alert)

@@ -51,6 +51,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         textField.text = "" // Reset the text field text
         
+        significantUpdateManager.requestAlwaysAuthorization()
+        inUseManager.requestWhenInUseAuthorization()
+        
         DispatchQueue.global(qos: .background).async {
             autoreleasepool {
                 while (success == false) {
@@ -165,9 +168,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.shrinkSendDropRing()
         resizeTextView(self.textField)
         textField.isHidden = false
-        textField.becomeFirstResponder()
-        
-        UserDefaults().setValuesForKeys(["sendDropButtonPressed": true as Any])
+        textField.becomeFirstResponder()        
     }
     
     @objc func dismissTextField() {
@@ -248,13 +249,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let typedAnnotation = annotation as! TypedPointAnnotation
         
         let identifier = typedAnnotation.type + typedAnnotation.name
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
-        if annotationView == nil {
-            annotationView = DropAnnotationView(annotation: annotation, reuseIdentifier: identifier, name: typedAnnotation.name, created_at: typedAnnotation.created_at, type: typedAnnotation.type)
-        } else {
-            annotationView?.annotation = annotation
-        }
+        let annotationView = DropAnnotationView(annotation: annotation, reuseIdentifier: identifier, name: typedAnnotation.name, created_at: typedAnnotation.created_at, type: typedAnnotation.type)
         
         return annotationView
     }
