@@ -1,1 +1,4 @@
 *.pem
+fastlane/
+Dropin/APIUrls.swift
+Dropin/awsconfiguration.json
